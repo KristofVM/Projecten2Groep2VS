@@ -1,6 +1,17 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url(/images/abs-it-helping-hand.jpg);
+   background-size:100%;
+height: 140px;
+display:block;
+
+margin:0;
+}
+body.Login{
+   
+
+          
 }
 
 /* Wrapping element */
