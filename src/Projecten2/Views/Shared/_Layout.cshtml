@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using System.Threading.Tasks
+@using Microsoft.ApplicationInsights.Extensibility
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -13,36 +19,37 @@
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
 <body>
-
-    <!--<a type="button" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="rightbutton button">annuleren</a>-->
 <nav>
-    <div class="contain">
-        <img src="/images/kairos_icon_white.png" class="logo"/>
-        <ul class="leftnav">
-            <li><a asp-controller="Home" asp-action="Index">Overzicht</a></li>
-            <li><a asp-controller="Home" asp-action="Archief">Archief</a></li>
-            <li>
-                <a>Help <i class="fa fa-caret-down"></i></a>
-                <ul class="helpdropdown">
-                    <li><a asp-controller="Home" asp-action="Faq">FAQ</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+    <header>
+        <div class="contain">
+            <img src="/images/kairos_icon_white.png" class="logo" />
+            <ul class="leftnav">
+                <li><a asp-controller="Home" asp-action="Index">Overzicht</a></li>
+                <li><a asp-controller="Home" asp-action="Archief">Archief</a></li>
+                <li>
+                    <a>Help <i class="fa fa-caret-down"></i></a>
+                    <ul class="helpdropdown">
+                        <li><a asp-controller="Home" asp-action="Faq">FAQ</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
+                <ul class="rightnav">
+                    <li><a asp-controller="Home" asp-action="Profiel">@UserManager.GetUserName(User) <i class="fa fa-caret-down"></i></a></li>
+                    <li>
+                        <button type="submit" class="navigationbutton">Log off</button>
+                    </li>
                 </ul>
-            </li>
-        </ul>
-        <ul class="rightnav">
-            <li><a asp-controller="Home" asp-action="Profiel">Profiel</a></li>
-            <li><a href="#">Logout</a></li>
-        </ul>
-        <div class="clear"></div>
-    </div>
+            </form>
+            <div class="clear"></div>
+        </div>
+    </header>
 </nav>
-<div class="container body-content">
-    @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; 2017 - Projecten2</p>
-    </footer>
-</div>
+@RenderBody()
+<footer>
+    <p>&copy; 2017 - Projecten2</p>
+</footer>
 
 <environment names="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>

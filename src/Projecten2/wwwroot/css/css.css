@@ -46,14 +46,12 @@ nav ul li {
     font-size: 0;
 }
 nav ul li a {
+    border: 0px;
     font-size: 15px;
     color: #ffffff;
     text-decoration: none;
     display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 11px;
 }
 nav ul li a:hover {
     background-color: #3078c9;
@@ -254,6 +252,24 @@ button {
 }
 button:hover {
     background-color: #caddfc;
+}
+li button {
+    width: auto;
+    height: 40px;
+    background-color: transparent;
+    margin-top: 0px;
+    border: 0px;
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+li button:hover {
+    background-color: #3078c9;
 }
 .alert {
     color: #d32137;
