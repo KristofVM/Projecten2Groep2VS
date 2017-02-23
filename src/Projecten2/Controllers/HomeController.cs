@@ -13,9 +13,9 @@ namespace Projecten2.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Archief()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Archief";
 
             return View();
         }
