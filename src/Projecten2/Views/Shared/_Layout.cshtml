@@ -24,13 +24,13 @@
             <li>
                 <a>Help <i class="fa fa-caret-down"></i></a>
                 <ul class="helpdropdown">
-                    <li><a>F.A.Q.</a></li>
-                    <li><a>Contact</a></li>
+                    <li><a asp-controller="Home" asp-action="Faq">FAQ</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
             </li>
         </ul>
         <ul class="rightnav">
-            <li><a href="#">Profiel</a></li>
+            <li><a asp-controller="Home" asp-action="Profiel">Profiel</a></li>
             <li><a href="#">Logout</a></li>
         </ul>
         <div class="clear"></div>

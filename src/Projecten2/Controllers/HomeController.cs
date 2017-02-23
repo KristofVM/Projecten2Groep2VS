@@ -15,15 +15,22 @@ namespace Projecten2.Controllers
 
         public IActionResult Archief()
         {
-            ViewData["Message"] = "Archief";
-
+            return View();
+        }
+        public IActionResult Faq()
+        {
+            ViewData["Message"] = "Not implemented yet.";
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
+            ViewData["Message"] = "Not implemented yet.";
+            return View();
+        }
+        public IActionResult Profiel()
+        {
+            ViewData["Message"] = "Not implemented yet.";
             return View();
         }
 
