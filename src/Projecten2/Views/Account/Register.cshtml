@@ -3,9 +3,9 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>@ViewData["Title"].</h2>
 
-<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+
+@*<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
     <h4>Registratie</h4>
     
     <div asp-validation-summary="All " class="text-danger"></div>
@@ -107,8 +107,70 @@
                     </div>
                 </div>
             </div>
-</form>
+</form>*@
 
+<main class="login">
+    <div class="window">
+        <form form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+            <h2>@ViewData["Title"]</h2>
+
+    
+            
+                
+                
+                <div>
+                    <label asp-for="Naam"></label>
+                    <input asp-for="Naam" type="text" name="naam" placeholder="Naam">
+                    <span asp-validation-for="Naam" class="alert"></span>
+                </div>
+                <div>
+                    <label asp-for="Voornaam"></label>
+                    <input asp-for="Voornaam" type="text" name="voornaam" placeholder="Voornaam">
+                    <span asp-validation-for="Voornaam" class="alert"></span>
+                </div>
+                <div>
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" type="text" name="email" placeholder="E-mail">
+                    <span asp-validation-for="Email" class="alert"></span>
+                </div>
+                <div>
+                    <label asp-for="Organisatie"></label>
+                    <input asp-for="Organisatie" type="text" name="Organisatie" placeholder="Organisatie">
+                    <span asp-validation-for="Organisatie" class="alert"></span>
+                </div>
+                <h1 class="profiel">Adres Organisatie:</h1>
+                <div>
+                    <p>Straat</p>
+                    <input type="text" name="Straat" placeholder="Straat">
+                    <span class="alert"></span>
+                </div>
+                <div class="nr">
+                    <p>Nr</p>
+                    <input type="text" name="Nr" placeholder="Nr">
+                    <span class="alert"></span>
+                </div>
+                <div class="bus">
+                    <p>Bus</p>
+                    <input type="text" name="Bus" placeholder="Bus">
+                    <span class="alert"></span>
+                </div>
+                <div class="pc">
+                    <p>Postcode</p>
+                    <input type="text" name="Postcode" placeholder="Postcode">
+                    <span class="alert"></span>
+                </div>
+                <div class="clear"></div>
+                <div>
+                    <p>Plaats</p>
+                    <input type="text" name="Plaats" placeholder="Plaats">
+                    <span class="alert"></span>
+                </div>
+                <button>Registreer</button>
+                <a type="button" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="rightbutton button">annuleren</a>
+</form>
+    </div>
+    <!-- content -->
+</main>
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

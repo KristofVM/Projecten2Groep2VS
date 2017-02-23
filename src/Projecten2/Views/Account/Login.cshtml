@@ -8,89 +8,105 @@
     ViewData["Title"] = "Log in";
 }
 
-<h2>@ViewData["Title"].</h2>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+@*<h2>@ViewData["Title"].</h2>
+    <div class="row">
+        <div class="col-md-4">ss
+            <section>
+                <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
 
 
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Email" class="col-md-2 control-label"></label>
-                    <div class="col-md-9 col-md-offset-1">
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="col-md-2 control-label"> </label>
-                    <div class="col-md-9 col-md-offset-1">
-                        <input asp-for="Password " class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <label asp-for="RememberMe">
-                                <input asp-for="RememberMe" />
-                                @Html.DisplayNameFor(m => m.RememberMe)
-                            </label>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                        <div>
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                       </div>
+
+                        <div>
+                            <label asp-for="Password"> </label>
+
+                                <input asp-for="Password "/>
+                                <span asp-validation-for="Password" class="alert"></span>
+
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-default">Log in</button>
-                    </div>
-                </div>
-                <p>
-                    <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-                </p>
-                <p>
-                    <a asp-action="ForgotPassword">Forgot your password?</a>
-                </p>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-8">
-    <section>
-      <div class="row">
-                <p class="col-md-12">
-                    Waarom zou een werkgever investeren in het tewerkstellen van personen
-                    met een grote afstand tot de  arbeidsmarkt  en/offunctiecreatie?  We
-                    zijn  geneigd  tedenken  dat  we -ook  managers  en bedrijfsleiders -erg
-                    rationele wezenszijn, die (grote) beslissingen weloverwogen maken. Maar...
-                    zijn menselijke beslissingen wel zo rationeel als we denken?
-                </p>
-            </div>
-            <div class="row">
-                <p class="col-md-9">
-                    Niet echt. Mensen beslissen op basis van eigen kennis, ervaring,
-                    inschattingsvermogen en intuïtie. We gaan er vanuit dat we daarmee in
-                    staat zijn om consistente en evenwichtige beslissingen te nemen of, anders
-                    gezegd, een rationele afweging te maken. De waarheid is echter heel verschillend.
-                    Veel van onze besluitvorming wordt door een automatische piloot-functie van
-                    onze hersenen gedaan.Met als gevolg dat wij, en ook werkgevers, veel beslissingen
-                    nemen op basis van vooroordelen in plaats van alle beschikbare informatie in overweging te nemen.
-                </p>
-            </div>
-            <div class="row">
-                <p class="col-md-5 ">
-                    Het maken van  een business case kan helpen om de besluitvorming te verbeteren,
-                    want het geeft betrouwbare, op  feiten gebaseerde  informatie  en vermindert de
-                    subjectiviteit in  beoordeling en besluitvorming.De kans dat  de werkgever op jouw
-                    aanbod  zal  ingaan naarmate je deze vraag duidelijk en zakelijk onderbouwd weet te beantwoorden
-                </p>
-            </div>
-            <div class="row">
-                <p class="col-md-5 ">
-                    Met dit model kan je werkgevers inzicht geven in de economische waarde van het werken
-                    met mensen met een grote afstand tot de arbeidsmarkt.
-                </p>
-            </div>
-        </section>
-    </div>
-</div>
 
+
+                                <div class="checkbox">
+                                    <label asp-for="RememberMe">
+                                        <input asp-for="RememberMe" />
+                                        @Html.DisplayNameFor(m => m.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-default">Log in</button>
+                            </div>
+                        </div>
+                        <p>
+                            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                        </p>
+                        <p>
+                            <a asp-action="ForgotPassword">Forgot your password?</a>
+                        </p>
+    </form>
+            </section>
+        </div>
+       *@
+
+<main class="login">
+    <div class="window">
+
+        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+            <h2>@ViewData["Title"]</h2>
+            <div>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" type="text" name="email" placeholder="E-mail">
+                <span asp-validation-for="Email" class="alert"></span>
+
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" type="password" name="wachtwoord" placeholder="Password">
+                <span asp-validation-for="Password" class="alert"></span>
+            </div>
+            <div class="checkbox">
+                <label asp-for="RememberMe">
+                    <input asp-for="RememberMe" input type="checkbox" name="rememberme" value="" class="rememberme">
+                    @Html.DisplayNameFor(m => m.RememberMe)
+                </label>
+
+            </div>
+
+            <button type="submit" class="btn btn-default">Login</button>
+
+
+            <a  type="button" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="rightbutton button" >Register</a>
+
+
+            <p class="forgotpass"><a asp-action="ForgotPassword">Wachtwoord vergeten? </a></p>
+        </form>
+    </div>
+    <div class="welkom">
+        <p>
+            Waarom zou een werkgever investeren in het tewerkstellen van personen
+            met een grote afstand tot de  arbeidsmarkt  en/offunctiecreatie?  We
+            zijn  geneigd  tedenken  dat  we -ook  managers  en bedrijfsleiders -erg
+            rationele wezenszijn, die (grote) beslissingen weloverwogen maken. Maar...
+            zijn menselijke beslissingen wel zo rationeel als we denken?
+        </p>
+        <p>
+            Het maken van  een business case kan helpen om de besluitvorming te verbeteren,
+            want het geeft betrouwbare, op  feiten gebaseerde  informatie  en vermindert de
+            subjectiviteit in  beoordeling en besluitvorming. De kans dat  de werkgever op jouw
+            aanbod  zal  ingaan naarmate je deze vraag duidelijk en zakelijk onderbouwd weet te beantwoorden.
+        </p>
+        <p>
+            Met dit model kan je werkgevers inzicht geven in de economische waarde van het werken
+            met mensen met een grote afstand tot de arbeidsmarkt.
+        </p>
+    </div>
+    <!-- content -->
+</main>

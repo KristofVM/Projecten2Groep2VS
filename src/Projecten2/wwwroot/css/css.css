@@ -1,0 +1,347 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 15px;
+    font-family: 'Noto Sans', sans-serif;
+}
+main {
+    margin-top: 20px;
+    min-height: calc(100vh - 60px);
+}
+.clear {
+    clear: both;
+}
+.contain {
+    max-width: 1080px;
+    min-width: 1080px;
+    margin: 0 auto;
+}
+.logo {
+    height: 27px;
+    float: left;
+    padding: 6.5px;
+}
+h1 {
+    width: 96.66%;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+    margin-right: 3.33%;
+}
+
+/* NAVIGATION */
+nav {
+    min-width: 1080px;
+    background-color: #1b63b4;
+    box-shadow: 2px 2px 2px #e2e2e2;
+}
+nav ul {
+    list-style: none;
+    font-size: 0;
+}
+nav ul li {
+    display: inline-block;
+    font-size: 0;
+}
+nav ul li a {
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+nav ul li a:hover {
+    background-color: #3078c9;
+}
+.leftnav {
+    float: left;
+}
+.rightnav {
+    float: right;
+}
+.helpdropdown {
+    background-color: #1b63b4;
+    position: absolute;
+    display: none;
+}
+li:hover .helpdropdown li {
+    display: block;
+}
+li:hover .helpdropdown {
+    display: block;
+    box-shadow: 2px 2px 2px #e2e2e2;
+}
+
+/* OVERZICHT */
+.analyse {
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 2px 2px 2px #e2e2e2;
+    width: 30%;
+    margin-right: 3.33%;
+    float: left;
+    text-decoration: none;
+    color: #000000;
+}
+a.analyse:hover {
+    background-color: #caddfc;
+}
+a.analyse p {
+    margin-top: 27px;
+    margin-bottom: 27px;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+.analysetop {
+    border-bottom: 1px dashed #c4c4c4;
+}
+.analysetop a {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+.analysetop a:hover {
+    text-decoration: underline;
+}
+.analysetop .naam {
+    padding-left: 10px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    float: left;
+}
+.analysetop a:hover i {
+    color: dimgray;
+}
+.analysetop i {
+    font-size: 18px;
+    padding: 7px;
+    float: right;
+}
+.analysebottom {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.analysebottom p {
+    font-size: 13px;
+}
+.bedrijf, .afdeling {
+    width: 70%;
+    float: left;
+}
+.datum, .kostenbaten {
+    text-align: right;
+    width: 30%;
+    float: right;
+}
+
+/* ARCHIEF */
+.archiefbuttons {
+    height: 30px;
+    margin-bottom: 15px;
+}
+.zoekbalk, .zoek{
+    float: right;
+    margin-left: 5px;
+}
+.undo, .zoek {
+    margin-top: 0px;
+    border: 1px solid #c4c4c4;
+    background-color: #f5f5f5;
+    height: 30px;
+    width: 30px;
+    box-shadow: 2px 2px 2px #e2e2e2;
+}
+.undo:hover, .zoek:hover {
+    background-color: #caddfc;
+}
+input[type=text].zoekbalk {
+    box-shadow: 2px 2px 2px #e2e2e2;
+    border: 1px solid #c4c4c4;
+    height: 28px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.archieflijst {
+    width: 100%;
+    max-height: calc(100vh - 100px);
+    box-shadow: 2px 2px 2px #e2e2e2;
+    overflow-y: scroll;
+}
+.archiefbalk {
+    border: 1px solid #c4c4c4;
+    background-color: #f5f5f5;
+}
+.archiefanalyse {
+    border-bottom: 1px solid #c4c4c4;
+    border-left: 1px solid #c4c4c4;
+    border-right: 1px solid #c4c4c4;
+}
+.archiefbalk span {
+    border-left: 1px solid #c4c4c4;
+    padding-left: 5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    float: left;
+}
+.archiefbalk span:hover {
+    background-color: #caddfc;
+}
+.archiefanalyse span {
+    height: 20px;
+    padding-left: 5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    float: left;
+    overflow: hidden;
+    border-left: 1px solid #c4c4c4;
+}
+.checktop {
+    height: 25px;
+    width: 25px;
+    float: left;
+}
+.check {
+    float: left;
+    margin: 5px;
+    height: 15px;
+    width: 15px;
+}
+.anaam {
+    width: 200px;
+}
+.abedrijf {
+    width: 275px;
+}
+.aafdeling {
+    width: 275px;
+}
+.adatum {
+    width: 135px;
+}
+.aomzet {
+    width: 120px;
+}
+
+/* PROFIEL */
+.window {
+    background-color: #ffffff;
+    padding: 15px;
+    padding-left: 0px;
+    padding-top: 8px;
+}
+input[type=text], input[type=password] {
+    border: 1px solid #c4c4c4;
+    height: 22px;
+    width: 258px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+button {
+    margin-top: 10px;
+    border: 1px solid #c4c4c4;
+    background-color: #f5f5f5;
+    padding: 3px;
+    width: 270px
+}
+button:hover {
+    background-color: #caddfc;
+}
+.alert {
+    color: #d32137;
+    font-size: 13px;
+}
+h1.profiel {
+    font-weight: 400;
+    margin-top: 7px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    border-bottom: none;
+}
+.nr, .bus, .pc {
+    width: 83.33px;
+    float: left;
+}
+.nr input, .bus input, .pc input {
+    width: 71px;
+}
+.nr, .bus {
+    margin-right: 10px;
+}
+
+/* LOGINREGISTER */
+main.login {
+    margin-top: 0px;
+    min-height: 100vh;
+    min-width: 1080px;
+    background-image: url(/images/abs-it-helping-hand.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login .window {
+    background-color: #ffffff;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 270px;
+    padding: 15px;
+    padding-top: 8px;
+    box-shadow: 2px 2px 2px #5f5f5f;
+}
+.login .welkom {
+    box-shadow: 2px 2px 2px #5f5f5f;
+    background-color: #ffffff;
+    width: 600px;
+    top: 50px;
+    left: 400px;
+    padding: 15px;
+    padding-top: 5px;
+    position: absolute;
+}
+.login .welkom p {
+    font-size: 14px;
+    margin-top: 7px;
+}
+.login label {
+    margin-top: 7px;
+}
+.login button, .login a.button {
+    margin-top: 10px;
+    border: 1px solid #c4c4c4;
+    background-color: #f5f5f5;
+    padding: 3px;
+    width: 130px;
+    text-decoration: none;
+    color: #000000;
+    text-align: center;
+}
+.login button:hover, .login a.button:hover {
+    background-color: #caddfc;
+}
+.login .rightbutton {
+    float: right;
+}
+.login input.rememberme {
+    margin-top: 10px;
+    height: 15px;
+    width: 15px;
+    padding: 3px;
+}
+.login .forgotpass {
+    margin-top: 10px;
+}
+.login h2 {
+    font-weight: 500;
+    margin-top: 7px;
+    font-size: 18px;
+}
+.login h2 + div p {
+    margin-top: 0px;
+}
