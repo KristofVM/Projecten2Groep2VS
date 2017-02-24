@@ -166,7 +166,7 @@
                     <span asp-validation-for="Plaats" class="alert"></span>
                 </div>
                 <button>Registreer</button>
-            <a type="button" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="rightbutton button">annuleren</a>
+            <a asp-controller="Account" asp-action="Login"  class="rightbutton button">annuleren</a>
         </form>
     </div>
 </main>

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Projecten2.Models;
 using Projecten2.Models.AccountViewModels;
+using Projecten2.Models.Domain;
 using Projecten2.Services;
 
 namespace Projecten2.Controllers
@@ -64,6 +65,7 @@ namespace Projecten2.Controllers
                 {
                     _logger.LogInformation(1, "User logged in.");
                     return RedirectToLocal(returnUrl);
+                    //return RedirectToRoute("{controller=Home}/{action=Index}/{id?}");
                 }
                 if (result.RequiresTwoFactor)
                 {

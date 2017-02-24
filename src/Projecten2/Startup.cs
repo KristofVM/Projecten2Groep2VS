@@ -11,7 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Projecten2.Data;
 using Projecten2.Models;
+using Projecten2.Models.Domain;
 using Projecten2.Services;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace Projecten2
 {
@@ -52,15 +55,17 @@ namespace Projecten2
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSession();
             services.AddMvc();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddScoped<Projecten2DataInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, Projecten2DataInitializer projecten2DataInitializer)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -79,9 +84,8 @@ namespace Projecten2
             }
 
             app.UseApplicationInsightsExceptionTelemetry();
-
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
@@ -90,8 +94,10 @@ namespace Projecten2
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}/{id?}");
             });
+            
+            projecten2DataInitializer.InitializeUsers().Wait();
         }
     }
 }

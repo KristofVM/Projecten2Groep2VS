@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Projecten2.Models;
+using Projecten2.Models.Domain;
 using Projecten2.Models.ManageViewModels;
 using Projecten2.Services;
 

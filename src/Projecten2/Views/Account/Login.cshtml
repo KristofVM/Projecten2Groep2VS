@@ -1,6 +1,8 @@
 ﻿@using System.Collections.Generic
+@using System.Threading.Tasks
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Http.Authentication
+@using Projecten2.Models.Domain
 @model LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -11,17 +13,17 @@
 <main class="login">
     <div class="window">
 
-        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <h2>@ViewData["Title"]</h2>
             <div>
                 <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" type="text" name="email" placeholder="E-mail">
+                <input asp-for="Email" type="text" />
                 <span asp-validation-for="Email" class="alert"></span>
 
             </div>
             <div>
                 <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" type="password" name="wachtwoord" placeholder="Password">
+                <input asp-for="Password" />
                 <span asp-validation-for="Password" class="alert"></span>
             </div>
             <div class="checkbox">
@@ -61,3 +63,6 @@
         </p>
     </div>
 </main>
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

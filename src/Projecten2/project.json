@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-Projecten2-10faf742-4596-47d6-9b86-08ea0c726a35",
 
   "dependencies": {
@@ -41,10 +41,11 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc":  {
+    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "Microsoft.AspNetCore.Session": "1.1.0"
   },
 
   "tools": {
