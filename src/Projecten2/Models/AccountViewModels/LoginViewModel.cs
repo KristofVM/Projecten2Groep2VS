@@ -10,16 +10,16 @@ namespace Projecten2.Models.AccountViewModels
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email", Prompt = "email@something.com")]
+        [Display(Name="Email", Prompt="email@something.com")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Password", Prompt = "Password")]
+        [Display(Name="Password", Prompt="Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
+        //[Display(Name="Remember me?")]
+        //public bool RememberMe { get; set; }
     }
 }

@@ -17,18 +17,38 @@ namespace Projecten2.Data
             _userManager = userManager;
         }
 
+        public async Task InitializeData()
+        {
+            _dbContext.Database.EnsureDeleted();
+            if (_dbContext.Database.EnsureCreated())
+            {
+                await InitializeUsers();
+            }
+        }
         public async Task InitializeUsers()
         {
             string eMailAddress = "kristofvanmoorter@hotmail.com";
             string naam = "van Moorter";
             string voornaam = "Kristof";
-            ApplicationUser user = new ApplicationUser { Email = eMailAddress,  Naam = naam, Voornaam = voornaam};
+            string organisatie = "HoGent";
+            string straat = "Langehaagstraat";
+            string nr = "65";
+            string bus = "";
+            string postcode = "9308";
+            string plaats = "Gijzegem";
+            ApplicationUser user = new ApplicationUser { Email = eMailAddress,  Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats};
             await _userManager.CreateAsync(user, "letmein");
 
             eMailAddress = "jef_braem@hotmail.com";
             naam = "Braem";
             voornaam = "Jef";
-            user = new ApplicationUser { Email = eMailAddress, Naam = naam, Voornaam = voornaam };
+            organisatie = "Chiro Hofstade";
+            straat = "Hofstade-dorp";
+            nr = "10";
+            bus = "";
+            postcode = "9308";
+            plaats = "Hofstade";
+            user = new ApplicationUser { Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats };
             await _userManager.CreateAsync(user, "letmein");
         }
     }
