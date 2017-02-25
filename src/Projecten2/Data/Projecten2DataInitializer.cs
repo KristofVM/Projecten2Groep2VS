@@ -51,5 +51,10 @@ namespace Projecten2.Data
             user = new ApplicationUser { Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats };
             await _userManager.CreateAsync(user, "letmein");
         }
+
+        internal static object InitializeData(ApplicationDbContext dbContext)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

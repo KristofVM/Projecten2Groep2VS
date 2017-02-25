@@ -16,41 +16,37 @@ using Projecten2.Services;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 
-namespace Projecten2
-{
-    public class Startup
-    {
+namespace Projecten2 {
+    public class Startup {
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
 
-            if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
+            //if (env.IsDevelopment())
+            //{
+            //    // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
+            //    builder.AddUserSecrets();
 
-                // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-                builder.AddApplicationInsightsSettings(developerMode: true);
-            }
+            //    // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
+            //    builder.AddApplicationInsightsSettings(developerMode: true);
+            //}
 
-            builder.AddEnvironmentVariables();
+            //builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
+        public void ConfigureServices(IServiceCollection services) {
             // Add framework services.
-            services.AddApplicationInsightsTelemetry(Configuration);
-
+            //services.AddApplicationInsightsTelemetry(Configuration);
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("Conn")));
-
+                options.UseMySql(Configuration["Data:DefaultConnection:ConnectionString"]));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -59,9 +55,9 @@ namespace Projecten2
             services.AddMvc();
 
             // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
-            services.AddScoped<Projecten2DataInitializer>();
+            //services.AddTransient<IEmailSender, AuthMessageSender>();
+            //services.AddTransient<ISmsSender, AuthMessageSender>();
+            //services.AddScoped<Projecten2DataInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +66,7 @@ namespace Projecten2
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseApplicationInsightsRequestTelemetry();
+            //app.UseApplicationInsightsRequestTelemetry();
 
             if (env.IsDevelopment())
             {
@@ -83,7 +79,7 @@ namespace Projecten2
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseApplicationInsightsExceptionTelemetry();
+            //app.UseApplicationInsightsExceptionTelemetry();
             app.UseStaticFiles();
             app.UseSession();
             app.UseIdentity();
@@ -94,10 +90,10 @@ namespace Projecten2
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Login}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
-            
-            projecten2DataInitializer.InitializeUsers().Wait();
+
+            projecten2DataInitializer.InitializeData().Wait();
         }
     }
 }
