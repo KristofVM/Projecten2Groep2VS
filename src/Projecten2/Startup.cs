@@ -44,7 +44,7 @@ namespace Projecten2 {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             // Add framework services.
-            //services.AddApplicationInsightsTelemetry(Configuration);
+            services.AddApplicationInsightsTelemetry(Configuration);
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(Configuration["Data:DefaultConnection:ConnectionString"]));
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -57,7 +57,7 @@ namespace Projecten2 {
             // Add application services.
             //services.AddTransient<IEmailSender, AuthMessageSender>();
             //services.AddTransient<ISmsSender, AuthMessageSender>();
-            //services.AddScoped<Projecten2DataInitializer>();
+            services.AddScoped<Projecten2DataInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +66,7 @@ namespace Projecten2 {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            //app.UseApplicationInsightsRequestTelemetry();
+            app.UseApplicationInsightsRequestTelemetry();
 
             if (env.IsDevelopment())
             {
