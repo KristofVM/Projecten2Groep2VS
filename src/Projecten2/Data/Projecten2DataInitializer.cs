@@ -42,7 +42,7 @@ namespace Projecten2.Data
                 Analyse analyse3 = new Analyse();
                 analyse3.afdeling = "production";
                 analyse3.bedrijf = "Apple";
-                analyse3.datum = new DateTime(2014, 13, 12);
+                analyse3.datum = new DateTime(2014, 12, 13);
                 analyse3.balans = 50000;
                 analyse3.naam = "Production_Apple1";
                 _dbContext.Analyses.Add(analyse3);
