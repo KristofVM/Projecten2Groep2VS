@@ -23,6 +23,31 @@ namespace Projecten2.Data
             if (_dbContext.Database.EnsureCreated())
             {
                 await InitializeUsers();
+                Analyse analyse1 = new Analyse();
+                analyse1.afdeling = "kuisdienst";
+                analyse1.bedrijf = "google";
+                analyse1.datum = new DateTime(2017, 2, 25);
+                analyse1.balans = 0;
+                analyse1.naam = "GoogleAnalyseKuisdienst";
+                _dbContext.Analyses.Add(analyse1);
+
+                Analyse analyse2 = new Analyse();
+                analyse2.afdeling = "advertising";
+                analyse2.bedrijf = "tuc";
+                analyse2.datum = new DateTime(2016, 1, 10);
+                analyse2.balans = 100;
+                analyse2.naam = "TucAdvertising";
+                _dbContext.Analyses.Add(analyse2);
+
+                Analyse analyse3 = new Analyse();
+                analyse3.afdeling = "production";
+                analyse3.bedrijf = "Apple";
+                analyse3.datum = new DateTime(2014, 13, 12);
+                analyse3.balans = 50000;
+                analyse3.naam = "Production_Apple1";
+                _dbContext.Analyses.Add(analyse3);
+
+                _dbContext.SaveChanges();
             }
         }
         public async Task InitializeUsers()
@@ -50,11 +75,6 @@ namespace Projecten2.Data
             plaats = "Hofstade";
             user = new ApplicationUser { Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats };
             await _userManager.CreateAsync(user, "letmein");
-        }
-
-        internal static object InitializeData(ApplicationDbContext dbContext)
-        {
-            throw new NotImplementedException();
         }
     }
 }
