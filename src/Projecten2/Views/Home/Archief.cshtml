@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Projecten2.Models.Domain.Analyse>
+@{
     ViewData["Title"] = "Archief";
 }
 
@@ -17,46 +18,22 @@
                 <span class="anaam">Naam</span>
                 <span class="abedrijf">Bedrijf</span>
                 <span class="aafdeling">Afdeling</span>
-                <span class="adatum">Datum</span>
+                <span class="adatum">Datum D/M/Y</span>
                 <span class="aomzet">Omzet</span>
                 <div class="clear"></div>
             </div>
-            <div class="archiefanalyse">
-                <input type="checkbox" name="selectanalyse" value="" class="check">
-                <span class="anaam">Analyse1</span>
-                <span class="abedrijf">Google</span>
-                <span class="aafdeling">Kuisdienst</span>
-                <span class="adatum">17/02/2017</span>
-                <span class="aomzet omzetanalyse">0</span>
-                <div class="clear"></div>
-            </div>
-            <div class="archiefanalyse">
-                <input type="checkbox" name="selectanalyse" value="" class="check">
-                <span class="anaam">Analyse2</span>
-                <span class="abedrijf">Google</span>
-                <span class="aafdeling">Webdesign</span>
-                <span class="adatum">17/02/2017</span>
-                <span class="aomzet omzetanalyse">0</span>
-                <div class="clear"></div>
-            </div>
-            <div class="archiefanalyse">
-                <input type="checkbox" name="selectanalyse" value="" class="check">
-                <span class="anaam">Analyse3</span>
-                <span class="abedrijf">Van Den Nest</span>
-                <span class="aafdeling">Verkoop</span>
-                <span class="adatum">17/02/2017</span>
-                <span class="aomzet omzetanalyse">0</span>
-                <div class="clear"></div>
-            </div>
-            <div class="archiefanalyse">
-                <input type="checkbox" name="selectanalyse" value="" class="check">
-                <span class="anaam">Analyse4</span>
-                <span class="abedrijf">Beenhouwerij Renmans</span>
-                <span class="aafdeling">Beenhouwerij1</span>
-                <span class="adatum">17/02/2017</span>
-                <span class="aomzet omzetanalyse">0</span>
-                <div class="clear"></div>
-            </div>
+            @foreach (var item in Model)
+            {
+                <div class="archiefanalyse">
+                    <input type="checkbox" name="selectanalyse" value="" class="check">
+                    <span class="anaam">@item.naam</span>
+                    <span class="abedrijf">@item.bedrijf</span>
+                    <span class="aafdeling">@item.afdeling</span>
+                    <span class="adatum">@item.datum.Day/@item.datum.Month/@item.datum.Year</span>
+                    <span class="aomzet omzetanalyse"><p>@item.balansFormat()</p></span>
+                    <div class="clear"></div>
+                </div>
+            }
         </div>
     </div>
 </main>

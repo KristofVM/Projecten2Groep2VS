@@ -52,6 +52,9 @@ namespace Projecten2.Data
             a.Property(t => t.datum)
                 .IsRequired();
 
+            a.Property(t => t.archief)
+                .IsRequired();
+
             a.Property(t => t.analyseId)
                 .HasColumnName("analyse_id")
                 .IsRequired();

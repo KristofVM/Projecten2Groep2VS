@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Projecten2.Models.Domain;
+using Projecten2.Models.ViewModels;
 
 namespace Projecten2.Controllers
 {
@@ -15,15 +16,33 @@ namespace Projecten2.Controllers
         {
             _analyseRepository = analyseRepository;
         }
+        [HttpGet]
         public IActionResult Index()
         {
-            IEnumerable<Analyse> analyses = _analyseRepository.GetAll().OrderBy(a => a.datum).ToList();
+            IEnumerable<Analyse> analyses = _analyseRepository.GetAll().Where(a => !a.archief).OrderBy(a => a.datum).ToList();
             return View(analyses);
+        }
+
+        [HttpPost, ActionName("Index")]
+        public IActionResult Archiveer(ArchiveerViewModel archiveerViewModel)
+        {
+            Analyse analyse = null;
+            try
+            {
+                analyse = _analyseRepository.GetById(archiveerViewModel.analyseId);
+                _analyseRepository.ArchiveerAnalyse(analyse);
+                _analyseRepository.SaveChanges();
+                TempData["message"] = $"You successfully archived analyse {analyse.naam}.";
+            } catch {
+                TempData["error"] = $"Sorry, something went wrong, analyse {analyse.naam} was not archived.";
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult Archief()
         {
-            return View();
+            IEnumerable<Analyse> analyses = _analyseRepository.GetAll().Where(a => a.archief).OrderBy(a => a.datum).ToList();
+            return View(analyses);
         }
         public IActionResult Faq()
         {

@@ -123,10 +123,9 @@ a.analyse p {
     float: right;
 }
 .analysebottom {
+    padding: 10px;
     padding-top: 7px;
     padding-bottom: 7px;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 .analysebottom p {
     font-size: 13px;
@@ -177,6 +176,7 @@ input[type=text].zoekbalk {
 .archiefbalk {
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
+    height: 22px;
 }
 .archiefanalyse {
     border-bottom: 1px solid #c4c4c4;
@@ -186,8 +186,8 @@ input[type=text].zoekbalk {
 .archiefbalk span {
     border-left: 1px solid #c4c4c4;
     padding-left: 5px;
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     float: left;
 }
 .archiefbalk span:hover {
@@ -203,7 +203,7 @@ input[type=text].zoekbalk {
     border-left: 1px solid #c4c4c4;
 }
 .checktop {
-    height: 25px;
+    height: 22px;
     width: 25px;
     float: left;
 }
@@ -227,6 +227,11 @@ input[type=text].zoekbalk {
 }
 .aomzet {
     width: 120px;
+    text-align: right;
+}
+span p {
+    text-align: right;
+    width: 120px;
 }
 
 /* PROFIEL */
@@ -248,10 +253,26 @@ button {
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
     padding: 3px;
-    width: 270px
+    width: 270px;
 }
 button:hover {
     background-color: #caddfc;
+}
+.analysetop button {
+    margin-top: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    float: right;
+}
+}
+.analysetop button a:hover {
+    color: #3078c9;
 }
 li button {
     width: auto;
@@ -263,10 +284,7 @@ li button {
     color: #ffffff;
     text-decoration: none;
     display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
 }
 li button:hover {
     background-color: #3078c9;

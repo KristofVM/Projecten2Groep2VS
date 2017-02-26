@@ -14,21 +14,23 @@
             <div class="analyse">
                 <div class="analysetop">
                     <a href="#" class="naam">@item.naam</a>
-                    <a href="#"><i class="fa fa-file-archive-o"> </i></a> <!-- delete/archive -->
+                    <form asp-action="Index" method="post">
+                        <input type="hidden" asp-for="analyseId"/>
+                        <button type="submit"><a href="#"><i class="fa fa-file-archive-o"> </i></a></button> <!-- delete/archive -->
+                    </form>
                     <a href="#"><i class="fa fa-envelope"> </i></a> <!-- mail -->
                     <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
                     <div class="clear"></div>
                 </div>
                 <div class="analysebottom">
                     <p class="bedrijf">Bedrijf: @item.bedrijf</p>
-                    <p class="datum">random datum</p>
+                    <p class="datum">@item.datum.Day @item.getMonth() @item.datum.Year</p>
                     <p class="afdeling">Afdeling: @item.afdeling</p>
-                    <p class="kostenbaten">@item.balans</p>
+                    <p class="kostenbaten">@item.balansFormat()</p>
                     <div class="clear"></div>
                 </div>
             </div>
         }
-
         <div class="clear"></div>
     </div>
     <!-- content -->

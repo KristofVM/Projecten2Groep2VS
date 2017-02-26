@@ -15,6 +15,7 @@ using Projecten2.Models.Domain;
 using Projecten2.Services;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Projecten2.Data.Repositories;
 
 namespace Projecten2 {
     public class Startup {
@@ -57,6 +58,7 @@ namespace Projecten2 {
             // Add application services.
             //services.AddTransient<IEmailSender, AuthMessageSender>();
             //services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddScoped<IAnalyseRepository, AnalyseRepository>();
             services.AddScoped<Projecten2DataInitializer>();
         }
 

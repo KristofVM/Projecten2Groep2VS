@@ -33,14 +33,24 @@ namespace Projecten2.Data.Repositories
             return _analyses;
         }
 
-        public Analyse GetBy(int gebruikerId)
+        public Analyse GetByGebruiker(int gebruikerId)
         {
             return _analyses.SingleOrDefault(a => a.gebruikerId == gebruikerId);
+        }
+
+        public Analyse GetById(int analyseId)
+        {
+            return _analyses.SingleOrDefault(a => a.analyseId == analyseId);
         }
 
         public void SaveChanges()
         {
             _dbContext.SaveChanges();
+        }
+
+        public void ArchiveerAnalyse(Analyse analyse)
+        {
+            analyse.archief = true;
         }
     }
 }
