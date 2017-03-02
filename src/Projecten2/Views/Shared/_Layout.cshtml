@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using System.Threading.Tasks
+@using Microsoft.ApplicationInsights.Extensibility
+@using Projecten2.Models.Domain
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,59 +13,41 @@
     <title>@ViewData["Title"] - Projecten2</title>
 
     <environment names="Development">
-        
         <link rel="stylesheet" href="~/css/css.css" />
+        <link rel="stylesheet" href="~/font-awesome-4.7.0/css/font-awesome.min.css">
+        @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
     </environment>
    
-    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
+
 <body>
-    <nav>
-        <div class="contain">
-            <img src="/images/kairos_icon_white.png" class="logo" />
-            <ul class="leftnav">
-                <li><a href="/html/index.html">Overzicht</a></li>
-                <li><a href="#">Archief</a></li>
-                <li>
-                    <a href="#">Help <i class="fa fa-caret-down"></i></a>
-                    <ul class="helpdropdown">
-                        <li><a href="#">F.A.Q.</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="rightnav">
-                <li><a href="#">Profiel</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - Projecten2</p>
-        </footer>
-    </div>
+<header>
+    @await Html.PartialAsync("_Navigation")
+</header>
 
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    @RenderBody()
 
-    @RenderSection("scripts", required: false)
+<footer>
+    <p>&copy; 2017 - Projecten2</p>
+</footer>
+
+<environment names="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</environment>
+
+@RenderSection("scripts", required: false)
 </body>
 </html>

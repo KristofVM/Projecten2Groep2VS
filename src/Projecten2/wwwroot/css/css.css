@@ -1,3 +1,6 @@
+.alert {
+    color: #d32137;
+}
 * {
     padding: 0;
     margin: 0;
@@ -46,14 +49,12 @@ nav ul li {
     font-size: 0;
 }
 nav ul li a {
+    border: 0px;
     font-size: 15px;
     color: #ffffff;
     text-decoration: none;
     display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 11px;
 }
 nav ul li a:hover {
     background-color: #3078c9;
@@ -78,11 +79,21 @@ li:hover .helpdropdown {
 }
 
 /* OVERZICHT */
+.red {
+    color: red;
+}
+.green {
+    color: green;
+}
+.gray {
+    color: darkgray;
+}
 .analyse {
     margin-bottom: 20px;
     background-color: #f5f5f5;
     box-shadow: 2px 2px 2px #e2e2e2;
     width: 30%;
+    height: 80px;
     margin-right: 3.33%;
     float: left;
     text-decoration: none;
@@ -116,7 +127,7 @@ a.analyse p {
     float: left;
 }
 .analysetop a:hover i {
-    color: dimgray;
+    color: #3078c9;
 }
 .analysetop i {
     font-size: 18px;
@@ -124,10 +135,9 @@ a.analyse p {
     float: right;
 }
 .analysebottom {
+    padding: 10px;
     padding-top: 7px;
     padding-bottom: 7px;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 .analysebottom p {
     font-size: 13px;
@@ -135,6 +145,9 @@ a.analyse p {
 .bedrijf, .afdeling {
     width: 70%;
     float: left;
+}
+.kostenbaten, .aomzet {
+    font-weight: bold;
 }
 .datum, .kostenbaten {
     text-align: right;
@@ -178,6 +191,7 @@ input[type=text].zoekbalk {
 .archiefbalk {
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
+    height: 25px;
 }
 .archiefanalyse {
     border-bottom: 1px solid #c4c4c4;
@@ -187,8 +201,8 @@ input[type=text].zoekbalk {
 .archiefbalk span {
     border-left: 1px solid #c4c4c4;
     padding-left: 5px;
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     float: left;
 }
 .archiefbalk span:hover {
@@ -226,7 +240,16 @@ input[type=text].zoekbalk {
 .adatum {
     width: 135px;
 }
-.aomzet {
+span.aomzet {
+    width: 115px;
+    text-align: right;
+    padding-left: 0px;
+    padding-right: 5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+}
+span p {
+    text-align: right;
     width: 120px;
 }
 
@@ -249,14 +272,40 @@ button {
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
     padding: 3px;
-    width: 270px
+    width: 270px;
 }
 button:hover {
     background-color: #caddfc;
 }
-.alert {
-    color: #d32137;
-    font-size: 13px;
+.analysetop button {
+    margin-top: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    float: right;
+}
+.analysetop button a:hover {
+    color: #3078c9;
+}
+li button {
+    width: auto;
+    height: 40px;
+    background-color: transparent;
+    margin-top: 0px;
+    border: 0px;
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+li button:hover {
+    background-color: #3078c9;
 }
 h1.profiel {
     font-weight: 400;
@@ -311,6 +360,7 @@ main.login {
 }
 .login label {
     margin-top: 7px;
+    width: 270px;
 }
 .login button, .login a.button {
     margin-top: 10px;

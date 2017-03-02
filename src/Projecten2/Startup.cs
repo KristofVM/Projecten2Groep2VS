@@ -11,18 +11,21 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Projecten2.Data;
 using Projecten2.Models;
+using Projecten2.Models.Domain;
 using Projecten2.Services;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using Projecten2.Data.Repositories;
 
-namespace Projecten2
-{
-    public class Startup
-    {
+namespace Projecten2 {
+    public class Startup {
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
 
             if (env.IsDevelopment())
             {
@@ -40,27 +43,27 @@ namespace Projecten2
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
+        public void ConfigureServices(IServiceCollection services) {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
-
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+                options.UseMySql(Configuration["Data:DefaultConnection:ConnectionString"]));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSession();
             services.AddMvc();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddScoped<IAnalyseRepository, AnalyseRepository>();
+            services.AddScoped<Projecten2DataInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, Projecten2DataInitializer projecten2DataInitializer)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -79,9 +82,8 @@ namespace Projecten2
             }
 
             app.UseApplicationInsightsExceptionTelemetry();
-
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
@@ -92,6 +94,8 @@ namespace Projecten2
                     name: "default",
                     template: "{controller=Account}/{action=Login}/{id?}");
             });
+
+            projecten2DataInitializer.InitializeData().Wait();
         }
     }
 }

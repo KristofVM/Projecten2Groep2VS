@@ -1,0 +1,34 @@
+﻿@using System.Threading.Tasks
+@using Projecten2.Models.Domain
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+<nav>
+    <div class="contain">
+        <img src="/images/kairos_icon_white.png" class="logo" />
+        <ul class="leftnav">
+            <li><a asp-controller="Home" asp-action="Index">Overzicht</a></li>
+            <li><a asp-controller="Home" asp-action="Archief">Archief</a></li>
+            <li>
+                <a>Help <i class="fa fa-caret-down"></i></a>
+                <ul class="helpdropdown">
+                    <li><a asp-controller="Home" asp-action="Faq">FAQ</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
+            <ul class="rightnav">
+                <li><a asp-controller="Home" asp-action="Profiel">@UserManager.GetUserName(User) Jef Braem <i class="fa fa-caret-down"></i></a>
+                <li>
+                    <button type="submit" class="navigationbutton">Log off</button>
+                </li>
+            </ul>
+        </form>
+        <div class="clear"></div>
+    </div>
+</nav>
+}

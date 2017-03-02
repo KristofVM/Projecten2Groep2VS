@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using Projecten2.Models;
 using Projecten2.Models.AccountViewModels;
+using Projecten2.Models.Domain;
 using Projecten2.Services;
 
 namespace Projecten2.Controllers
@@ -63,12 +65,12 @@ namespace Projecten2.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index","Home");
                 }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                }
+                //if (result.RequiresTwoFactor)
+                //{
+                //    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                //}
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
@@ -76,7 +78,7 @@ namespace Projecten2.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    TempData["loginalert"] = "This login is invalid.";
                     return View(model);
                 }
             }

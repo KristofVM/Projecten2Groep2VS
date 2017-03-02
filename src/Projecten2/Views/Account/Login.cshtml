@@ -1,6 +1,8 @@
 ﻿@using System.Collections.Generic
+@using System.Threading.Tasks
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Http.Authentication
+@using Projecten2.Models.Domain
 @model LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -8,68 +10,20 @@
     ViewData["Title"] = "Log in";
 }
 
-@*<h2>@ViewData["Title"].</h2>
-    <div class="row">
-        <div class="col-md-4">ss
-            <section>
-                <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-
-
-                    <div asp-validation-summary="All" class="text-danger"></div>
-
-                        <div>
-                            <label asp-for="Email"></label>
-                            <input asp-for="Email" class="form-control">
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                       </div>
-
-                        <div>
-                            <label asp-for="Password"> </label>
-
-                                <input asp-for="Password "/>
-                                <span asp-validation-for="Password" class="alert"></span>
-
-                        </div>
-
-
-                                <div class="checkbox">
-                                    <label asp-for="RememberMe">
-                                        <input asp-for="RememberMe" />
-                                        @Html.DisplayNameFor(m => m.RememberMe)
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <button type="submit" class="btn btn-default">Log in</button>
-                            </div>
-                        </div>
-                        <p>
-                            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-                        </p>
-                        <p>
-                            <a asp-action="ForgotPassword">Forgot your password?</a>
-                        </p>
-    </form>
-            </section>
-        </div>
-       *@
-
 <main class="login">
     <div class="window">
 
-        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <h2>@ViewData["Title"]</h2>
             <div>
+                <p class="alert">@TempData["loginalert"]</p>
                 <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" type="text" name="email" placeholder="E-mail">
+                <input asp-for="Email" type="text" />
                 <span asp-validation-for="Email" class="alert"></span>
-
             </div>
             <div>
                 <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" type="password" name="wachtwoord" placeholder="Password">
+                <input asp-for="Password" />
                 <span asp-validation-for="Password" class="alert"></span>
             </div>
             <div class="checkbox">
@@ -80,7 +34,7 @@
 
             </div>
 
-            <button type="submit" class="btn btn-default">Login</button>
+            <button type="submit">Login</button>
 
 
             <a  type="button" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="rightbutton button" >Register</a>
@@ -108,5 +62,7 @@
             met mensen met een grote afstand tot de arbeidsmarkt.
         </p>
     </div>
-    <!-- content -->
 </main>
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
