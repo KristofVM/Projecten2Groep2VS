@@ -15,8 +15,8 @@
             <div class="analyse">
                 <div class="analysetop">
                     <a href="#" class="naam">@item.naam</a>
-                    @*@await Html.PartialAsync("ArchiveerAnalyse")*@
-                    <button type="submit"><a href="#"><i class="fa fa-file-archive-o"> </i></a></button> <!-- delete/archive -->
+                    @*<form asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.analyseId"></form>*@
+                    <button><a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.analyseId"><i class="fa fa-file-archive-o"> </i></a></button> <!-- delete/archive -->
                     <a href="#"><i class="fa fa-envelope"> </i></a> <!-- mail -->
                     <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
                     <div class="clear"></div>

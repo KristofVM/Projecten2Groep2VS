@@ -16,27 +16,26 @@ namespace Projecten2.Controllers
         {
             _analyseRepository = analyseRepository;
         }
-        [HttpGet]
+
         public IActionResult Index()
         {
             IEnumerable<Analyse> analyses = _analyseRepository.GetAll().Where(a => !a.archief).OrderBy(a => a.datum).ToList();
             return View(analyses);
         }
-
-        [HttpPost, ActionName("Index")]
-        public IActionResult Archiveer(ArchiveerViewModel archiveerViewModel)
+        
+        public IActionResult Archiveer(int id)
         {
             Analyse analyse = null;
             try
             {
-                analyse = _analyseRepository.GetById(archiveerViewModel.analyseId);
+                analyse = _analyseRepository.GetById(id);
                 _analyseRepository.ArchiveerAnalyse(analyse);
                 _analyseRepository.SaveChanges();
                 TempData["message"] = $"You successfully archived analyse {analyse.naam}.";
             } catch {
                 TempData["error"] = $"Sorry, something went wrong, analyse {analyse.naam} was not archived.";
             }
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Archief()
