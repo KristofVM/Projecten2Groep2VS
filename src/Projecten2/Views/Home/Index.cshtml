@@ -25,7 +25,18 @@
                     <p class="bedrijf">Bedrijf: @item.bedrijf</p>
                     <p class="datum">@item.datum.Day @item.getMonth() @item.datum.Year</p>
                     <p class="afdeling">Afdeling: @item.afdeling</p>
-                    <p class="kostenbaten">@item.balansFormat()</p>
+                    @if (@item.balans > 0)
+                    {
+                        <p class="kostenbaten green">€ @item.balansFormat()</p>
+                    }
+                    else if (@item.balans < 0)
+                    {
+                        <p class="kostenbaten red">€ @item.balansFormat()</p>
+                    }
+                    else
+                    {
+                        <p class="kostenbaten gray">€ @item.balansFormat()</p>
+                    }
                     <div class="clear"></div>
                 </div>
             </div>

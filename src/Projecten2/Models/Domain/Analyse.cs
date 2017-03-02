@@ -19,7 +19,7 @@ namespace Projecten2.Models.Domain
 
         public string balansFormat()
         {
-            return balans.ToString("#,##0");
+            return balans.ToString("#,##0.##");
         }
         public string getMonth()
         {

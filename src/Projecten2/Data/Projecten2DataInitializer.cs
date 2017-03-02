@@ -36,7 +36,7 @@ namespace Projecten2.Data
                 analyse2.afdeling = "advertising";
                 analyse2.bedrijf = "tuc";
                 analyse2.datum = new DateTime(2016, 1, 10);
-                analyse2.balans = 100;
+                analyse2.balans = -3500;
                 analyse2.naam = "TucAdvertising";
                 analyse2.archief = false;
                 _dbContext.Analyses.Add(analyse2);
@@ -81,7 +81,7 @@ namespace Projecten2.Data
                 analyse7.afdeling = "lobby";
                 analyse7.bedrijf = "hotel de paris";
                 analyse7.datum = new DateTime(1997, 10, 27);
-                analyse7.balans = 14750;
+                analyse7.balans = -14750;
                 analyse7.naam = "lobby_hotel de paris";
                 analyse7.archief = true;
                 _dbContext.Analyses.Add(analyse7);
