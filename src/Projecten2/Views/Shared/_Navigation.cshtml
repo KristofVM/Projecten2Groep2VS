@@ -4,8 +4,8 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-@if (SignInManager.IsSignedIn(User))
-{
+@*@if (SignInManager.IsSignedIn(User))
+{*@
 <nav>
     <div class="contain">
         <img src="/images/kairos_icon_white.png" class="logo" />
@@ -31,4 +31,4 @@
         <div class="clear"></div>
     </div>
 </nav>
-}
+@*}*@
