@@ -1,3 +1,6 @@
+.alert {
+    color: #d32137;
+}
 * {
     padding: 0;
     margin: 0;
@@ -304,10 +307,6 @@ li button {
 li button:hover {
     background-color: #3078c9;
 }
-.alert {
-    color: #d32137;
-    font-size: 13px;
-}
 h1.profiel {
     font-weight: 400;
     margin-top: 7px;
@@ -361,6 +360,7 @@ main.login {
 }
 .login label {
     margin-top: 7px;
+    width: 270px;
 }
 .login button, .login a.button {
     margin-top: 10px;

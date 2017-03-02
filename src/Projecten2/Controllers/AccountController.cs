@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using Projecten2.Models;
 using Projecten2.Models.AccountViewModels;
@@ -60,11 +61,11 @@ namespace Projecten2.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password/*, model.RememberMe*/, true, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index","Home");
                 }
                 //if (result.RequiresTwoFactor)
                 //{
@@ -73,20 +74,17 @@ namespace Projecten2.Controllers
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
-                    return RedirectToAction("Index", "Home");
-                    //return View("Lockout");
+                    return View("Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return RedirectToAction("Index", "Home");
-                    //return View(model);
+                    TempData["loginalert"] = "This login is invalid.";
+                    return View(model);
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return RedirectToAction("Index", "Home");
-            // return View(model);
+            return View(model);
         }
 
         //

@@ -16,23 +16,23 @@
         <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <h2>@ViewData["Title"]</h2>
             <div>
+                <p class="alert">@TempData["loginalert"]</p>
                 <label asp-for="Email"></label>
                 <input asp-for="Email" type="text" />
                 <span asp-validation-for="Email" class="alert"></span>
-
             </div>
             <div>
                 <label asp-for="Password"></label>
                 <input asp-for="Password" />
                 <span asp-validation-for="Password" class="alert"></span>
             </div>
-            @*<div class="checkbox">
+            <div class="checkbox">
                 <label asp-for="RememberMe">
                     <input asp-for="RememberMe" input type="checkbox" name="rememberme" value="" class="rememberme">
                     @Html.DisplayNameFor(m => m.RememberMe)
                 </label>
 
-            </div>*@
+            </div>
 
             <button type="submit">Login</button>
 

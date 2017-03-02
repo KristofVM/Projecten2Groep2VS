@@ -8,8 +8,8 @@ namespace Projecten2.Data
 {
     public class Projecten2DataInitializer
     {
-        private readonly ApplicationDbContext _dbContext;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private ApplicationDbContext _dbContext;
+        private UserManager<ApplicationUser> _userManager;
 
         public Projecten2DataInitializer(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager)
         {
@@ -109,7 +109,7 @@ namespace Projecten2.Data
             string bus = "";
             string postcode = "9308";
             string plaats = "Gijzegem";
-            ApplicationUser user = new ApplicationUser { Email = eMailAddress,  Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats};
+            ApplicationUser user = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress,  Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats};
             await _userManager.CreateAsync(user, "letmein");
 
             eMailAddress = "jef_braem@hotmail.com";
@@ -121,7 +121,7 @@ namespace Projecten2.Data
             bus = "";
             postcode = "9308";
             plaats = "Hofstade";
-            user = new ApplicationUser { Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats };
+            user = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats };
             await _userManager.CreateAsync(user, "letmein");
         }
     }

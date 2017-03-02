@@ -11,7 +11,7 @@ namespace Projecten2.Models.AccountViewModels
         [Required]
         [EmailAddress]
         [Display(Name="Email", Prompt="email@something.com")]
-        [DataType(DataType.EmailAddress)]
+        [RegularExpression(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"+ "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$")]
         public string Email { get; set; }
 
         [Required]
@@ -19,7 +19,7 @@ namespace Projecten2.Models.AccountViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        //[Display(Name="Remember me?")]
-        //public bool RememberMe { get; set; }
+        [Display(Name="Remember me?")]
+        public bool RememberMe { get; set; }
     }
 }
