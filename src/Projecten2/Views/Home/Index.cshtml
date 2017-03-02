@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Projecten2.Models.Domain.Analyse>
+﻿@using Projecten2.Models.Domain
+@model IEnumerable<Projecten2.Models.Domain.Analyse>
 @{
     ViewData["Title"] = "Overzicht";
 }
@@ -14,10 +15,8 @@
             <div class="analyse">
                 <div class="analysetop">
                     <a href="#" class="naam">@item.naam</a>
-                    <form asp-action="Index" method="post">
-                        <input type="hidden" asp-for="analyseId"/>
-                        <button type="submit"><a href="#"><i class="fa fa-file-archive-o"> </i></a></button> <!-- delete/archive -->
-                    </form>
+                    @*@await Html.PartialAsync("ArchiveerAnalyse")*@
+                    <button type="submit"><a href="#"><i class="fa fa-file-archive-o"> </i></a></button> <!-- delete/archive -->
                     <a href="#"><i class="fa fa-envelope"> </i></a> <!-- mail -->
                     <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
                     <div class="clear"></div>

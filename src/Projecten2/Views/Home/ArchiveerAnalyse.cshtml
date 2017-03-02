@@ -1,0 +1,7 @@
+﻿@using Projecten2.Models.ViewModels
+@model ArchiveerViewModel
+
+<form asp-action="Index" method="post">
+    <input type="hidden" asp-for="analyseId" />
+    <button type="submit"><a href="#"><i class="fa fa-file-archive-o"> </i></a></button> <!-- delete/archive -->
+</form>
