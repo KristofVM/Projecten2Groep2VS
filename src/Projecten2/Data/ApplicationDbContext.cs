@@ -75,10 +75,6 @@ namespace Projecten2.Data
                 .IsRequired()
                 .HasMaxLength(50);
 
-            a.Property(t => t.email)
-                .IsRequired()
-                .HasMaxLength(100);
-
             a.Property(t => t.organisatie)
                 .HasMaxLength(50);
 
