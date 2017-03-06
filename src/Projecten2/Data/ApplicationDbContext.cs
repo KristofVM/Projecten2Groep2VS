@@ -21,6 +21,7 @@ namespace Projecten2.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Analyse>(MapAnalyse);
+            modelBuilder.Entity<ApplicationUser>(MapApplicationUser);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
@@ -58,6 +59,47 @@ namespace Projecten2.Data
             a.Property(t => t.analyseId)
                 .HasColumnName("analyse_id")
                 .IsRequired();
+        }
+
+        private static void MapApplicationUser(EntityTypeBuilder<ApplicationUser> a)
+        {
+            //Table name
+            a.ToTable("aspnetusers");
+
+            //Properties
+            a.Property(t => t.naam)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            a.Property(t => t.voornaam)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            a.Property(t => t.email)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            a.Property(t => t.organisatie)
+                .HasMaxLength(50);
+
+            a.Property(t => t.straat)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            a.Property(t => t.nr)
+                .IsRequired()
+                .HasMaxLength(4);
+
+            a.Property(t => t.bus)
+                .HasMaxLength(5);
+
+            a.Property(t => t.postcode)
+                .IsRequired()
+                .HasMaxLength(4);
+
+            a.Property(t => t.plaats)
+                .IsRequired()
+                .HasMaxLength(100);
         }
     }
 }
