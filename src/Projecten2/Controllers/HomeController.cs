@@ -19,7 +19,7 @@ namespace Projecten2.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Analyse> analyses = _analyseRepository.GetAll().Where(a => !a.archief).OrderBy(a => a.datum).ToList();
+            IEnumerable<Analyse> analyses = _analyseRepository.GetAll().Where(a => !a.Archief).OrderBy(a => a.Datum).ToList();
             return View(analyses);
         }
         
@@ -31,16 +31,16 @@ namespace Projecten2.Controllers
                 analyse = _analyseRepository.GetById(id);
                 _analyseRepository.ArchiveerAnalyse(analyse);
                 _analyseRepository.SaveChanges();
-                TempData["message"] = $"You successfully archived analyse {analyse.naam}.";
+                TempData["message"] = $"You successfully archived analyse {analyse.Naam}.";
             } catch {
-                TempData["error"] = $"Sorry, something went wrong, analyse {analyse.naam} was not archived.";
+                TempData["error"] = $"Sorry, something went wrong, analyse {analyse.Naam} was not archived.";
             }
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Archief()
         {
-            IEnumerable<Analyse> analyses = _analyseRepository.GetAll().Where(a => a.archief).OrderBy(a => a.datum).ToList();
+            IEnumerable<Analyse> analyses = _analyseRepository.GetAll().Where(a => a.Archief).OrderBy(a => a.Datum).ToList();
             return View(analyses);
         }
         public IActionResult Faq()

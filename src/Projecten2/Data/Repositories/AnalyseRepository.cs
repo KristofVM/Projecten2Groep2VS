@@ -33,14 +33,14 @@ namespace Projecten2.Data.Repositories
             return _analyses;
         }
 
-        public Analyse GetByGebruiker(int gebruikerId)
+        public Analyse GetByGebruiker(string gebruikerId)
         {
-            return _analyses.SingleOrDefault(a => a.gebruikerId == gebruikerId);
+            return _analyses.SingleOrDefault(a => a.ApplicationUser.Id == gebruikerId);
         }
 
         public Analyse GetById(int analyseId)
         {
-            return _analyses.SingleOrDefault(a => a.analyseId == analyseId);
+            return _analyses.SingleOrDefault(a => a.AnalyseId == analyseId);
         }
 
         public void SaveChanges()
@@ -50,7 +50,7 @@ namespace Projecten2.Data.Repositories
 
         public void ArchiveerAnalyse(Analyse analyse)
         {
-            analyse.archief = true;
+            analyse.Archief = true;
         }
     }
 }

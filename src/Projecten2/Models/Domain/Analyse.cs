@@ -15,15 +15,16 @@ namespace Projecten2.Models.Domain
         public DateTime Datum { get; set; }
         public int Balans { get; set; }
         public Boolean Archief { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         public Kosten Kosten { get; set; }
         public Baten Baten { get; set; }
         public string balansFormat()
         {
-            return balans.ToString("#,##0.##");
+            return Balans.ToString("#,##0.##");
         }
         public string getMonth()
         {
-            switch (datum.Month)
+            switch (Datum.Month)
             {
                 case 1: return "jan"; break;
                 case 2: return "feb"; break;

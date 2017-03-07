@@ -11,7 +11,7 @@ namespace Projecten2.Models.ViewModels
 {
     public class ArchiveerViewModel
     {
-        public int analyseId { get; set; }
+        public int AnalyseId { get; set; }
 
         public ArchiveerViewModel()
         {
@@ -20,7 +20,7 @@ namespace Projecten2.Models.ViewModels
 
         public ArchiveerViewModel(Analyse analyse) : this()
         {
-            analyseId = analyse.analyseId;
+            AnalyseId = analyse.AnalyseId;
         }
     }
 }
