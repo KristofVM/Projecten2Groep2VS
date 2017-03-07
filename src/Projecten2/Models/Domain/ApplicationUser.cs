@@ -7,13 +7,14 @@ namespace Projecten2.Models.Domain
 {
     public class ApplicationUser : IdentityUser
     {
-        public string naam { get; set; }
-        public string voornaam { get; set; }
-        public string organisatie { get; set; }
-        public string straat { get; set; }
-        public int nr { get; set; }
-        public string bus { get; set; }
-        public int postcode { get; set; }
-        public string plaats { get; set; }
+        public string Naam { get; set; }
+        public string Voornaam { get; set; }
+        public string Organisatie { get; set; }
+        public string Straat { get; set; }
+        public int Nr { get; set; }
+        public string Bus { get; set; }
+        public int Postcode { get; set; }
+        public string Plaats { get; set; }
+        public ICollection<Analyse> Analyses { get; }
     }
 }

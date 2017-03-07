@@ -8,15 +8,15 @@ namespace Projecten2.Models.Domain
 {
     public class Analyse
     {
-        public int analyseId { get; set; }
-        public string naam { get; set; }
-        public string bedrijf { get; set; }
-        public string afdeling { get; set; }
-        public DateTime datum { get; set; }
-        public int balans { get; set; }
-        public int gebruikerId { get; set; }
-        public Boolean archief { get; set; }
-
+        public int AnalyseId { get; set; }
+        public string Naam { get; set; }
+        public string Bedrijf { get; set; }
+        public string Afdeling { get; set; }
+        public DateTime Datum { get; set; }
+        public int Balans { get; set; }
+        public Boolean Archief { get; set; }
+        public Kosten Kosten { get; set; }
+        public Baten Baten { get; set; }
         public string balansFormat()
         {
             return balans.ToString("#,##0.##");

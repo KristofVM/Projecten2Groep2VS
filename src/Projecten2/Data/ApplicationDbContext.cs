@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Projecten2.Models;
 using Projecten2.Models.Domain;
@@ -21,44 +22,77 @@ namespace Projecten2.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Analyse>(MapAnalyse);
+            modelBuilder.Entity<Kosten>(MapKosten);
+            modelBuilder.Entity<Baten>(MapBaten);
             modelBuilder.Entity<ApplicationUser>(MapApplicationUser);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
+        private static void MapKosten(EntityTypeBuilder<Kosten> k)
+        {
+            //Table name
+            k.ToTable("Kosten");
+
+            //Primary key
+            k.HasKey(t => t.KostenId);
+
+            k.Property(t => t.KostenId)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
+        }
+        private static void MapBaten(EntityTypeBuilder<Baten> b)
+        {
+            //Table name
+            b.ToTable("Baten");
+
+            //Primary key
+            b.HasKey(t => t.BatenId);
+
+            b.Property(t => t.BatenId)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
+        }
         private static void MapAnalyse(EntityTypeBuilder<Analyse> a)
         {
             //Table name
             a.ToTable("Analyse");
 
             //Primary key
-            a.HasKey(t => t.analyseId);
+            a.HasKey(t => t.AnalyseId);
 
             //Properties
-            a.Property(t => t.naam)
+            a.Property(t => t.Naam)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            a.Property(t => t.bedrijf)
+            a.Property(t => t.Bedrijf)
                 .IsRequired();
 
-            a.Property(t => t.afdeling)
+            a.Property(t => t.Afdeling)
                 .IsRequired();
 
-            a.Property(t => t.gebruikerId)
-                .HasColumnName("gebruiker_id")
+            a.Property(t => t.Datum)
                 .IsRequired();
 
-            a.Property(t => t.datum)
+            a.Property(t => t.Archief)
                 .IsRequired();
 
-            a.Property(t => t.archief)
-                .IsRequired();
+            a.Property(t => t.AnalyseId)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
 
-            a.Property(t => t.analyseId)
-                .HasColumnName("analyse_id")
-                .IsRequired();
+            //Associations
+            a.HasOne(t => t.Kosten)
+                .WithOne()
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            a.HasOne(t => t.Baten)
+                .WithOne()
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         private static void MapApplicationUser(EntityTypeBuilder<ApplicationUser> a)
@@ -67,35 +101,40 @@ namespace Projecten2.Data
             a.ToTable("aspnetusers");
 
             //Properties
-            a.Property(t => t.naam)
+            a.Property(t => t.Naam)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            a.Property(t => t.voornaam)
+            a.Property(t => t.Voornaam)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            a.Property(t => t.organisatie)
+            a.Property(t => t.Organisatie)
                 .HasMaxLength(50);
 
-            a.Property(t => t.straat)
+            a.Property(t => t.Straat)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            a.Property(t => t.nr)
+            a.Property(t => t.Nr)
                 .IsRequired()
                 .HasMaxLength(4);
 
-            a.Property(t => t.bus)
+            a.Property(t => t.Bus)
                 .HasMaxLength(5);
 
-            a.Property(t => t.postcode)
+            a.Property(t => t.Postcode)
                 .IsRequired()
                 .HasMaxLength(4);
 
-            a.Property(t => t.plaats)
+            a.Property(t => t.Plaats)
                 .IsRequired()
                 .HasMaxLength(100);
+
+            //Associaties
+            a.HasMany(t => t.Analyses)
+                .WithOne()
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
