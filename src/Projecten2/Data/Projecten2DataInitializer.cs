@@ -106,11 +106,11 @@ namespace Projecten2.Data
             string organisatie = "HoGent";
             string straat = "Langehaagstraat";
             int nr = 65;
-            string bus = "";
+            string bus = "12";
             int postcode = 9308;
             string plaats = "Gijzegem";
-            ApplicationUser user = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress,  naam = naam, voornaam = voornaam, organisatie = organisatie, straat = straat, nr = nr, bus = bus, postcode = postcode, plaats = plaats};
-            await _userManager.CreateAsync(user, "letmein");
+            ApplicationUser user0 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress,  naam = naam, voornaam = voornaam, organisatie = organisatie, straat = straat, nr = nr, bus = bus, postcode = postcode, plaats = plaats};
+            await _userManager.CreateAsync(user0, "P@ssword1");
 
             eMailAddress = "jef_braem@hotmail.com";
             naam = "Braem";
@@ -121,8 +121,8 @@ namespace Projecten2.Data
             bus = "";
             postcode = 9308;
             plaats = "Hofstade";
-            user = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, naam = naam, voornaam = voornaam, organisatie = organisatie, straat = straat, nr = nr, bus = bus, postcode = postcode, plaats = plaats };
-            await _userManager.CreateAsync(user, "P@ssword1");
+            ApplicationUser user1 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, naam = naam, voornaam = voornaam, organisatie = organisatie, straat = straat, nr = nr, bus = bus, postcode = postcode, plaats = plaats };
+            await _userManager.CreateAsync(user1, "P@ssword1");
         }
     }
 }

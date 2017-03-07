@@ -23,7 +23,7 @@
         </ul>
         <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
             <ul class="rightnav">
-                <li><a asp-controller="Home" asp-action="Profiel">@UserManager.GetUserName(User) @ <i class="fa fa-caret-down"></i></a>
+                <li><a asp-controller="Home" asp-action="Profiel">@UserManager.GetUserName(User) <i class="fa fa-caret-down"></i></a>
                 <li>
                     <button type="submit" class="navigationbutton">Log off</button>
                 </li>
