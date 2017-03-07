@@ -67,6 +67,7 @@ namespace Projecten2.Data
                 analyse5.Naam = "gabriëls production";
                 analyse5.Archief = true;
                 _dbContext.Analyses.Add(analyse5);
+                _dbContext.SaveChanges();
 
                 Analyse analyse6 = new Analyse();
                 analyse6.Afdeling = "store";

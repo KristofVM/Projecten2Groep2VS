@@ -26,15 +26,15 @@
             {
                 <div class="archiefanalyse">
                     <input type="checkbox" name="selectanalyse" value="" class="check">
-                    <span class="anaam">@item.naam</span>
-                    <span class="abedrijf">@item.bedrijf</span>
-                    <span class="aafdeling">@item.afdeling</span>
-                    <span class="adatum">@item.datum.Day/@item.datum.Month/@item.datum.Year</span>
-                    @if (@item.balans > 0)
+                    <span class="anaam">@item.Naam</span>
+                    <span class="abedrijf">@item.Bedrijf</span>
+                    <span class="aafdeling">@item.Afdeling</span>
+                    <span class="adatum">@item.Datum.Day/@item.Datum.Month/@item.Datum.Year</span>
+                    @if (@item.Balans > 0)
                     {
                         <span class="aomzet omzetanalyse"><p class="green">€ @item.balansFormat()</p></span>
                     }
-                    else if (@item.balans < 0)
+                    else if (@item.Balans < 0)
                     {
                         <span class="aomzet omzetanalyse"><p class="red">€ @item.balansFormat()</p></span>
                     }

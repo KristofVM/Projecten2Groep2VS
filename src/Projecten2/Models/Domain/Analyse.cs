@@ -9,6 +9,7 @@ namespace Projecten2.Models.Domain
     public class Analyse
     {
         public int AnalyseId { get; set; }
+
         public string Naam { get; set; }
         public string Bedrijf { get; set; }
         public string Afdeling { get; set; }
@@ -16,8 +17,13 @@ namespace Projecten2.Models.Domain
         public int Balans { get; set; }
         public Boolean Archief { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        public int KostenId { get; set; }
+        public int BatenId { get; set; }
+
         public Kosten Kosten { get; set; }
         public Baten Baten { get; set; }
+
         public string balansFormat()
         {
             return Balans.ToString("#,##0.##");
@@ -40,6 +46,12 @@ namespace Projecten2.Models.Domain
                 case 12: return "dec"; break;
                 default: return "maand0";
             }
+        }
+
+        public Analyse()
+        {
+            Baten = new Baten();
+            Kosten = new Kosten();
         }
     }
 }

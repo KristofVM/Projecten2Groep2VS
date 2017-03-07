@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Projecten2.Models;
 using Projecten2.Models.Domain;
 
 namespace Projecten2.Data
@@ -14,6 +9,7 @@ namespace Projecten2.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Analyse> Analyses { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
@@ -39,8 +35,12 @@ namespace Projecten2.Data
             k.HasKey(t => t.KostenId);
 
             k.Property(t => t.KostenId)
-                .IsRequired()
                 .ValueGeneratedOnAdd();
+
+            //Associaties
+            k.HasOne(t => t.Analyse)
+                .WithOne(t => t.Kosten)
+                .IsRequired();
         }
         private static void MapBaten(EntityTypeBuilder<Baten> b)
         {
@@ -51,8 +51,9 @@ namespace Projecten2.Data
             b.HasKey(t => t.BatenId);
 
             b.Property(t => t.BatenId)
-                .IsRequired()
                 .ValueGeneratedOnAdd();
+
+            //Associaties
         }
         private static void MapAnalyse(EntityTypeBuilder<Analyse> a)
         {
@@ -86,12 +87,14 @@ namespace Projecten2.Data
             //Associations
             a.HasOne(t => t.Kosten)
                 .WithOne()
-                .IsRequired(false)
+                .IsRequired()
+                .HasForeignKey<Kosten>(t => t.KostenId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             a.HasOne(t => t.Baten)
                 .WithOne()
-                .IsRequired(false)
+                .IsRequired()
+                .HasForeignKey<Baten>(t => t.BatenId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
 
