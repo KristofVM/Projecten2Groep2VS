@@ -53,6 +53,7 @@ namespace Projecten2 {
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddScoped<IAnalyseRepository, AnalyseRepository>();
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<Projecten2DataInitializer>();
         }
 

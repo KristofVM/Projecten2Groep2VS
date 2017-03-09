@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Projecten2.Data;
 using Projecten2.Models.Domain;
 using Projecten2.Models.ViewModels;
 
@@ -13,20 +14,22 @@ namespace Projecten2.Controllers
     public class HomeController : Controller
     {
         private readonly IAnalyseRepository _analyseRepository;
+        private readonly IApplicationUserRepository _userRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(IAnalyseRepository analyseRepository)
+        public HomeController(IAnalyseRepository analyseRepository, IApplicationUserRepository userRepository)
         {
             _analyseRepository = analyseRepository;
+            _userRepository = userRepository;
         }
 
         public IActionResult Index()
         {
+            string userInfo = _userManager.GetUserName(User);
+            ApplicationUser user = _userRepository.GetByEmail(userInfo);
+            return View(user);
             //IEnumerable<Analyse> analyses = _analyseRepository.GetAll().Where(a => !a.Archief).OrderBy(a => a.Datum).ToList();
             //return View(analyses);
-            UserId = User.
-            ApplicationUser user = _userManager.FindByIdAsync()
-            return View();
         }
         
         public IActionResult Archiveer(int id)

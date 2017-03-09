@@ -1,5 +1,6 @@
 ﻿@using Projecten2.Models.Domain
-@model IEnumerable<Projecten2.Models.Domain.Analyse>
+@*@model IEnumerable<Projecten2.Models.Domain.Analyse>*@
+@model Projecten2.Models.Domain.ApplicationUser
 @{
     ViewData["Title"] = "Overzicht";
 }
@@ -10,7 +11,7 @@
         <a href="#" class="analyse">
             <p><i class="fa fa-plus"></i> Nieuwe analyse</p>
         </a>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Analyses)
         {
             <div class="analyse">
                 <div class="analysetop">
