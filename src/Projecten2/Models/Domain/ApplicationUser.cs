@@ -15,6 +15,6 @@ namespace Projecten2.Models.Domain
         public string Bus { get; set; }
         public int Postcode { get; set; }
         public string Plaats { get; set; }
-        public ICollection<Analyse> Analyses { get; }
+        public ICollection<Analyse> Analyses { get; set; }
     }
 }

@@ -37,7 +37,7 @@ h1 {
 /* NAVIGATION */
 nav {
     min-width: 1080px;
-    background-color: #1b63b4;
+    background-color: #43b72f;
     box-shadow: 2px 2px 2px #e2e2e2;
 }
 nav ul {
@@ -57,7 +57,7 @@ nav ul li a {
     padding: 11px;
 }
 nav ul li a:hover {
-    background-color: #3078c9;
+    background-color: #56ca43;
 }
 .leftnav {
     float: left;
@@ -66,7 +66,7 @@ nav ul li a:hover {
     float: right;
 }
 .helpdropdown {
-    background-color: #1b63b4;
+    background-color: #43b72f;
     position: absolute;
     display: none;
 }
@@ -87,6 +87,9 @@ li:hover .helpdropdown {
 }
 .gray {
     color: darkgray;
+}
+.red, .green, .gray{
+    font-weight: bold;
 }
 .analyse {
     margin-bottom: 20px;
@@ -127,7 +130,7 @@ a.analyse p {
     float: left;
 }
 .analysetop a:hover i {
-    color: #3078c9;
+    color: #56ca43;
 }
 .analysetop i {
     font-size: 18px;
@@ -145,9 +148,6 @@ a.analyse p {
 .bedrijf, .afdeling {
     width: 70%;
     float: left;
-}
-.kostenbaten, .aomzet {
-    font-weight: bold;
 }
 .datum, .kostenbaten {
     text-align: right;
@@ -245,8 +245,6 @@ span.aomzet {
     text-align: right;
     padding-left: 0px;
     padding-right: 5px;
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
 }
 span p {
     text-align: right;
@@ -290,7 +288,7 @@ button:hover {
     float: right;
 }
 .analysetop button a:hover {
-    color: #3078c9;
+    color: #56ca43;
 }
 li button {
     width: auto;
@@ -305,7 +303,7 @@ li button {
     padding: 10px;
 }
 li button:hover {
-    background-color: #3078c9;
+    background-color: #56ca43;
 }
 h1.profiel {
     font-weight: 400;

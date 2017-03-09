@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Projecten2.Models.Domain;
 
@@ -33,9 +34,9 @@ namespace Projecten2.Data.Repositories
             return _analyses;
         }
 
-        public Analyse GetByGebruiker(string gebruikerId)
+        public IEnumerable<Analyse> GetByGebruiker(string Id)
         {
-            return _analyses.SingleOrDefault(a => a.ApplicationUser.Id == gebruikerId);
+            return _analyses.Where(a => a.ApplicationUserId == Id);
         }
 
         public Analyse GetById(int analyseId)

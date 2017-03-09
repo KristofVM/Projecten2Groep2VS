@@ -38,9 +38,6 @@ namespace Projecten2.Data
                 .ValueGeneratedOnAdd();
 
             //Associaties
-            k.HasOne(t => t.Analyse)
-                .WithOne(t => t.Kosten)
-                .IsRequired();
         }
         private static void MapBaten(EntityTypeBuilder<Baten> b)
         {
@@ -87,13 +84,14 @@ namespace Projecten2.Data
             //Associations
             a.HasOne(t => t.Kosten)
                 .WithOne()
+                .HasForeignKey<Kosten>(t => t.KostenId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
             a.HasOne(t => t.Baten)
                 .WithOne()
-                .IsRequired()
                 .HasForeignKey<Baten>(t => t.BatenId)
+                .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
         }
 

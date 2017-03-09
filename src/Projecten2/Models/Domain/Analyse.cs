@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Projecten2.Models.Domain
 {
@@ -16,10 +12,8 @@ namespace Projecten2.Models.Domain
         public DateTime Datum { get; set; }
         public int Balans { get; set; }
         public Boolean Archief { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
 
-        public int KostenId { get; set; }
-        public int BatenId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         public Kosten Kosten { get; set; }
         public Baten Baten { get; set; }
@@ -51,7 +45,9 @@ namespace Projecten2.Models.Domain
         public Analyse()
         {
             Baten = new Baten();
+            Baten.Analyse = this;
             Kosten = new Kosten();
+            Kosten.Analyse = this;
         }
     }
 }
