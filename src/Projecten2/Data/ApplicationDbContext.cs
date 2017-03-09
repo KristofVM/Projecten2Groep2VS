@@ -88,7 +88,6 @@ namespace Projecten2.Data
             a.HasOne(t => t.Kosten)
                 .WithOne()
                 .IsRequired()
-                .HasForeignKey<Kosten>(t => t.KostenId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             a.HasOne(t => t.Baten)
