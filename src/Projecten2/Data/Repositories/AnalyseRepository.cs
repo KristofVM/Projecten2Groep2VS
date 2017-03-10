@@ -53,5 +53,10 @@ namespace Projecten2.Data.Repositories
         {
             analyse.Archief = true;
         }
+
+        public void DeArchiveerAnalyse(Analyse analyse)
+        {
+            analyse.Archief = false;
+        }
     }
 }

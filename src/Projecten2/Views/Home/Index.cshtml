@@ -1,6 +1,5 @@
 ﻿@using Projecten2.Models.Domain
-@*@model IEnumerable<Projecten2.Models.Domain.Analyse>*@
-@model Projecten2.Models.Domain.ApplicationUser
+@model IEnumerable<Projecten2.Models.Domain.Analyse>
 @{
     ViewData["Title"] = "Overzicht";
 }
@@ -11,13 +10,12 @@
         <a href="#" class="analyse">
             <p><i class="fa fa-plus"></i> Nieuwe analyse</p>
         </a>
-        @foreach (var item in Model.Analyses)
+        @foreach (var item in Model)
         {
             <div class="analyse">
                 <div class="analysetop">
                     <a href="#" class="naam">@item.Naam</a>
-                    @*<form asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.analyseId"></form>*@
-                    <button><a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId"><i class="fa fa-file-archive-o"> </i></a></button> <!-- delete/archive -->
+                    <a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId"><i class="fa fa-file-archive-o"> </i></a> <!-- delete/archive -->
                     <a href="#"><i class="fa fa-envelope"> </i></a> <!-- mail -->
                     <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
                     <div class="clear"></div>

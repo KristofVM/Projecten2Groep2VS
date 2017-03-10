@@ -11,6 +11,7 @@ namespace Projecten2.Models.Domain
         IEnumerable<Analyse> GetByGebruiker(string Id);
         IEnumerable<Analyse> GetAll();
         void ArchiveerAnalyse(Analyse analyse);
+        void DeArchiveerAnalyse(Analyse analyse);
         void Add(Analyse analyse);
         void Delete(Analyse analyse);
         void SaveChanges();
