@@ -258,6 +258,12 @@ span p {
     padding-left: 0px;
     padding-top: 8px;
 }
+.edit .window {
+    width: 270px;
+}
+.edit .label {
+    margin-top: 10px;
+}
 input[type=text], input[type=password] {
     border: 1px solid #c4c4c4;
     height: 22px;
@@ -360,7 +366,7 @@ main.login {
     margin-top: 7px;
     width: 270px;
 }
-.login button, .login a.button {
+.login button, .login a.button, .edit button, .edit a.button {
     margin-top: 10px;
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
@@ -370,10 +376,11 @@ main.login {
     color: #000000;
     text-align: center;
 }
-.login button:hover, .login a.button:hover {
+.login button:hover, .login a.button:hover, .edit button:hover, .edit a.button:hover {
     background-color: #caddfc;
+    cursor: pointer;
 }
-.login .rightbutton {
+.login .rightbutton, .edit .rightbutton {
     float: right;
 }
 .login input.rememberme {

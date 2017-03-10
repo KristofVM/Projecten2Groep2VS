@@ -10,7 +10,7 @@ namespace Projecten2.Models.Domain
         public string Bedrijf { get; set; }
         public string Afdeling { get; set; }
         public DateTime Datum { get; set; }
-        public int Balans { get; set; }
+        public double Balans { get; set; }
         public Boolean Archief { get; set; }
 
         public string ApplicationUserId { get; set; }
@@ -48,6 +48,9 @@ namespace Projecten2.Models.Domain
             Baten.Analyse = this;
             Kosten = new Kosten();
             Kosten.Analyse = this;
+            Datum = DateTime.Now;
+            Balans = 0;
+            Archief = false;
         }
     }
 }

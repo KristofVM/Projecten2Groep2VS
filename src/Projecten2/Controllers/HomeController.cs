@@ -46,6 +46,54 @@ namespace Projecten2.Controllers
                 .ToList();
             return View(analyses);
         }
+
+        public IActionResult Edit(int id)
+        {
+            Analyse analyse = _analyseRepository.GetById(id);
+            return View(new EditViewModel(analyse));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditViewModel editViewModel)
+        {
+            Analyse analyse = null;
+            try
+            {
+                analyse = _analyseRepository.GetById(editViewModel.AnalyseId));
+                MapEditViewModelToAnalyse(editViewModel, analyse);
+                _analyseRepository.SaveChanges();
+                TempData["message"] = $"You successfully updated brewer {analyse.Naam}.";
+            }
+            catch
+            {
+                TempData["error"] = $"Sorry, something went wrong, brewer {analyse?.Naam} was not updated...";
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Create()
+        {
+            return View(nameof(Edit), new EditViewModel(new Analyse()));
+        }
+
+        [HttpPost]
+        public IActionResult Create(EditViewModel editViewModel)
+        {
+            Analyse analyse = new Analyse();
+            try
+            {
+                MapEditViewModelToAnalyse(editViewModel, analyse);
+                _analyseRepository.Add(analyse);
+                _analyseRepository.SaveChanges();
+                TempData["message"] = $"You successfully added brewer {analyse.Naam}.";
+            }
+            catch
+            {
+                TempData["error"] = "Sorry, something went wrong, the analyse was not added...";
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Faq()
         {
             ViewData["Message"] = "Not implemented yet.";
@@ -57,6 +105,7 @@ namespace Projecten2.Controllers
             ViewData["Message"] = "Not implemented yet.";
             return View();
         }
+
         public IActionResult Profiel()
         {
             ViewData["Message"] = "Not implemented yet.";
@@ -67,6 +116,7 @@ namespace Projecten2.Controllers
         {
             return View();
         }
+
         public IActionResult Archiveer(int id)
         {
             Analyse analyse = null;
@@ -83,6 +133,7 @@ namespace Projecten2.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
         public IActionResult DeArchiveer(int[] selectanalyse)
         {
             Analyse analyse = null;
@@ -101,6 +152,14 @@ namespace Projecten2.Controllers
                 }
             }
             return RedirectToAction(nameof(Archief));
+        }
+
+        private void MapEditViewModelToAnalyse(EditViewModel editViewModel, Analyse analyse)
+        {
+            analyse.ApplicationUserId = _userManager.GetUserId(User);
+            analyse.Naam = editViewModel.Naam;
+            analyse.Bedrijf = editViewModel.Bedrijf;
+            analyse.Afdeling = editViewModel.Afdeling;
         }
     }
 }

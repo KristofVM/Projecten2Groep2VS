@@ -1,29 +1,31 @@
-﻿@model EditViewModel
+﻿@using Projecten2.Models.ViewModels
+@model Projecten2.Models.ViewModels.EditViewModel
 
 @{
-    ViewData["Title"] = Model.BrewerId == 0 ? "Maak analyse" : "Bewerk brewer";
-    var action = Model.BrewerId == 0 ? "Create" : "Edit";
+    ViewData["Title"] = Model.AnalyseId == 0 ? "Maak analyse" : "Bewerk brewer";
+    var action = Model.AnalyseId == 0 ? "Create" : "Edit";
 }
 
-<main>
+<main class="edit">
     <div class="contain">
         <h1>@ViewData["Title"]</h1>
         <div class="window">
             <form asp-action="@action" method="post">
+                <input type="hidden" asp-for="AnalyseId"/>
                 <div>
-                    <p>Naam</p>
-                    <input type="text" name="naam" placeholder="Naam">
-                    <span class="alert">Dit is een error!</span>
+                    <label asp-for="Naam"></label>
+                    <input asp-for="Naam" type="text"/>
+                    <span asp-validation-for="Naam" class="alert"></span>
                 </div>
                 <div>
-                    <p>Bedrijf</p>
-                    <input type="text" name="voornaam" placeholder="Voornaam">
-                    <span class="alert"></span>
+                    <label asp-for="Bedrijf"></label>
+                    <input asp-for="Bedrijf" type="text"/>
+                    <span asp-validation-for="Bedrijf" class="alert"></span>
                 </div>
                 <div>
-                    <p>Afdeling</p>
-                    <input type="text" name="email" placeholder="E-mail">
-                    <span class="alert"></span>
+                    <label asp-for="Afdeling"></label>
+                    <input asp-for="Afdeling" type="text"/>
+                    <span asp-validation-for="Afdeling" class="alert"></span>
                 </div>
                 <button type="submit">Bevestig</button>
                 <a asp-controller="Home" asp-action="Index" class="rightbutton button">Annuleer</a>
