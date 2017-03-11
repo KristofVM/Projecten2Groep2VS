@@ -59,7 +59,7 @@ namespace Projecten2.Controllers
             Analyse analyse = null;
             try
             {
-                analyse = _analyseRepository.GetById(editViewModel.AnalyseId));
+                analyse = _analyseRepository.GetById(editViewModel.AnalyseId);
                 MapEditViewModelToAnalyse(editViewModel, analyse);
                 _analyseRepository.SaveChanges();
                 TempData["message"] = $"You successfully updated brewer {analyse.Naam}.";

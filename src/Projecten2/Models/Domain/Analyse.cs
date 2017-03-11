@@ -38,7 +38,7 @@ namespace Projecten2.Models.Domain
                 case 10: return "okt"; break;
                 case 11: return "nov"; break;
                 case 12: return "dec"; break;
-                default: return "maand0";
+                default: return "MonthErr";
             }
         }
 

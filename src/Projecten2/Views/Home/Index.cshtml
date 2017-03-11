@@ -16,7 +16,7 @@
                 <div class="analysetop">
                     <a href="#" class="naam">@item.Naam</a>
                     <a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId"><i class="fa fa-file-archive-o"> </i></a> <!-- delete/archive -->
-                    <a href="#"><i class="fa fa-envelope"> </i></a> <!-- mail -->
+                    @*<a href="#"><i class="fa fa-envelope"> </i></a>*@ <!-- mail -->
                     <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
                     <a asp-controller="Home" asp-action="Edit" asp-route-id="@item.AnalyseId"><i class="fa fa-pencil"> </i></a> <!-- Edit -->
                     <div class="clear"></div>
