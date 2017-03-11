@@ -7,6 +7,7 @@ namespace Projecten2.Models.Domain.BatenVragen
 {
     public class BVraag11
     {
+        public int Id { get; set; }
         private Baten Baten { get; set; }
         public string TypeBesparing { get; set; }
         public double JaarBedrag { get; set; }

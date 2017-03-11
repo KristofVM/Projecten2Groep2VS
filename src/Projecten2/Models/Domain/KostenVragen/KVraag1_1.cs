@@ -7,6 +7,7 @@ namespace Projecten2.Models.Domain.KostenVragen
 {
     public class KVraag1_1
     {
+        public int Id { get; set; }
         private Kosten Kosten { get; set; }
         public string Beschrijving { get; set; }
         public double JaarBedrag { get; set; }

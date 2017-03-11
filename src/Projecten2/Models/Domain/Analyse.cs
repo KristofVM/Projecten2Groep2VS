@@ -48,6 +48,7 @@ namespace Projecten2.Models.Domain
             Baten.Analyse = this;
             Kosten = new Kosten();
             Kosten.Analyse = this;
+
             Datum = DateTime.Now;
             Balans = 0;
             Archief = false;
