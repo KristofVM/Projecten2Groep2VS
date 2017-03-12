@@ -12,8 +12,8 @@ namespace Projecten2.Models.Domain.KostenVragen
         public string Functie { get; set; }
         public int AantalUrenPerWeek { get; set; }
         public int BrutoMaandloonFulltime { get; set; }
-        //public Doelgroep Doelgroep { get; set; }
-        //public VlaamseOndPremie VlaamseOndPremie { get; set; }
+        public double DoelgroepVermindering { get; set; }
+        public int VlaamseOndPremie { get; set; }
         public int AantalMaandenIBO { get; set; }
         public double TotaleProductiviteitsPremie { get; set; }
     }

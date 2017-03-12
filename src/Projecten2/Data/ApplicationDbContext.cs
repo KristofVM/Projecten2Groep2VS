@@ -204,6 +204,12 @@ namespace Projecten2.Data
             k.Property(t => t.TotaleProductiviteitsPremie)
                 .IsRequired();
 
+            k.Property(t => t.VlaamseOndPremie)
+                .IsRequired();
+
+            k.Property(t => t.VlaamseOndPremie)
+                .IsRequired();
+
             //Associaties
         }
         private static void MapKVraag1_1(EntityTypeBuilder<KVraag1_1> k)
