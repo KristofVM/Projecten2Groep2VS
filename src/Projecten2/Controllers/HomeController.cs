@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,20 +31,34 @@ namespace Projecten2.Controllers
         public IActionResult Index()
         {
             string userInfo = _userManager.GetUserId(User);
-            IEnumerable<Analyse> analyses = _analyseRepository.GetAll()
-                .Where(a => !a.Archief && a.ApplicationUserId == userInfo)
-                .OrderBy(a => a.Datum)
-                .ToList();
+            //IEnumerable<Analyse> analyses = _analyseRepository.GetAll()
+            //    .Where(a => !a.Archief && a.ApplicationUserId == userInfo)
+            //    .OrderBy(a => a.Datum)
+            //    .ToList();
+            ApplicationUser appUser = _userRepository.GetById(userInfo);
+            IEnumerable<Analyse> analyses = new List<Analyse>();
+            if (appUser != null)
+            {
+                analyses = appUser.Analyses.Where(a => !a.Archief);
+                return View(analyses);
+            } 
             return View(analyses);
         }
 
         public IActionResult Archief()
         {
             string userInfo = _userManager.GetUserId(User);
-            IEnumerable<Analyse> analyses = _analyseRepository.GetAll()
-                .Where(a => a.Archief && a.ApplicationUserId == userInfo)
-                .OrderBy(a => a.Datum)
-                .ToList();
+            //IEnumerable<Analyse> analyses = _analyseRepository.GetAll()
+            //    .Where(a => a.Archief && a.ApplicationUserId == userInfo)
+            //    .OrderBy(a => a.Datum)
+            //    .ToList();
+            ApplicationUser appUser = _userRepository.GetById(userInfo);
+            IEnumerable<Analyse> analyses = new List<Analyse>();
+            if (appUser != null)
+            {
+                analyses = appUser.Analyses.Where(a => a.Archief);
+                return View(analyses);
+            }
             return View(analyses);
         }
 

@@ -19,17 +19,17 @@ namespace Projecten2.Data.Repositories
         }
         public IEnumerable<ApplicationUser> GetAll()
         {
-            return _users;
+            return _users.Include(a => a.Analyses).ToList();
         }
 
         public ApplicationUser GetByEmail(string eMail)
         {
-            return _users.FirstOrDefault(u => u.Email == eMail);
+            return _users.Include(a => a.Analyses).FirstOrDefault(u => u.Email == eMail);
         }
 
         public ApplicationUser GetById(string Id)
         {
-            return _users.FirstOrDefault(u => u.Id == Id);
+            return _users.Include(a => a.Analyses).FirstOrDefault(u => u.Id == Id);
         }
 
         public void SaveChanges()
