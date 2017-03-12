@@ -144,6 +144,38 @@ namespace Projecten2.Data
                 .ValueGeneratedOnAdd();
 
             //Associaties
+            k.HasMany(t => t.Kvragen01)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            k.HasMany(t => t.Kvragen1)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            k.HasMany(t => t.Kvragen2)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            k.HasMany(t => t.Kvragen3)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            k.HasMany(t => t.Kvragen4)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            k.HasMany(t => t.Kvragen5)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            k.HasMany(t => t.Kvragen6)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            k.HasMany(t => t.Kvragen7)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
         }
         private static void MapKVraag1_0(EntityTypeBuilder<KVraag1_0> k)
         {
@@ -205,6 +237,13 @@ namespace Projecten2.Data
             k.Property(t => t.Id)
                 .ValueGeneratedOnAdd();
 
+            k.Property(t => t.Type)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            k.Property(t => t.Bedrag)
+                .IsRequired();
+
             //Associaties
 
         }
@@ -218,6 +257,13 @@ namespace Projecten2.Data
 
             k.Property(t => t.Id)
                 .ValueGeneratedOnAdd();
+
+            k.Property(t => t.Type)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            k.Property(t => t.Bedrag)
+                .IsRequired();
 
             //Associaties
 
@@ -233,6 +279,13 @@ namespace Projecten2.Data
             k.Property(t => t.Id)
                 .ValueGeneratedOnAdd();
 
+            k.Property(t => t.Type)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            k.Property(t => t.Bedrag)
+                .IsRequired();
+
             //Associaties
 
         }
@@ -246,6 +299,13 @@ namespace Projecten2.Data
 
             k.Property(t => t.Id)
                 .ValueGeneratedOnAdd();
+
+            k.Property(t => t.Type)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            k.Property(t => t.Bedrag)
+                .IsRequired();
 
             //Associaties
 
@@ -261,6 +321,12 @@ namespace Projecten2.Data
             k.Property(t => t.Id)
                 .ValueGeneratedOnAdd();
 
+            k.Property(t => t.BrutoMaandloonBegeleider)
+                .IsRequired();
+
+            k.Property(t => t.Uren)
+                .IsRequired();
+
             //Associaties
 
         }
@@ -274,6 +340,13 @@ namespace Projecten2.Data
 
             k.Property(t => t.Id)
                 .ValueGeneratedOnAdd();
+
+            k.Property(t => t.Type)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            k.Property(t => t.Bedrag)
+                .IsRequired();
 
             //Associaties
 
@@ -316,25 +389,128 @@ namespace Projecten2.Data
                 .IsRequired();
 
             //Associaties
+            b.HasMany(t => t.Bvragen11)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            b.HasMany(t => t.Bvragen3)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            b.HasMany(t => t.Bvragen4)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            b.HasMany(t => t.Bvragen5)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            b.HasMany(t => t.Bvragen9)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
         }
         private static void MapBVraag3(EntityTypeBuilder<BVraag3> b)
         {
+            //Table name
+            b.ToTable("BVraag3");
+
+            //Primary key
+            b.HasKey(t => t.Id);
+
+            b.Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            b.Property(t => t.BrutoMaandloonFulltime)
+                .IsRequired();
+
+            b.Property(t => t.Uren)
+                .IsRequired();
+
+            //Associaties
 
         }
         private static void MapBVraag4(EntityTypeBuilder<BVraag4> b)
         {
+            //Table name
+            b.ToTable("BVraag4");
+
+            //Primary key
+            b.HasKey(t => t.Id);
+
+            b.Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            b.Property(t => t.BrutoMaandloonFulltime)
+                .IsRequired();
+
+            b.Property(t => t.Uren)
+                .IsRequired();
+
+            //Associaties
 
         }
         private static void MapBVraag5(EntityTypeBuilder<BVraag5> b)
         {
+            //Table name
+            b.ToTable("BVraag5");
+
+            //Primary key
+            b.HasKey(t => t.Id);
+
+            b.Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            b.Property(t => t.Beschrijving)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            b.Property(t => t.JaarBedrag)
+                .IsRequired();
+
+            //Associaties
 
         }
         private static void MapBVraag9(EntityTypeBuilder<BVraag9> b)
         {
+            //Table name
+            b.ToTable("BVraag9");
+
+            //Primary key
+            b.HasKey(t => t.Id);
+
+            b.Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            b.Property(t => t.Beschrijving)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            b.Property(t => t.JaarBedrag)
+                .IsRequired();
+
+            //Associaties
 
         }
         private static void MapBVraag11(EntityTypeBuilder<BVraag11> b)
         {
+            //Table name
+            b.ToTable("BVraag11");
+
+            //Primary key
+            b.HasKey(t => t.Id);
+
+            b.Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            b.Property(t => t.TypeBesparing)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            b.Property(t => t.JaarBedrag)
+                .IsRequired();
+
+            //Associaties
 
         }
     }

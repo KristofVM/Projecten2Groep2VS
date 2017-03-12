@@ -17,11 +17,11 @@ namespace Projecten2.Models.Domain
         public double JaarBedTransportKost { get; set; } //Vraag 10.1
         public double JaarBedHandelingsKost { get; set; } //Vraag 10.2
 
-        //public ICollection<BVraag3> Bvragen3 { get; set; }
-        //public ICollection<BVraag4> Bvragen4 { get; set; }
-        //public ICollection<BVraag5> Bvragen5 { get; set; }
-        //public ICollection<BVraag9> Bvragen9 { get; set; }
-        //public ICollection<BVraag11> Bvragen11 { get; set; }
+        public ICollection<BVraag3> Bvragen3 { get; set; }
+        public ICollection<BVraag4> Bvragen4 { get; set; }
+        public ICollection<BVraag5> Bvragen5 { get; set; }
+        public ICollection<BVraag9> Bvragen9 { get; set; }
+        public ICollection<BVraag11> Bvragen11 { get; set; }
 
         public Baten()
         {
