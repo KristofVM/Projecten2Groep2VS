@@ -204,7 +204,7 @@ namespace Projecten2.Data
             k.Property(t => t.TotaleProductiviteitsPremie)
                 .IsRequired();
 
-            k.Property(t => t.VlaamseOndPremie)
+            k.Property(t => t.Doelgroep)
                 .IsRequired();
 
             k.Property(t => t.VlaamseOndPremie)
