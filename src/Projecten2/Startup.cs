@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Projecten2.Data;
-using Projecten2.Models;
 using Projecten2.Models.Domain;
 using Projecten2.Services;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Projecten2.Data.Repositories;
 
@@ -59,6 +53,7 @@ namespace Projecten2 {
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddScoped<IAnalyseRepository, AnalyseRepository>();
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<Projecten2DataInitializer>();
         }
 

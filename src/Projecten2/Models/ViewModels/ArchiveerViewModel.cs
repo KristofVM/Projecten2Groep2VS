@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Projecten2.Models.Domain;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Projecten2.Models.ViewModels
 {
     public class ArchiveerViewModel
     {
-        public int analyseId { get; set; }
+        public int AnalyseId { get; set; }
 
         public ArchiveerViewModel()
         {
@@ -20,7 +18,7 @@ namespace Projecten2.Models.ViewModels
 
         public ArchiveerViewModel(Analyse analyse) : this()
         {
-            analyseId = analyse.analyseId;
+            AnalyseId = analyse.AnalyseId;
         }
     }
 }

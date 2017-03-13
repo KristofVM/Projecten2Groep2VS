@@ -7,29 +7,29 @@
 <main>
     <div class="contain">
         <h1>Overzicht</h1>
-        <a href="#" class="analyse">
+        <a asp-controller="Home" asp-action="Create" class="analyse">
             <p><i class="fa fa-plus"></i> Nieuwe analyse</p>
         </a>
         @foreach (var item in Model)
         {
             <div class="analyse">
                 <div class="analysetop">
-                    <a href="#" class="naam">@item.naam</a>
-                    @*<form asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.analyseId"></form>*@
-                    <button><a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.analyseId"><i class="fa fa-file-archive-o"> </i></a></button> <!-- delete/archive -->
-                    <a href="#"><i class="fa fa-envelope"> </i></a> <!-- mail -->
+                    <a href="#" class="naam">@item.Naam</a>
+                    <a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId"><i class="fa fa-file-archive-o"> </i></a> <!-- delete/archive -->
+                    @*<a href="#"><i class="fa fa-envelope"> </i></a>*@ <!-- mail -->
                     <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
+                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@item.AnalyseId"><i class="fa fa-pencil"> </i></a> <!-- Edit -->
                     <div class="clear"></div>
                 </div>
                 <div class="analysebottom">
-                    <p class="bedrijf">Bedrijf: @item.bedrijf</p>
-                    <p class="datum">@item.datum.Day @item.getMonth() @item.datum.Year</p>
-                    <p class="afdeling">Afdeling: @item.afdeling</p>
-                    @if (@item.balans > 0)
+                    <p class="bedrijf">Bedrijf: @item.Bedrijf</p>
+                    <p class="datum">@item.Datum.Day @item.getMonth() @item.Datum.Year</p>
+                    <p class="afdeling">Afdeling: @item.Afdeling</p>
+                    @if (@item.Balans > 0)
                     {
                         <p class="kostenbaten green">€ @item.balansFormat()</p>
                     }
-                    else if (@item.balans < 0)
+                    else if (@item.Balans < 0)
                     {
                         <p class="kostenbaten red">€ @item.balansFormat()</p>
                     }

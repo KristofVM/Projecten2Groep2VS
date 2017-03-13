@@ -1,0 +1,35 @@
+﻿@using Projecten2.Models.ViewModels
+@model Projecten2.Models.ViewModels.EditViewModel
+
+@{
+    ViewData["Title"] = Model.AnalyseId == 0 ? "Maak analyse" : "Bewerk brewer";
+    var action = Model.AnalyseId == 0 ? "Create" : "Edit";
+}
+
+<main class="edit">
+    <div class="contain">
+        <h1>@ViewData["Title"]</h1>
+        <div class="window">
+            <form asp-action="@action" method="post">
+                <input type="hidden" asp-for="AnalyseId"/>
+                <div>
+                    <label asp-for="Naam"></label>
+                    <input asp-for="Naam" type="text"/>
+                    <span asp-validation-for="Naam" class="alert"></span>
+                </div>
+                <div>
+                    <label asp-for="Bedrijf"></label>
+                    <input asp-for="Bedrijf" type="text"/>
+                    <span asp-validation-for="Bedrijf" class="alert"></span>
+                </div>
+                <div>
+                    <label asp-for="Afdeling"></label>
+                    <input asp-for="Afdeling" type="text"/>
+                    <span asp-validation-for="Afdeling" class="alert"></span>
+                </div>
+                <button type="submit">Bevestig</button>
+                <a asp-controller="Home" asp-action="Index" class="rightbutton button">Annuleer</a>
+            </form>
+        </div>
+    </div>
+</main>

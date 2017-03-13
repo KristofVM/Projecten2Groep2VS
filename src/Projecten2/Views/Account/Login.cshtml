@@ -18,7 +18,7 @@
             <div>
                 <p class="alert">@TempData["loginalert"]</p>
                 <label asp-for="Email"></label>
-                <input asp-for="Email" type="text" />
+                <input asp-for="Email" type="text"/>
                 <span asp-validation-for="Email" class="alert"></span>
             </div>
             <div>
@@ -31,15 +31,9 @@
                     <input asp-for="RememberMe" input type="checkbox" name="rememberme" value="" class="rememberme">
                     @Html.DisplayNameFor(m => m.RememberMe)
                 </label>
-
             </div>
-
             <button type="submit">Login</button>
-
-
             <a  type="button" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="rightbutton button" >Register</a>
-
-
             <p class="forgotpass"><a asp-action="ForgotPassword">Wachtwoord vergeten? </a></p>
         </form>
     </div>
