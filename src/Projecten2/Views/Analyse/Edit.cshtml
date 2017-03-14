@@ -2,7 +2,7 @@
 @model Projecten2.Models.ViewModels.EditViewModel
 
 @{
-    ViewData["Title"] = Model.AnalyseId == 0 ? "Maak analyse" : "Bewerk brewer";
+    ViewData["Title"] = Model.AnalyseId == 0 ? "Maak analyse" : "Bewerk analyse";
     var action = Model.AnalyseId == 0 ? "Create" : "Edit";
 }
 
@@ -10,7 +10,7 @@
     <div class="contain">
         <h1>@ViewData["Title"]</h1>
         <div class="window">
-            <form asp-action="@action" method="post">
+            <form asp-controller="Analyse" asp-action="@action" method="post">
                 <input type="hidden" asp-for="AnalyseId"/>
                 <div>
                     <label asp-for="Naam"></label>

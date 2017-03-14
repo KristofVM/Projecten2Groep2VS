@@ -264,9 +264,10 @@ span p {
 }
 .edit .window {
     width: 270px;
+    margin: 0 auto;
 }
-.edit .label {
-    margin-top: 10px;
+.window form div {
+    padding-top: 7px;
 }
 input[type=text], input[type=password] {
     border: 1px solid #c4c4c4;
