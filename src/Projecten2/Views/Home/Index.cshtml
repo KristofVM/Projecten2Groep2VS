@@ -27,15 +27,15 @@
                     <p class="afdeling">Afdeling: @item.Afdeling</p>
                     @if (@item.Balans > 0)
                     {
-                        <p class="kostenbaten green">€ @item.balansFormat()</p>
+                        <p class="kostenbaten green bold">€ @item.balansFormat()</p>
                     }
                     else if (@item.Balans < 0)
                     {
-                        <p class="kostenbaten red">€ @item.balansFormat()</p>
+                        <p class="kostenbaten red bold">€ @item.balansFormat()</p>
                     }
                     else
                     {
-                        <p class="kostenbaten gray">€ @item.balansFormat()</p>
+                        <p class="kostenbaten gray bold">€ @item.balansFormat()</p>
                     }
                     <div class="clear"></div>
                 </div>

@@ -73,6 +73,11 @@ namespace Projecten2.Controllers
             return RedirectToAction(nameof(Index),"Home");
         }
 
+        public IActionResult KostenBaten()
+        {
+            return View();
+        }
+
         private void MapEditViewModelToAnalyse(EditViewModel editViewModel, Analyse analyse)
         {
             analyse.ApplicationUserId = _userManager.GetUserId(User);
