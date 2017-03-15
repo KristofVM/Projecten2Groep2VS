@@ -84,6 +84,8 @@ namespace Projecten2.Controllers
             analyse.Naam = editViewModel.Naam;
             analyse.Bedrijf = editViewModel.Bedrijf;
             analyse.Afdeling = editViewModel.Afdeling;
+            analyse.PatronaleBijdrage = editViewModel.PatronaleBijdrage;
+            analyse.UrenVoltijdsWerkweek = editViewModel.UrenVoltijdsWerkweek;
         }
     }
 }

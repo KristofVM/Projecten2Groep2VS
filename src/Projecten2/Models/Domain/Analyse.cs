@@ -11,6 +11,8 @@ namespace Projecten2.Models.Domain
         public string Afdeling { get; set; }
         public DateTime Datum { get; set; }
         public double Balans { get; set; }
+        public int PatronaleBijdrage { get; set; } //standaard 35%
+        public int UrenVoltijdsWerkweek { get; set; } //Vraag 1
         public Boolean Archief { get; set; }
 
         public string ApplicationUserId { get; set; }
@@ -52,6 +54,8 @@ namespace Projecten2.Models.Domain
             Datum = DateTime.Now;
             Balans = 0;
             Archief = false;
+            PatronaleBijdrage = 35;
+            UrenVoltijdsWerkweek = 38;
         }
     }
 }

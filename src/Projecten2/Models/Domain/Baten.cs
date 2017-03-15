@@ -8,7 +8,6 @@ namespace Projecten2.Models.Domain
         public int BatenId { get; set; }
         public Analyse Analyse { get; set; }
 
-        public int UrenVoltijdsWerkweek { get; set; } //Vraag 1
         public double JaarBedSubsWerkOmg { get; set; } //Vraag 2
         public double JaarBedOmzetVerlies { get; set; } //Vraag 6
         public int ProcentBesparing { get; set; } //Vraag 6
@@ -25,7 +24,6 @@ namespace Projecten2.Models.Domain
 
         public Baten()
         {
-            UrenVoltijdsWerkweek = 0;
             JaarBedOmzetVerlies = 0;
             JaarBedOmzetVerlies = 0;
             ProcentBesparing = 0;
