@@ -73,7 +73,7 @@ namespace Projecten2.Controllers
             return RedirectToAction(nameof(Index),"Home");
         }
 
-        public IActionResult KostenBaten()
+        public IActionResult KostenBaten(int AnalyseId)
         {
             return View();
         }

@@ -14,7 +14,7 @@
         {
             <div class="analyse">
                 <div class="analysetop">
-                    <a href="#" class="naam">@item.Naam</a>
+                    <a asp-controller="Analyse" asp-action="KostenBaten" asp-route-id="@item.AnalyseId" class="naam">@item.Naam</a>
                     <a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId"><i class="fa fa-file-archive-o"> </i></a> <!-- delete/archive -->
                     @*<a href="#"><i class="fa fa-envelope"> </i></a>*@ <!-- mail -->
                     <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
