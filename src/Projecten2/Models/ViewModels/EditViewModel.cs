@@ -10,14 +10,17 @@ namespace Projecten2.Models.ViewModels
     public class EditViewModel
     {
         public int AnalyseId { get; set; }
+
         [Required]
         [Display(Name = "Naam", Prompt = "Naam")]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
         public string Naam { get; set; }
+
         [Required]
         [Display(Name = "Bedrijf", Prompt = "Bedrijf")]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
         public string Bedrijf { get; set; }
+
         [Required]
         [Display(Name = "Afdeling", Prompt = "Afdeling")]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]

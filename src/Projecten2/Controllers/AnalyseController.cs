@@ -35,19 +35,26 @@ namespace Projecten2.Controllers
         [HttpPost]
         public IActionResult Edit(EditViewModel editViewModel)
         {
-            Analyse analyse = null;
-            try
+            if (ModelState.IsValid)
             {
-                analyse = _analyseRepository.GetById(editViewModel.AnalyseId);
-                MapEditViewModelToAnalyse(editViewModel, analyse);
-                _analyseRepository.SaveChanges();
-                TempData["message"] = $"You successfully updated brewer {analyse.Naam}.";
+                Analyse analyse = null;
+                try
+                {
+                    analyse = _analyseRepository.GetById(editViewModel.AnalyseId);
+                    MapEditViewModelToAnalyse(editViewModel, analyse);
+                    _analyseRepository.SaveChanges();
+                    TempData["message"] = $"You successfully updated brewer {analyse.Naam}.";
+                }
+                catch
+                {
+                    TempData["error"] = $"Sorry, something went wrong, brewer {analyse?.Naam} was not updated...";
+                }
+                return RedirectToAction(nameof(Index), "Home");
             }
-            catch
+            else
             {
-                TempData["error"] = $"Sorry, something went wrong, brewer {analyse?.Naam} was not updated...";
+                return View(editViewModel);
             }
-            return RedirectToAction(nameof(Index),"Home");
         }
 
         public IActionResult Create()
@@ -58,19 +65,26 @@ namespace Projecten2.Controllers
         [HttpPost]
         public IActionResult Create(EditViewModel editViewModel)
         {
-            Analyse analyse = new Analyse();
-            try
+            if (ModelState.IsValid)
             {
-                MapEditViewModelToAnalyse(editViewModel, analyse);
-                _analyseRepository.Add(analyse);
-                _analyseRepository.SaveChanges();
-                TempData["message"] = $"You successfully added brewer {analyse.Naam}.";
+                Analyse analyse = new Analyse();
+                try
+                {
+                    MapEditViewModelToAnalyse(editViewModel, analyse);
+                    _analyseRepository.Add(analyse);
+                    _analyseRepository.SaveChanges();
+                    TempData["message"] = $"You successfully added brewer {analyse.Naam}.";
+                }
+                catch
+                {
+                    TempData["error"] = "Sorry, something went wrong, the analyse was not added...";
+                }
+                return RedirectToAction(nameof(Index), "Home");
             }
-            catch
+            else
             {
-                TempData["error"] = "Sorry, something went wrong, the analyse was not added...";
+                return View(nameof(Edit),editViewModel);
             }
-            return RedirectToAction(nameof(Index),"Home");
         }
 
         public IActionResult KostenBaten(int AnalyseId)
