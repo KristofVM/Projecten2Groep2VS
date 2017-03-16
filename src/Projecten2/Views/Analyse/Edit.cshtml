@@ -1,8 +1,13 @@
-﻿@using Projecten2.Models.ViewModels
+﻿@using System.Collections.Generic
+@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@using Projecten2.Models.Domain
+@using Projecten2.Models.ViewModels
 @model Projecten2.Models.ViewModels.EditViewModel
 
 @{
-    ViewData["Title"] = Model.AnalyseId == 0 ? "Maak analyse" : "Bewerk brewer";
+    ViewData["Title"] = Model.AnalyseId == 0 ? "Maak analyse" : "Bewerk analyse";
     var action = Model.AnalyseId == 0 ? "Create" : "Edit";
 }
 
@@ -10,7 +15,7 @@
     <div class="contain">
         <h1>@ViewData["Title"]</h1>
         <div class="window">
-            <form asp-action="@action" method="post">
+            <form asp-controller="Analyse" asp-action="@action" method="post">
                 <input type="hidden" asp-for="AnalyseId"/>
                 <div>
                     <label asp-for="Naam"></label>
@@ -26,6 +31,18 @@
                     <label asp-for="Afdeling"></label>
                     <input asp-for="Afdeling" type="text"/>
                     <span asp-validation-for="Afdeling" class="alert"></span>
+                </div>
+                <div class="patbijdrage">
+                    <label asp-for="PatronaleBijdrage" class="half"></label>
+                    <input asp-for="PatronaleBijdrage" type="text" class="half"/>
+                    <div class="clear"></div>
+                    <span asp-validation-for="PatronaleBijdrage" class="alert"></span>
+                </div>
+                <div>
+                    <label asp-for="UrenVoltijdsWerkweek" class="half"></label>
+                    <input asp-for="UrenVoltijdsWerkweek" type="text" class="half"/>
+                    <div class="clear"></div>
+                    <span asp-validation-for="UrenVoltijdsWerkweek" class="alert"></span>
                 </div>
                 <button type="submit">Bevestig</button>
                 <a asp-controller="Home" asp-action="Index" class="rightbutton button">Annuleer</a>

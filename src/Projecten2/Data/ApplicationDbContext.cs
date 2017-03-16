@@ -76,6 +76,12 @@ namespace Projecten2.Data
                 .IsRequired()
                 .ValueGeneratedOnAdd();
 
+            a.Property(t => t.UrenVoltijdsWerkweek)
+                .IsRequired();
+
+            a.Property(t => t.PatronaleBijdrage)
+                .IsRequired();
+
             //Associations
             a.HasOne(t => t.Kosten)
                 .WithOne()
@@ -389,9 +395,6 @@ namespace Projecten2.Data
                 .IsRequired();
 
             b.Property(t => t.ProcentBesparing)
-                .IsRequired();
-
-            b.Property(t => t.UrenVoltijdsWerkweek)
                 .IsRequired();
 
             //Associaties

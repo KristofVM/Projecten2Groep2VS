@@ -24,6 +24,7 @@ main {
     height: 27px;
     float: left;
     padding: 6.5px;
+    padding-right: 15px;
 }
 h1 {
     width: 98.99%;
@@ -89,7 +90,7 @@ li:hover .helpdropdown {
 .gray {
     color: darkgray;
 }
-.red, .green, .gray{
+.bold {
     font-weight: bold;
 }
 .analyse {
@@ -263,10 +264,31 @@ span p {
     padding-top: 8px;
 }
 .edit .window {
-    width: 270px;
+    width: 300px;
+    margin: 0 auto;
 }
-.edit .label {
-    margin-top: 10px;
+.edit .window .half {
+    width: 265px;
+}
+.edit .window .patbijdrage {
+    padding-top: 15px;
+}
+.edit input[type=text].half {
+    width: 50px;
+    float: right;
+}
+.edit input[type=text] {
+    border: 1px solid #c4c4c4;
+    height: 22px;
+    width: 288px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.window form div {
+    padding-top: 7px;
+}
+.window form div.clear {
+    padding: 0px;
 }
 input[type=text], input[type=password] {
     border: 1px solid #c4c4c4;
@@ -384,8 +406,16 @@ main.login {
     background-color: #caddfc;
     cursor: pointer;
 }
-.login .rightbutton, .edit .rightbutton {
+.login .rightbutton {
     float: right;
+}
+.edit a.rightbutton, .edit button {
+    margin-right: 10px;
+    float: left;
+    width: 141px;
+}
+.edit a.rightbutton {
+    margin-right: 0px;
 }
 .login input.rememberme {
     margin-top: 10px;
@@ -403,4 +433,79 @@ main.login {
 }
 .login h2 + div p {
     margin-top: 0px;
+}
+
+/*KOSTENBATEN*/
+.baten, .kosten {
+    box-shadow: 2px 2px 2px #e2e2e2;
+    width: 540px;
+    float: left;
+}
+.baten h2, .kosten h2 {
+    background-color: #f5f5f5;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+}
+.baten h2 {
+    border-top: 1px solid #c4c4c4;
+    border-left: 1px solid #c4c4c4;
+    border-bottom: 1px solid #c4c4c4;
+}
+.kosten h2 {
+    border: 1px solid #c4c4c4;
+    text-align: right;
+}
+.info, .bedrag, h2.top, .subtotaal {
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.info {
+    color: #000000;
+    text-decoration: none;
+    width: calc(416px - 32px);
+    float: left;
+    height: 34px;
+    border-left: 1px solid #c4c4c4;
+    border-right: 1px solid #c4c4c4;
+    border-bottom: 1px solid #c4c4c4;
+}
+a.info:hover {
+    background-color: #caddfc;
+}
+.kosten .info {
+    width: calc(416px - 32px);
+}
+.bedrag {
+    background-color: #f5f5f5;
+    width: calc(124px - 30px);
+    float: left;
+    height: 17px;
+    padding-top: 13.5px;
+    padding-bottom: 13.5px;
+    border-bottom: 1px solid #c4c4c4;
+}
+.kosten .bedrag {
+    width: calc(124px - 31px);
+    border-left: 1px solid #c4c4c4;
+}
+.baten .bedrag, .kosten .info {
+    text-align: right;
+}
+.subtotaal {
+    width: calc(248px - 30px);
+    box-shadow: 2px 2px 2px #e2e2e2;
+    border-left: 1px solid #c4c4c4;
+    border-right: 1px solid #c4c4c4;
+    border-bottom: 1px solid #c4c4c4;
+    background-color: #f5f5f5;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.subtotaal p {
+    font-size: 18px;
 }
