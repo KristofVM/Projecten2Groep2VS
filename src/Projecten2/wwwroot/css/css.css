@@ -293,7 +293,7 @@ span p {
 input[type=text], input[type=password] {
     border: 1px solid #c4c4c4;
     height: 22px;
-    width: 258px;
+    width: 308px;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -369,7 +369,7 @@ main.login {
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 270px;
+    width: 320px;
     padding: 15px;
     padding-top: 8px;
     box-shadow: 2px 2px 2px #5f5f5f;
@@ -377,9 +377,10 @@ main.login {
 .login .welkom {
     box-shadow: 2px 2px 2px #5f5f5f;
     background-color: #ffffff;
-    width: 600px;
+    width: 550px;
+    height: 224px;
     top: 50px;
-    left: 400px;
+    left: 450px;
     padding: 15px;
     padding-top: 5px;
     position: absolute;
@@ -390,14 +391,14 @@ main.login {
 }
 .login label {
     margin-top: 7px;
-    width: 270px;
+    width: 320px;
 }
 .login button, .login a.button, .edit button, .edit a.button {
     margin-top: 10px;
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
     padding: 3px;
-    width: 130px;
+    width: 150px;
     text-decoration: none;
     color: #000000;
     text-align: center;
