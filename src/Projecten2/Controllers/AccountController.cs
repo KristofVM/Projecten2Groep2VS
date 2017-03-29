@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +8,11 @@ using Projecten2.Models;
 using Projecten2.Models.AccountViewModels;
 using Projecten2.Models.Domain;
 using Projecten2.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Projecten2.Controllers
 {
@@ -106,24 +106,41 @@ namespace Projecten2.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+           
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser {
+                    Naam = model.Naam,
+                    Voornaam = model.Voornaam,
+                    Email = model.Email,
+                    Organisatie = model.Organisatie,
+                    Straat = model.Straat,
+                    Nr = model.Nr,
+                    Bus = model.Bus,
+                    Postcode = model.Postcode,
+                    Plaats = model.Plaats};
+                var result =  _userManager.CreateAsync(user).Result;
                 if (result.Succeeded)
                 {
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-                    // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                    //For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                    //Send an email with this link
+                   var code = _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                    string tekst = "Beste " + model.Voornaam + ", \n" +
+                        "Leuk dat je gebruik wil maken van onze tool om werkgevers meer inzicht te geven in de kosten en baten bij het tewerkstellen van personen met een grote afstand tot de arbeidsmarkt.\n" +
+                        "Je kan nu inloggen op(url online tool) met deze gebruikersnaam en paswoord:" +
+                        "Gebruikersnaam: (gebruikersnaam)\n"+
+                        "Paswoord: (paswoord)\n"+
+                        "Na het inloggen kan je je paswoord veranderen.\n"+
+                        "Veel succes met het gebruik van onze tool!\n"+
+                        "Wil je meer weten over wie we zijn en wat we doen, surf naar www.hetmomentvooriedereen.be.\n"+
+                        "Hartelijke groet\n" +
+                        "Het team van KAIROS\n";
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                   
+                   
                 }
                 AddErrors(result);
             }
@@ -277,11 +294,11 @@ namespace Projecten2.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                 // Send an email with this link
-                //var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                //return View("ForgotPasswordConfirmation");
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                return View("ForgotPasswordConfirmation");
             }
 
             // If we got this far, something failed, redisplay form
@@ -468,6 +485,8 @@ namespace Projecten2.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
+
+
 
         #endregion
     }

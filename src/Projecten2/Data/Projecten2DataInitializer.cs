@@ -27,7 +27,7 @@ namespace Projecten2.Data
                 await InitializeUsers();
 
                 ICollection<Analyse> analysen = new List<Analyse>();
-                
+
                 Analyse analyse1 = new Analyse();
                 analyse1.Afdeling = "kuisdienst";
                 analyse1.Bedrijf = "google";
@@ -109,8 +109,8 @@ namespace Projecten2.Data
                 string bus = "";
                 int postcode = 9308;
                 string plaats = "Hofstade";
-                ApplicationUser user2 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats, Analyses = analysen};
-                
+                ApplicationUser user2 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats, Analyses = analysen };
+
                 await _userManager.CreateAsync(user2, "P@ssword1");
 
                 _dbContext.SaveChanges();
@@ -127,7 +127,7 @@ namespace Projecten2.Data
             string bus = "12";
             int postcode = 9308;
             string plaats = "Gijzegem";
-            ApplicationUser user0 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress,  Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats};
+            ApplicationUser user0 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats };
             await _userManager.CreateAsync(user0, "P@ssword1");
 
             eMailAddress = "jef_braem@hotmail.com";
