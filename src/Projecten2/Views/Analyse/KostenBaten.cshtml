@@ -1,10 +1,11 @@
-﻿@{
+﻿@model Projecten2.Models.Domain.Analyse
+@{
     ViewData["Title"] = "KostenBaten";
 }
 
 <main>
     <div class="contain">
-        <h1>Analyse-naam</h1>
+        <h1>@Model.Naam</h1>
         <div class="baten">
             <h2 class="top">Baten</h2>
             <div class="onderdeel">
@@ -12,8 +13,8 @@
                 <p class="bedrag green">€ <span>100 000</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">tegemoetkoming in de kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>
-                <p class="bedrag green">€ <span>100 000</span></p>
+                <a asp-controller="Analyse" asp-action="BVraag2" asp-route-id="@Model.AnalyseId" class="info">tegemoetkoming in de kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>
+                <p class="bedrag green">€ <span>@Model.GetBVraag2()</span></p>
             </div>
             <div class="onderdeel">
                 <a href="#" class="info">besparing reguliere medew. op hetzelfde niveau</a>

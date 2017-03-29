@@ -393,7 +393,7 @@ main.login {
     margin-top: 7px;
     width: 320px;
 }
-.login button, .login a.button, .edit button, .edit a.button {
+.login button, .login a.button, .edit button, .edit a.button, .vragen .button {
     margin-top: 10px;
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
@@ -403,7 +403,7 @@ main.login {
     color: #000000;
     text-align: center;
 }
-.login button:hover, .login a.button:hover, .edit button:hover, .edit a.button:hover {
+.login button:hover, .login a.button:hover, .edit button:hover, .edit a.button:hover, .vragen .button:hover {
     background-color: #caddfc;
     cursor: pointer;
 }
@@ -509,4 +509,82 @@ a.info:hover {
 }
 .subtotaal p {
     font-size: 18px;
+}
+
+/* KOST EN BAAT VRAGEN */
+.vragen label, .vragen input, .vragen select {
+    font-size: 13px;
+}
+.vragen .window {
+    padding-right: 0px;
+}
+.vragen .vak {
+    float: left;
+    width: 220px;
+    margin-right: 8px;
+}
+.vragen .vak input {
+    width: 208px;
+}
+.vragen button {
+    margin-top: 24px;
+    padding-top: 4px;
+    padding-bottom: 3px;
+    font-size: 13px;
+    width: 100px;
+}
+.vragen .vraag1 button {
+    margin-top: 7px;
+    width: 130px;
+}
+.vragen .alert {
+    width: 220px;
+    margin-right: 8px;
+    float: left;
+}
+.vragen .vraag1 .alert {
+    float: none;
+}
+.doelgroep select, .doelgroep.vak {
+    width: 185px;
+}
+.ondersteun select, .ondersteun.vak {
+    width: 65px;
+}
+.functie input {
+    width: 118px;
+}
+.functie.vak {
+    width: 130px;
+}
+.uren input {
+    width: 98px;
+}
+.uren.vak {
+    width: 110px;
+}
+.maandloon input {
+    width: 168px;
+}
+.maandloon.vak {
+    width: 180px;
+}
+.maandenibo input {
+    width: 208px;
+}
+.maandenibo.vak {
+    width: 220px;
+}
+.totaleibo input {
+    width: 130px;
+}
+.totaleibo.vak {
+    width: 142px;
+    margin-right: 0;
+}
+.vragen .terug {
+    margin-top: 0;
+    width: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
 }

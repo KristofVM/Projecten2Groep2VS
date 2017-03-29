@@ -41,7 +41,7 @@ namespace Projecten2.Data.Repositories
 
         public Analyse GetById(int analyseId)
         {
-            return _analyses.FirstOrDefault(a => a.AnalyseId == analyseId);
+            return _analyses.Include(a => a.Baten).FirstOrDefault(a => a.AnalyseId == analyseId);
         }
 
         public void SaveChanges()

@@ -44,6 +44,16 @@ namespace Projecten2.Models.Domain
             }
         }
 
+        public string GetBVraag2()
+        {
+            if (Baten.JaarBedSubsWerkOmg > 0)
+            {
+                return Baten.JaarBedSubsWerkOmg.ToString();
+            } else {
+                return "-";
+            }
+        }
+
         public Analyse()
         {
             Baten = new Baten();

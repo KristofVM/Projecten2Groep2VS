@@ -82,7 +82,7 @@ namespace Projecten2.Controllers
                 }
                 else
                 {
-                    TempData["loginalert"] = "This login is invalid.";
+                    TempData["loginalert"] = "De gegevens zijn niet correct.";
                     return View(model);
                 }
             }
