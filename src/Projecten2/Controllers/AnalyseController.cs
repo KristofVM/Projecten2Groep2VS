@@ -120,7 +120,7 @@ namespace Projecten2.Controllers
                 {
                     TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
                 }
-                return RedirectToAction(nameof(Index), "Home");
+                return RedirectToAction("KostenBaten", new { id = viewModel.AnalyseId });
             }
             else
             {

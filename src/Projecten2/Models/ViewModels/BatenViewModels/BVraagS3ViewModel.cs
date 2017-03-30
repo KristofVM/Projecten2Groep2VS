@@ -9,6 +9,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
 {
     public class BVraagS3ViewModel
     {
+        public int Model { get; } = 3;
         [Required]
         public int BatenId { get; set; }
 

@@ -12,7 +12,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
         [Required]
         public int AnalyseId { get; set; }
 
-        public string Vraag { get; } = "Welk bedrag krijgt u aan subsidie voor eventuele aanpassingen aan de werkomgeving?";
+        public string Vraag { get; } = "Welk bedrag krijgt u aan subsidies voor eventuele aanpassingen aan de werkomgeving?";
 
         [Required(ErrorMessage = "Bedrag veld is verplicht")]
         [Display(Name = "Bedrag", Prompt = "Bedrag")]
