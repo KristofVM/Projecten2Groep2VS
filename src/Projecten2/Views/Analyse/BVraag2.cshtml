@@ -1,10 +1,10 @@
 ﻿@using System.Threading.Tasks
-@model Projecten2.Models.ViewModels.BatenViewModels.JaarBedSubsWerkOmgViewModel
+@model Projecten2.Models.ViewModels.BatenViewModels.BVraagDoubleViewModel
 
 <main class="vragen">
     <div class="contain">
         <h1>@Model.Vraag</h1>
-        <a asp-controller="Analyse" asp-action="kostenbaten" asp-route-id="@Model.AnalyseId" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
+        <a asp-controller="Analyse" asp-action="kostenbaten" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="@Model.Vraag" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
         <div class="window">
             <form asp-controller="Analyse" asp-action="BVraag2" method="post">
                 <input type="hidden" asp-for="AnalyseId"/>

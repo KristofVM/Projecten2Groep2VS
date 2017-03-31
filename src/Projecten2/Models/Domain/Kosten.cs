@@ -16,5 +16,38 @@ namespace Projecten2.Models.Domain
         public ICollection<KVraag5> Kvragen5 { get; set; }
         public ICollection<KVraag6> Kvragen6 { get; set; }
         public ICollection<KVraag7> Kvragen7 { get; set; }
+        public string GetVraag(int vraag)
+        {
+            switch (vraag)
+            {
+                case 1:
+                    return ""
+                    ; break;
+                case 10:
+                    return ""
+                ; break;
+                case 2:
+                    return ""
+                ; break;
+                case 3:
+                    return ""
+                ; break;
+                case 4:
+                    return ""
+                ; break;
+                case 5:
+                    return ""
+                ; break;
+                case 6:
+                    return ""
+                ; break;
+                case 7:
+                    return ""
+                ; break;
+                default:
+                    return ""
+                ; break;
+            }
+        }
     }
 }

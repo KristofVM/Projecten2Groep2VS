@@ -14,18 +14,21 @@ namespace Projecten2.Controllers
     public class AnalyseController : Controller
     {
         private readonly IBatenRepository _batenRepository;
+        private readonly IKostenRepository _kostenRepository;
         private readonly IAnalyseRepository _analyseRepository;
         private readonly IApplicationUserRepository _userRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public AnalyseController(
             IBatenRepository batenRepository,
+            IKostenRepository kostenRepository,
             IAnalyseRepository analyseRepository,
             IApplicationUserRepository userRepository,
             UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _batenRepository = batenRepository;
+            _kostenRepository = kostenRepository;
             _analyseRepository = analyseRepository;
             _userRepository = userRepository;
         }
@@ -97,15 +100,50 @@ namespace Projecten2.Controllers
             return View(analyse);
         }
 
+        public IActionResult BVraag(int AnalyseId, int VraagId)
+        {
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
+            switch (VraagId)
+            {
+                case 2: return RedirectToAction(); break;
+                case 3: return RedirectToAction() ;break;
+                case 4: return RedirectToAction(); break;
+                case 5: return RedirectToAction(); break;
+                case 6: return RedirectToAction(); break;
+                case 7: return RedirectToAction(); break;
+                case 8: return RedirectToAction(); break;
+                case 9: return RedirectToAction(); break;
+                case 101: return RedirectToAction(); break;
+                case 102: return RedirectToAction(); break;
+                case 11: return RedirectToAction(); break;
+            }
+        }
+        public IActionResult KVraag(int AnalyseId, int VraagId)
+        {
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            Kosten kosten = _kostenRepository.GetById(analyse.Kosten.KostenId);
+            switch (VraagId)
+            {
+                case 1: return RedirectToAction(); break;
+                case 11: return RedirectToAction(); break;
+                case 2: return RedirectToAction(); break;
+                case 3: return RedirectToAction(); break;
+                case 4: return RedirectToAction(); break;
+                case 5: return RedirectToAction(); break;
+                case 6: return RedirectToAction(); break;
+                case 7: return RedirectToAction(); break;
+            }
+        }
         public IActionResult BVraag2(int id)
         {
             Analyse analyse = _analyseRepository.GetById(id);
             Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
-            return View(new JaarBedSubsWerkOmgViewModel(baten));
+            return View(new BVraagDoubleViewModel(baten));
         }
 
         [HttpPost]
-        public IActionResult BVraag2(JaarBedSubsWerkOmgViewModel viewModel)
+        public IActionResult BVraag2(BVraagDoubleViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -137,7 +175,7 @@ namespace Projecten2.Controllers
             analyse.PatronaleBijdrage = editViewModel.PatronaleBijdrage;
             analyse.UrenVoltijdsWerkweek = editViewModel.UrenVoltijdsWerkweek;
         }
-        private void MapJaarBedSubsWerkOmgViewModelToBaten(JaarBedSubsWerkOmgViewModel viewModel, Baten baten)
+        private void MapJaarBedSubsWerkOmgViewModelToBaten(BVraagDoubleViewModel viewModel, Baten baten)
         {
             baten.JaarBedSubsWerkOmg = viewModel.Bedrag;
         }

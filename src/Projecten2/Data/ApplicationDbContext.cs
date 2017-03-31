@@ -13,6 +13,7 @@ namespace Projecten2.Data
         public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Analyse> Analyses { get; set; }
         public DbSet<Baten> Baten { get; set; }
+        public DbSet<Kosten> Kosten { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

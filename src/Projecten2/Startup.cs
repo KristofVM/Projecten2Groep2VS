@@ -54,6 +54,7 @@ namespace Projecten2 {
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddScoped<IAnalyseRepository, AnalyseRepository>();
             services.AddScoped<IBatenRepository, BatenRepository>();
+            services.AddScoped<IKostenRepository, KostenRepository>();
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<Projecten2DataInitializer>();
         }
