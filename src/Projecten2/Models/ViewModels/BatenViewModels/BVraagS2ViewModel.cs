@@ -11,17 +11,17 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
     {
         public int Vraag { get; }
         [Required]
-        public int BatenId { get; set; }
+        public int AnalyseId { get; set; }
 
         [Required(ErrorMessage = "Uren veld is verplicht")]
         [Display(Name = "Uren", Prompt = "getal")]
         [Range(1, Int32.MaxValue, ErrorMessage = "Geef een cijfer hoger dan 1 voor {0}")]
-        public int Uren { get; set; }
+        public int Vak1 { get; set; }
 
         [Required(ErrorMessage = "Bruto maandloon fulltime veld is verplicht")]
         [Display(Name = "Bruto maandloon fulltime", Prompt = "getal")]
         [Range(1, Double.MaxValue, ErrorMessage = "Geef een cijfer hoger dan 1 voor {0}")]
-        public double BrutoMaandloonFulltime { get; set; }
+        public double Vak2 { get; set; }
 
         public BVraagS2ViewModel()
         {
@@ -29,8 +29,8 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
 
         public BVraagS2ViewModel(Baten baten, int vraag) : this()
         {
-            BatenId = baten.BatenId;
-            Vraag = vraag
+            AnalyseId = baten.Analyse.AnalyseId;
+            Vraag = vraag;
         }
     }
 }

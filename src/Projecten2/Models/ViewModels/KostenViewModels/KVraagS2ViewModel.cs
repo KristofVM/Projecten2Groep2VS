@@ -9,8 +9,9 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 {
     public class KVraagS2ViewModel
     {
+        public int Vraag { get; }
         [Required]
-        public int KostenId { get; set; }
+        public int AnalyseId { get; set; }
 
         [Required(ErrorMessage = "Beschrijving veld is verplicht")]
         [Display(Name = "Beschrijving", Prompt = "Beschrijving")]
@@ -26,10 +27,10 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
         {
         }
 
-        public KVraagS2ViewModel(Kosten kosten) : this()
+        public KVraagS2ViewModel(Kosten kosten, int vraag) : this()
         {
-            KostenId = kosten.KostenId;
-
+            AnalyseId = kosten.Analyse.AnalyseId;
+            Vraag = vraag;
         }
     }
 }

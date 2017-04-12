@@ -11,17 +11,17 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
     {
         public int Vraag { get; }
         [Required]
-        public int BatenId { get; set; }
+        public int AnalyseId { get; set; }
 
         [Required(ErrorMessage = "Beschrijving veld is verplicht")]
         [Display(Name = "Beschrijving", Prompt = "Beschrijving")]
         [StringLength(50, ErrorMessage = "De {0} moet minstens {2} en maximuum {1} karakters lang zijn", MinimumLength = 3)]
-        public string Beschrijving { get; set; }
+        public string Vak1 { get; set; }
 
         [Required(ErrorMessage = "Bedrag veld is verplicht")]
         [Display(Name = "Bedrag", Prompt = "Bedrag")]
         [Range(1, Double.MaxValue, ErrorMessage = "Geef een cijfer hoger dan 1")]
-        public double Bedrag { get; set; }
+        public double Vak2 { get; set; }
 
         public BVraagS1ViewModel()
         {
@@ -29,7 +29,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
 
         public BVraagS1ViewModel(Baten baten, int vraag) : this()
         {
-            BatenId = baten.BatenId;
+            AnalyseId = baten.Analyse.AnalyseId;
             Vraag = vraag;
         }
     }

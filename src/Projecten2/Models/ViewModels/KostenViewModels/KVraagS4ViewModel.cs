@@ -9,8 +9,9 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 {
     public class KVraagS4ViewModel
     {
+        public int Vraag { get; }
         [Required]
-        public int KostenId { get; set; }
+        public int AnalyseId { get; set; }
 
         [Required(ErrorMessage = "Type veld is verplicht")]
         [Display(Name = "Type", Prompt = "Type")]
@@ -26,10 +27,10 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
         {
         }
 
-        public KVraagS4ViewModel(Kosten kosten) : this()
+        public KVraagS4ViewModel(Kosten kosten, int vraag) : this()
         {
-            KostenId = kosten.KostenId;
-
+            AnalyseId = kosten.Analyse.AnalyseId;
+            Vraag = vraag;
         }
     }
 }

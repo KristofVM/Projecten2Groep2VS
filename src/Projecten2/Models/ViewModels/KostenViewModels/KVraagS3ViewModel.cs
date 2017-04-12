@@ -9,8 +9,9 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 {
     public class KVraagS3ViewModel
     {
+        public int Vraag { get; }
         [Required]
-        public int KostenId { get; set; }
+        public int AnalyseId { get; set; }
 
         [Required(ErrorMessage = "Uren veld is verplicht")]
         [Display(Name = "Uren", Prompt = "Aantal")]
@@ -26,10 +27,10 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
         {
         }
 
-        public KVraagS3ViewModel(Kosten kosten) : this()
+        public KVraagS3ViewModel(Kosten kosten, int vraag) : this()
         {
-            KostenId = kosten.KostenId;
-
+            AnalyseId = kosten.Analyse.AnalyseId;
+            Vraag = vraag;
         }
     }
 }

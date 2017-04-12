@@ -9,8 +9,9 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 {
     public class KVraagS1ViewModel
     {
+        public int Vraag { get; }
         [Required]
-        public int KostenId { get; set; }
+        public int AnalyseId { get; set; }
 
         [Required(ErrorMessage = "Functie veld is verplicht")]
         [Display(Name = "Functie", Prompt = "Functie")]
@@ -50,10 +51,10 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
         {
         }
 
-        public KVraagS1ViewModel(Kosten kosten) : this()
+        public KVraagS1ViewModel(Kosten kosten, int vraag) : this()
         {
-            KostenId = kosten.KostenId;
-
+            AnalyseId = kosten.Analyse.AnalyseId;
+            Vraag = vraag;
         }
     }
 }
