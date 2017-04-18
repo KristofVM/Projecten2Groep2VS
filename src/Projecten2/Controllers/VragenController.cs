@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Projecten2.Models.Domain;
+using Projecten2.Models.ViewModels.BatenViewModels;
 using Projecten2.Models.ViewModels.KostenViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -70,5 +71,88 @@ namespace Projecten2.Controllers
         {
             return View();
         }
+
+        public IActionResult BVraagS1()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BVraagS1(BVraagS1ViewModel viewModel)
+        {
+            return View();
+        }
+
+        public IActionResult BVraagS2()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BVraagS2(BVraagS2ViewModel viewModel)
+        {
+            return View();
+        }
+
+        public IActionResult BVraagS3()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BVraagS3(BVraagS3ViewModel viewModel)
+        {
+            return View();
+        }
+
+        public IActionResult BVraagDouble()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BVraagDouble(BVraagDoubleViewModel viewModel)
+        {
+            return View();
+        }
+
+        public IActionResult BVraagInt()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BVraagInt(BVraagIntViewModel viewModel)
+        {
+            return View();
+        }
     }
 }
+
+// --- Voorbeeld voor een vraag ---
+
+//public IActionResult BVraag2(int id)
+//{
+//    Analyse analyse = _analyseRepository.GetById(id);
+//    Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
+//    return View(new BVraagDoubleViewModel(baten, 2));
+//}
+
+//[HttpPost]
+//public IActionResult BVraag2(BVraagDoubleViewModel viewModel)
+//{
+//    if (ModelState.IsValid)
+//    {
+//        Baten baten = null;
+//        try
+//        {
+//            baten = _batenRepository.GetByAnalyse(viewModel.AnalyseId);
+//            MapJaarBedSubsWerkOmgViewModelToBaten(viewModel, baten);
+//            _analyseRepository.SaveChanges();
+//        }
+//        catch
+//        {
+//            TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
+//        }
+//        return RedirectToAction("KostenBaten", new { id = viewModel.AnalyseId });
+//    }
+//    else
+//    {
+//        return View(viewModel);
+//    }
+//}

@@ -104,17 +104,17 @@ namespace Projecten2.Controllers
             Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
             switch (VraagId)
             {
-                case 2: return RedirectToAction(); break;
-                case 3: return RedirectToAction() ;break;
-                case 4: return RedirectToAction(); break;
-                case 5: return RedirectToAction(); break;
-                case 6: return RedirectToAction(); break;
-                case 7: return RedirectToAction(); break;
-                case 8: return RedirectToAction(); break;
-                case 9: return RedirectToAction(); break;
-                case 101: return RedirectToAction(); break;
-                case 102: return RedirectToAction(); break;
-                case 11: return RedirectToAction(); break;
+                case 2: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
+                case 3: return RedirectToAction("BVraagS2" , "Vragen", new { AnalyseId, VraagId }) ;break;
+                case 4: return RedirectToAction("BVraagS2", "Vragen", new { AnalyseId, VraagId }); break;
+                case 5: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId }); break;
+                case 6: return RedirectToAction("BVraagInt", "Vragen", new { AnalyseId }); break;
+                case 7: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
+                case 8: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
+                case 9: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId }); break;
+                case 101: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
+                case 102: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
+                case 11: return RedirectToAction("BVraagS3", "Vragen", new { AnalyseId }); break;
                 default: return NotFound();
             }
         }
@@ -124,45 +124,15 @@ namespace Projecten2.Controllers
             Kosten kosten = _kostenRepository.GetById(analyse.Kosten.KostenId);
             switch (VraagId)
             {
-                case 1: return RedirectToAction("KVraagS1", "Vragen"); break;
-                case 11: return RedirectToAction("KVraagS2", "Vragen"); break;
+                case 1: return RedirectToAction("KVraagS1", "Vragen", new { AnalyseId }); break;
+                case 11: return RedirectToAction("KVraagS2", "Vragen", new { AnalyseId }); break;
                 case 2: return RedirectToAction("KVraagS4", "Vragen", new {AnalyseId, VraagId}); break;
                 case 3: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
                 case 4: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
                 case 5: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
-                case 6: return RedirectToAction("KVraagS3", "Vragen"); break;
+                case 6: return RedirectToAction("KVraagS3", "Vragen", new { AnalyseId }); break;
                 case 7: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
                 default: return NotFound();
-            }
-        }
-        public IActionResult BVraag2(int id)
-        {
-            Analyse analyse = _analyseRepository.GetById(id);
-            Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
-            return View(new BVraagDoubleViewModel(baten, 2));
-        }
-
-        [HttpPost]
-        public IActionResult BVraag2(BVraagDoubleViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                Baten baten = null;
-                try
-                {
-                    baten = _batenRepository.GetByAnalyse(viewModel.AnalyseId);
-                    MapJaarBedSubsWerkOmgViewModelToBaten(viewModel, baten);
-                    _analyseRepository.SaveChanges();
-                }
-                catch
-                {
-                    TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
-                }
-                return RedirectToAction("KostenBaten", new { id = viewModel.AnalyseId });
-            }
-            else
-            {
-                return View(viewModel);
             }
         }
 
