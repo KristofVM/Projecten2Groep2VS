@@ -16,7 +16,6 @@ namespace Projecten2.Controllers
         private readonly IBatenRepository _batenRepository;
         private readonly IKostenRepository _kostenRepository;
         private readonly IAnalyseRepository _analyseRepository;
-        private readonly IApplicationUserRepository _userRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public AnalyseController(
@@ -30,7 +29,6 @@ namespace Projecten2.Controllers
             _batenRepository = batenRepository;
             _kostenRepository = kostenRepository;
             _analyseRepository = analyseRepository;
-            _userRepository = userRepository;
         }
 
         public IActionResult Edit(int id)
@@ -117,6 +115,7 @@ namespace Projecten2.Controllers
                 case 101: return RedirectToAction(); break;
                 case 102: return RedirectToAction(); break;
                 case 11: return RedirectToAction(); break;
+                default: return NotFound();
             }
         }
         public IActionResult KVraag(int AnalyseId, int VraagId)
@@ -125,21 +124,22 @@ namespace Projecten2.Controllers
             Kosten kosten = _kostenRepository.GetById(analyse.Kosten.KostenId);
             switch (VraagId)
             {
-                case 1: return RedirectToAction(); break;
-                case 11: return RedirectToAction(); break;
-                case 2: return RedirectToAction(); break;
-                case 3: return RedirectToAction(); break;
-                case 4: return RedirectToAction(); break;
-                case 5: return RedirectToAction(); break;
-                case 6: return RedirectToAction(); break;
-                case 7: return RedirectToAction(); break;
+                case 1: return RedirectToAction("KVraagS1", "Vragen"); break;
+                case 11: return RedirectToAction("KVraagS2", "Vragen"); break;
+                case 2: return RedirectToAction("KVraagS4", "Vragen", new {AnalyseId, VraagId}); break;
+                case 3: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
+                case 4: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
+                case 5: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
+                case 6: return RedirectToAction("KVraagS3", "Vragen"); break;
+                case 7: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
+                default: return NotFound();
             }
         }
         public IActionResult BVraag2(int id)
         {
             Analyse analyse = _analyseRepository.GetById(id);
             Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
-            return View(new BVraagDoubleViewModel(baten));
+            return View(new BVraagDoubleViewModel(baten, 2));
         }
 
         [HttpPost]
