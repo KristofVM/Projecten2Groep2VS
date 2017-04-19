@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Projecten2.Models.Domain;
+using Projecten2.Models.Domain.KostenVragen;
 using Projecten2.Models.ViewModels.BatenViewModels;
 using Projecten2.Models.ViewModels.KostenViewModels;
 
@@ -28,31 +29,50 @@ namespace Projecten2.Controllers
 
         public IActionResult KVraagS1(int AnalyseId)
         {
-            //    Analyse analyse = _analyseRepository.GetById(id);
-            //    Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
-            //    return View(new BVraagDoubleViewModel(baten, 2));
             Analyse analyse = _analyseRepository.GetById(AnalyseId);
             return View(new KVraagS1ViewModel(analyse.Kosten));
         }
         [HttpPost]
         public IActionResult KVraagS1(KVraagS1ViewModel viewModel)
         {
-            return View();
+
+            //    if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                Kosten kosten = null;
+                KVraag1_0 vraag = null;
+                try
+                {
+                    kosten = _analyseRepository.GetById(viewModel.AnalyseId).Kosten;
+                    MapKVraag1_0(viewModel, vraag);
+                    kosten.Kvragen01.Add(vraag);
+                }
+                catch
+                {
+                    TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
+                }
+                return RedirectToAction("KostenBaten", "Analyse", new {id = viewModel.AnalyseId});
+            }
+            else
+            {
+                return View(viewModel);
+            }
         }
 
-        public IActionResult KVraagS2()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult KVraagS2(KVraagS2ViewModel viewModel)
-        {
-            return View();
-        }
+        //public IActionResult KVraagS2()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public IActionResult KVraagS2(KVraagS2ViewModel viewModel)
+        //{
+        //    return View();
+        //}
 
-        public IActionResult KVraagS3()
+        public IActionResult KVraagS3(int AnalyseId)
         {
-            return View();
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            return View(new KVraagS3ViewModel(analyse.Kosten));
         }
         [HttpPost]
         public IActionResult KVraagS3(KVraagS3ViewModel viewModel)
@@ -60,14 +80,42 @@ namespace Projecten2.Controllers
             return View();
         }
 
-        public IActionResult KVraagS4()
+        public IActionResult KVraagS4(int AnalyseId, int VraagId)
         {
-            return View();
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            return View(new KVraagS4ViewModel(analyse.Kosten, VraagId));
         }
         [HttpPost]
         public IActionResult KVraagS4(KVraagS4ViewModel viewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Vraag == 2)
+                {
+                    return View(viewModel);
+                }
+                else if (viewModel.Vraag == 3)
+                {
+                    return View(viewModel);
+                }
+                else if (viewModel.Vraag == 4)
+                {
+                    return View(viewModel);
+                }
+                else if (viewModel.Vraag == 5)
+                {
+                    return View(viewModel);
+                }
+                else if (viewModel.Vraag == 7)
+                {
+                    return View(viewModel);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return View(viewModel);
         }
 
         public IActionResult BVraagS1()
@@ -128,6 +176,18 @@ namespace Projecten2.Controllers
         public IActionResult BVraag10(BVraag10ViewModel viewModel)
         {
             return View();
+        }
+
+        private void MapKVraag1_0(KVraagS1ViewModel viewModel, KVraag1_0 vraag)
+        {
+            vraag.AantalMaandenIBO = viewModel.AantalMaandenIBO;
+            vraag.AantalUrenPerWeek = viewModel.AantalUrenPerWeek;
+            vraag.BrutoMaandloonFulltime = viewModel.BrutoMaandloonFulltime;
+            vraag.Doelgroep = viewModel.Doelgroep;
+            vraag.Functie = viewModel.Functie;
+            vraag.TotaleProductiviteitsPremie = viewModel.TotaleProductiviteitsPremie;
+            vraag.VlaamseOndPremie = viewModel.VlaamseOndPremie;
+
         }
     }
 }
