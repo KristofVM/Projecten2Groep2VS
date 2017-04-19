@@ -126,7 +126,8 @@ namespace Projecten2.Controllers
             Kosten kosten = _kostenRepository.GetById(analyse.Kosten.KostenId);
             switch (VraagId)
             {
-                case 1: return RedirectToAction("KVraagS1", "Vragen", new { AnalyseId }); break;
+                //case 1: return RedirectToAction("KVraagS1", "Vragen", new { AnalyseId }); break;
+                case 1: return RedirectToAction("KVraagS1Overzicht", "Overzichten", new { AnalyseId }); break;
                 //case 11: return RedirectToAction("KVraagS2", "Vragen", new { AnalyseId }); break;
                 case 2: return RedirectToAction("KVraagS4", "Vragen", new {AnalyseId, VraagId}); break;
                 case 3: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;

@@ -16,5 +16,27 @@ namespace Projecten2.Models.Domain.KostenVragen
         public int VlaamseOndPremie { get; set; }
         public int AantalMaandenIBO { get; set; }
         public double TotaleProductiviteitsPremie { get; set; }
+
+        public KVraag1_0()
+        {
+            Functie = "";
+            AantalUrenPerWeek = 0;
+            BrutoMaandloonFulltime = 0;
+            Doelgroep = 0;
+            VlaamseOndPremie = 0;
+            AantalMaandenIBO = 0;
+            TotaleProductiviteitsPremie = 0;
+        }
+        public KVraag1_0(Kosten kosten)
+        {
+            Kosten = kosten;
+            Functie = "";
+            AantalUrenPerWeek = 0;
+            BrutoMaandloonFulltime = 0;
+            Doelgroep = 0;
+            VlaamseOndPremie = 0;
+            AantalMaandenIBO = 0;
+            TotaleProductiviteitsPremie = 0;
+        }
     }
 }

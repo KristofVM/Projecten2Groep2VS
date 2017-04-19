@@ -3,7 +3,7 @@
 
 <main class="vragen">
     <div class="contain">
-        <h1>@Model.Vraag</h1>
+        <h1>@Model.VraagTekst</h1>
         <a asp-controller="Analyse" asp-action="kostenbaten" asp-route-id="@Model.AnalyseId" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
         <div class="window vraag1">
             <form asp-controller="Vragen" asp-action="KVraagS1" method="post">
@@ -30,7 +30,8 @@
                     </select>
                 </div>
                 <div class="ondersteun vak">
-                    <label asp-for="VlaamseOndPremie"></label>
+                    @*<label asp-for="VlaamseOndPremie"></label>*@
+                    <label >Label</label>
                     <select asp-for="VlaamseOndPremie">
                         <option value="40">40 &#37;</option>
                         <option value="30">30 &#37;</option>

@@ -19,7 +19,7 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
         public string Functie { get; set; }
 
         [Required(ErrorMessage = "Bedrag veld is verplicht")]
-        [Display(Name = "Aantal uren per week", Prompt = "Aantal")]
+        [Display(Name = "Wekelijkse uren", Prompt = "Aantal")]
         [Range(1, Int32.MaxValue, ErrorMessage = "Geef een cijfer hoger dan 1 voor {0}")]
         public int AantalUrenPerWeek { get; set; }
 

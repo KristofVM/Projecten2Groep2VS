@@ -12,6 +12,11 @@ namespace Projecten2.Models.Domain.KostenVragen
         public int Uren { get; set; }
         public double BrutoMaandloonBegeleider { get; set; }
 
+        public KVraag6()
+        {
+            Uren = 0;
+            BrutoMaandloonBegeleider = 0;
+        }
         public KVraag6(Kosten kosten)
         {
             Kosten = kosten;

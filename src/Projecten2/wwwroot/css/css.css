@@ -545,42 +545,49 @@ a.info:hover {
 .vragen .vraag1 .alert {
     float: none;
 }
+.doelgroep select, .ondersteun select {
+    height: 24px;
+    border: 1px solid #c4c4c4;
+}
 .doelgroep select, .doelgroep.vak {
-    width: 185px;
+    width: 155px;
 }
 .ondersteun select, .ondersteun.vak {
-    width: 65px;
+    width: 95px;
 }
-.functie input {
+.functie input[type=text] {
     width: 118px;
 }
 .functie.vak {
     width: 130px;
 }
-.uren input {
+.uren input[type=text] {
     width: 98px;
 }
 .uren.vak {
     width: 110px;
 }
-.maandloon input {
+.maandloon input[type=text] {
     width: 168px;
 }
 .maandloon.vak {
     width: 180px;
 }
-.maandenibo input {
-    width: 208px;
-}
-.maandenibo.vak {
-    width: 220px;
-}
-.totaleibo input {
+.maandenibo input[type=text] {
     width: 130px;
 }
-.totaleibo.vak {
+.maandenibo.vak {
     width: 142px;
+}
+.totaleibo input[type=text] {
+    width: 208px;
+}
+.totaleibo.vak {
+    width: 220px;
     margin-right: 0;
+}
+.vak label {
+    height: 88px;
 }
 .vragen .terug {
     margin-top: 0;

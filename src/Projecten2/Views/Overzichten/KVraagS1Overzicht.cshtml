@@ -1,0 +1,30 @@
+﻿@model Projecten2.Models.Domain.Analyse
+
+<a asp-controller="Vragen" asp-action="KVraagS1" asp-route-AnalyseId="@Model.AnalyseId" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
+<table style="width:100%">
+    <tr>
+        <th>Aantal Maanden IBO</th>
+        <th>Aantal uren per week</th>
+        <th>Bruto maandloon fulltime</th>
+        <th>Doelgroep</th>
+        <th>Functie</th>
+        <th>Vlaamse ond. premie</th>
+        <th>Totale productiviteits premie</th>
+    </tr>
+    @if (Model.Kosten.Kvragen01.Count == 0)
+    {
+        <p>Er zijn geen &lt;KVraag1_0&gt;</p>
+    }
+    @foreach (var item in Model.Kosten.Kvragen01)
+    {
+        <tr>
+            <th>@item.AantalMaandenIBO</th>
+            <th>@item.AantalUrenPerWeek</th>
+            <th>@item.BrutoMaandloonFulltime</th>
+            <th>@item.Doelgroep</th>
+            <th>@item.Functie</th>
+            <th>@item.VlaamseOndPremie</th>
+            <th>@item.TotaleProductiviteitsPremie</th>
+        </tr>
+    }
+</table>

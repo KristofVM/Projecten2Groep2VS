@@ -12,6 +12,11 @@ namespace Projecten2.Models.Domain.BatenVragen
         public string Beschrijving { get; set; }
         public double JaarBedrag { get; set; }
 
+        public BVraag9()
+        {
+            Beschrijving = "";
+            JaarBedrag = 0;
+        }
         public BVraag9(Baten baten)
         {
             Baten = baten;

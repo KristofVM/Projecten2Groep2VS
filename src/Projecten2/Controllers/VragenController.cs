@@ -14,21 +14,15 @@ namespace Projecten2.Controllers
 {
     public class VragenController : Controller
     {
-        private readonly IBatenRepository _batenRepository;
-        private readonly IKostenRepository _kostenRepository;
         private readonly IAnalyseRepository _analyseRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public VragenController(
-            IBatenRepository batenRepository,
-            IKostenRepository kostenRepository,
             IAnalyseRepository analyseRepository,
             IApplicationUserRepository userRepository,
             UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
-            _batenRepository = batenRepository;
-            _kostenRepository = kostenRepository;
             _analyseRepository = analyseRepository;
         }
 
