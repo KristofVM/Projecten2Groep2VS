@@ -4,24 +4,23 @@
 <main class="vragen">
     <div class="contain">
         <h1>@Model.VraagTekst</h1>
-        <a asp-controller="Analyse" asp-action="kostenbaten" asp-route-id="@Model.AnalyseId" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
         <div class="window vraag1">
             <form asp-controller="Vragen" asp-action="KVraagS1" method="post">
                 <input type="hidden" asp-for="AnalyseId" />
                 <div class="functie vak">
-                    <label asp-for="Functie"></label>
+                    <br /><label asp-for="Functie"></label>
                     <input asp-for="Functie" type="text" />
                 </div>
                 <div class="uren vak">
-                    <label asp-for="AantalUrenPerWeek"></label>
+                    <br /><label asp-for="AantalUrenPerWeek"></label>
                     <input asp-for="AantalUrenPerWeek" type="text" />
                 </div>
                 <div class="maandloon vak">
-                    <label asp-for="BrutoMaandloonFulltime"></label>
+                    <br /><label asp-for="BrutoMaandloonFulltime"></label>
                     <input asp-for="BrutoMaandloonFulltime" type="text" />
                 </div>
                 <div class="doelgroep vak">
-                    <label asp-for="Doelgroep"></label>
+                    <br/><label asp-for="Doelgroep"></label>
                     <select asp-for="Doelgroep">
                         <option value="1550">&lt; 25 laaggeschoold</option>
                         <option value="1000">&lt; 25 middengeschoold</option>
@@ -30,8 +29,7 @@
                     </select>
                 </div>
                 <div class="ondersteun vak">
-                    @*<label asp-for="VlaamseOndPremie"></label>*@
-                    <label >Label</label>
+                    <label asp-for="VlaamseOndPremie"></label>
                     <select asp-for="VlaamseOndPremie">
                         <option value="40">40 &#37;</option>
                         <option value="30">30 &#37;</option>
@@ -40,15 +38,16 @@
                     </select>
                 </div>
                 <div class="maandenibo vak">
-                    <label asp-for="AantalMaandenIBO"></label>
+                    <br /><label asp-for="AantalMaandenIBO"></label>
                     <input asp-for="AantalMaandenIBO" type="text" />
                 </div>
                 <div class="totaleibo vak">
-                    <label asp-for="TotaleProductiviteitsPremie"></label>
+                    <br /><label asp-for="TotaleProductiviteitsPremie"></label>
                     <input asp-for="TotaleProductiviteitsPremie" type="text" />
                 </div>
                 <div class="clear"></div>
                 <button type="submit">Voeg toe</button>
+                <a asp-controller="Overzichten" asp-action="KVraagS1Overzicht" asp-route-AnalyseId="@Model.AnalyseId" class="button">Annuleer</a>
                 <span asp-validation-for="Functie" class="alert"></span>
                 <span asp-validation-for="AantalUrenPerWeek" class="alert"></span>
                 <span asp-validation-for="BrutoMaandloonFulltime" class="alert"></span>

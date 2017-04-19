@@ -393,7 +393,7 @@ main.login {
     margin-top: 7px;
     width: 320px;
 }
-.login button, .login a.button, .edit button, .edit a.button, .vragen .button {
+.login button, .login a.button, .edit button, .edit a.button, .vragen .button, .overzicht .button {
     margin-top: 10px;
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
@@ -403,7 +403,11 @@ main.login {
     color: #000000;
     text-align: center;
 }
-.login button:hover, .login a.button:hover, .edit button:hover, .edit a.button:hover, .vragen .button:hover {
+.overzicht .button {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.login button:hover, .login a.button:hover, .edit button:hover, .edit a.button:hover, .vragen .button:hover, .overzicht .button:hover {
     background-color: #caddfc;
     cursor: pointer;
 }
@@ -535,7 +539,15 @@ a.info:hover {
 }
 .vragen .vraag1 button {
     margin-top: 7px;
-    width: 130px;
+}
+.vragen .vraag1 {
+    padding-top: 0px;
+    margin-top: -10px;
+}
+.vragen .button {
+    padding-left: 23.5px;
+    padding-right: 23.5px;
+    font-size: 13px;
 }
 .vragen .alert {
     width: 220px;
@@ -553,7 +565,7 @@ a.info:hover {
     width: 155px;
 }
 .ondersteun select, .ondersteun.vak {
-    width: 95px;
+    width: 155px;
 }
 .functie input[type=text] {
     width: 118px;
@@ -568,10 +580,10 @@ a.info:hover {
     width: 110px;
 }
 .maandloon input[type=text] {
-    width: 168px;
+    width: 138px;
 }
 .maandloon.vak {
-    width: 180px;
+    width: 150px;
 }
 .maandenibo input[type=text] {
     width: 130px;
@@ -580,14 +592,11 @@ a.info:hover {
     width: 142px;
 }
 .totaleibo input[type=text] {
-    width: 208px;
+    width: 178px;
 }
 .totaleibo.vak {
-    width: 220px;
+    width: 190px;
     margin-right: 0;
-}
-.vak label {
-    height: 88px;
 }
 .vragen .terug {
     margin-top: 0;

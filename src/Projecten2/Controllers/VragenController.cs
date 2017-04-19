@@ -46,6 +46,7 @@ namespace Projecten2.Controllers
                     kosten = _analyseRepository.GetById(viewModel.AnalyseId).Kosten;
                     MapKVraag1_0(viewModel, vraag);
                     kosten.Kvragen01.Add(vraag);
+                    _analyseRepository.SaveChanges();
                 }
                 catch
                 {
@@ -187,7 +188,6 @@ namespace Projecten2.Controllers
             vraag.Functie = viewModel.Functie;
             vraag.TotaleProductiviteitsPremie = viewModel.TotaleProductiviteitsPremie;
             vraag.VlaamseOndPremie = viewModel.VlaamseOndPremie;
-
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 
         [Required(ErrorMessage = "Bedrag veld is verplicht")]
         [Display(Name = "Vlaamse ondersteunings premie")]
-        [Range(1, Int32.MaxValue, ErrorMessage = "Geef een cijfer hoger dan 1 voor {0}")]
+        [Range(0, 100, ErrorMessage = "Duid een correct cijfer aan voor {0}")]
         public int VlaamseOndPremie { get; set; }
 
         [Required(ErrorMessage = "Bedrag veld is verplicht")]
