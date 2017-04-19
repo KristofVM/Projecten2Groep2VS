@@ -104,19 +104,19 @@ namespace Projecten2.Controllers
             Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
             switch (VraagId)
             {
-                case 2: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
-                case 3: return RedirectToAction("BVraagS2" , "Vragen", new { AnalyseId, VraagId }) ;break;
-                case 4: return RedirectToAction("BVraagS2", "Vragen", new { AnalyseId, VraagId }); break;
-                case 5: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId }); break;
-                //case 6: return RedirectToAction("BVraagInt", "Vragen", new { AnalyseId }); break;
-                case 6: return RedirectToAction("BVraag6", "Vragen", new { AnalyseId }); break;
-                case 7: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
-                case 8: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
-                case 9: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId }); break;
-                //case 101: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
-                //case 102: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
-                case 10: return RedirectToAction("BVraag10", "Vragen", new { AnalyseId, VraagId }); break;
-                case 11: return RedirectToAction("BVraagS3", "Vragen", new { AnalyseId }); break;
+                case 2: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId });
+                case 3: return RedirectToAction("BVraagS2", "Vragen", new {AnalyseId, VraagId});
+                case 4: return RedirectToAction("BVraagS2", "Vragen", new { AnalyseId, VraagId });
+                case 5: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId });
+                //case 6: return RedirectToAction("BVraagInt", "Vragen", new { AnalyseId });
+                case 6: return RedirectToAction("BVraag6", "Vragen", new { AnalyseId });
+                case 7: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId });
+                case 8: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId });
+                case 9: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId });
+                //case 101: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId });
+                //case 102: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId });
+                case 10: return RedirectToAction("BVraag10", "Vragen", new { AnalyseId, VraagId });
+                case 11: return RedirectToAction("BVraagS3", "Vragen", new { AnalyseId });
                 default: return NotFound();
             }
         }
@@ -126,14 +126,14 @@ namespace Projecten2.Controllers
             Kosten kosten = _kostenRepository.GetById(analyse.Kosten.KostenId);
             switch (VraagId)
             {
-                case 1: return RedirectToAction("KVraagS1", "Vragen", new { AnalyseId }); break;
-                //case 11: return RedirectToAction("KVraagS2", "Vragen", new { AnalyseId }); break;
-                case 2: return RedirectToAction("KVraagS4", "Vragen", new {AnalyseId, VraagId}); break;
-                case 3: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
-                case 4: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
-                case 5: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
-                case 6: return RedirectToAction("KVraagS3", "Vragen", new { AnalyseId }); break;
-                case 7: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
+                case 1: return RedirectToAction("KVraagS1", "Vragen", new { AnalyseId });
+                //case 11: return RedirectToAction("KVraagS2", "Vragen", new { AnalyseId });
+                case 2: return RedirectToAction("KVraagS4", "Vragen", new {AnalyseId, VraagId});
+                case 3: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId });
+                case 4: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId });
+                case 5: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId });
+                case 6: return RedirectToAction("KVraagS3", "Vragen", new { AnalyseId });
+                case 7: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId });
                 default: return NotFound();
             }
         }
@@ -146,10 +146,6 @@ namespace Projecten2.Controllers
             analyse.Afdeling = editViewModel.Afdeling;
             analyse.PatronaleBijdrage = editViewModel.PatronaleBijdrage;
             analyse.UrenVoltijdsWerkweek = editViewModel.UrenVoltijdsWerkweek;
-        }
-        private void MapJaarBedSubsWerkOmgViewModelToBaten(BVraagDoubleViewModel viewModel, Baten baten)
-        {
-            baten.JaarBedSubsWerkOmg = viewModel.Bedrag;
         }
     }
 }

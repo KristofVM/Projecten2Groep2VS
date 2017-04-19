@@ -30,7 +30,7 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 
         [Required(ErrorMessage = "Doelgroep veld is verplicht")]
         [Display(Name = "Doelgroep")]
-        public Doelgroep Doelgroep { get; set; }
+        public int Doelgroep { get; set; }
 
         [Required(ErrorMessage = "Bedrag veld is verplicht")]
         [Display(Name = "Vlaamse ondersteunings premie")]

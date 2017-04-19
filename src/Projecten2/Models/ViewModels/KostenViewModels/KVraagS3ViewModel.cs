@@ -9,7 +9,7 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 {
     public class KVraagS3ViewModel
     {
-        public int Vraag { get; }
+        public string VraagTekst { get; set; } = "--VRAAG--";
         [Required]
         public int AnalyseId { get; set; }
 
@@ -27,10 +27,9 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
         {
         }
 
-        public KVraagS3ViewModel(Kosten kosten, int vraag) : this()
+        public KVraagS3ViewModel(Kosten kosten) : this()
         {
             AnalyseId = kosten.Analyse.AnalyseId;
-            Vraag = vraag;
         }
     }
 }
