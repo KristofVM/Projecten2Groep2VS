@@ -10,6 +10,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
     public class BVraagDoubleViewModel
     {
         public int Vraag { get; set; }
+        public string VraagTekst { get; set; }
 
         [Required]
         public int AnalyseId { get; set; }

@@ -31,7 +31,7 @@ namespace Projecten2.Controllers
             return View(_analyseRepository.GetById(AnalyseId));
         }
         [HttpPost]
-        public IActionResult KVraagS1()
+        public IActionResult KVraagS1Overzicht()
         {
             return View();
         }

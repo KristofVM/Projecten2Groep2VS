@@ -39,11 +39,10 @@ namespace Projecten2.Controllers
             //    if (ModelState.IsValid)
             if (ModelState.IsValid)
             {
-                Kosten kosten = null;
-                KVraag1_0 vraag = null;
                 try
                 {
-                    kosten = _analyseRepository.GetById(viewModel.AnalyseId).Kosten;
+                    Kosten kosten = _analyseRepository.GetById(viewModel.AnalyseId).Kosten;
+                    KVraag1_0 vraag = new KVraag1_0(kosten);
                     MapKVraag1_0(viewModel, vraag);
                     kosten.Kvragen01.Add(vraag);
                     _analyseRepository.SaveChanges();
@@ -52,7 +51,7 @@ namespace Projecten2.Controllers
                 {
                     TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
                 }
-                return RedirectToAction("KostenBaten", "Analyse", new {id = viewModel.AnalyseId});
+                return RedirectToAction("KVraagS1Overzicht", "Overzichten", new { AnalyseId = viewModel.AnalyseId});
             }
             else
             {
@@ -149,14 +148,58 @@ namespace Projecten2.Controllers
             return View();
         }
 
-        public IActionResult BVraagDouble()
+        public IActionResult BVraagDouble(int AnalyseId, int VraagId)
         {
-            return View();
+            // vragen: 2, 7, 8
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            BVraagDoubleViewModel viewModel = new BVraagDoubleViewModel(analyse.Baten, VraagId);
+            switch (viewModel.Vraag)
+            {
+                case 2: viewModel.VraagTekst = "Welk bedrag krijgt u aan subsidie voor eventuele aanpassingen aan de werkomgeving?";
+                    viewModel.Bedrag = analyse.Baten.JaarBedSubsWerkOmg; break;
+                case 7: viewModel.VraagTekst = "Hoeveel extra productiviteit denkt u te kunnen maken door inzet van mensen met een grote afstand tot de arbeidsmarkt?";
+                    viewModel.Bedrag = analyse.Baten.JaarBedExtraProd; break;
+                case 8: viewModel.VraagTekst = "Hoeveel denkt u te kunnen besparen op overuren?";
+                    viewModel.Bedrag = analyse.Baten.JaarBedOveruren; break;
+            }
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult BVraagDouble(BVraagDoubleViewModel viewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
+                    if (viewModel.Vraag == 2)
+                    {
+                        baten.JaarBedSubsWerkOmg = viewModel.Bedrag;
+                    }
+                    else if (viewModel.Vraag == 7)
+                    {
+                        baten.JaarBedExtraProd = viewModel.Bedrag;
+                    }
+                    else if (viewModel.Vraag == 8)
+                    {
+                        baten.JaarBedOveruren = viewModel.Bedrag;
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                    _analyseRepository.SaveChanges();
+                }
+                catch
+                {
+                    TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
+                }
+                return RedirectToAction("KostenBaten", "Analyse", new { id = viewModel.AnalyseId });
+            }
+            else
+            {
+                return View(viewModel);
+            }
         }
 
         public IActionResult BVraag6()
