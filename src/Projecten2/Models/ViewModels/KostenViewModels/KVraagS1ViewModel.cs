@@ -9,7 +9,7 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 {
     public class KVraagS1ViewModel
     {
-        public int Vraag { get; }
+        public string VraagTekst { get; set; } = "Welke nieuwe functies zet u in?";
         [Required]
         public int AnalyseId { get; set; }
 
@@ -51,10 +51,9 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
         {
         }
 
-        public KVraagS1ViewModel(Kosten kosten, int vraag) : this()
+        public KVraagS1ViewModel(Kosten kosten) : this()
         {
             AnalyseId = kosten.Analyse.AnalyseId;
-            Vraag = vraag;
         }
     }
 }

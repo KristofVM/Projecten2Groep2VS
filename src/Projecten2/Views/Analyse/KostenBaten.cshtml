@@ -9,47 +9,47 @@
         <div class="baten">
             <h2 class="top">Baten</h2>
             <div class="onderdeel">
-                <a href="#" class="info">totale loonkostsubsidies (VOP, IBO en doelgroepvermindering)</a>
+                <a class="info">totale loonkostsubsidies (VOP, IBO en doelgroepvermindering)</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a asp-controller="Analyse" asp-action="BVraag2" asp-route-id="@Model.AnalyseId" class="info">tegemoetkoming in de kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="2" class="info">tegemoetkoming in de kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>
                 <p class="bedrag green">€ <span>@Model.GetBVraag2()</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">besparing reguliere medewerker op hetzelfde niveau</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="3" class="info">besparing reguliere medewerker op hetzelfde niveau</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">besparing reguliere medewerker op hoger niveau</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="4" class="info">besparing reguliere medewerker op hoger niveau</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">besparing (extra) uitzendkrachten</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="5" class="info">besparing (extra) uitzendkrachten</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">inperking omzetverlies</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="6" class="info">inperking omzetverlies</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">productiviteitswinst</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="7" class="info">productiviteitswinst</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">besparing op overuren</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="8" class="info">besparing op overuren</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">besparing op outsourcing</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="9" class="info">besparing op outsourcing</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">logistieke besparing</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="10" class="info">logistieke besparing</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
-                <a href="#" class="info">andere besparingen</a>
+                <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="11" class="info">andere besparingen</a>
                 <p class="bedrag green">€ <span>-</span></p>
             </div>
             <div class="onderdeel">
@@ -61,31 +61,31 @@
             <h2 class="top">Kosten</h2>
             <div class="onderdeel">
                 <p class="bedrag red">€ <span>-</span></p>
-                <a class="info">loonkosten medewerkers met grote afstand tot arbeidsmarkt</a>
+                <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="1" class="info">loonkosten medewerkers met grote afstand tot arbeidsmarkt</a>
             </div>
             <div class="onderdeel">
                 <p class="bedrag red">€ <span>-</span></p>
-                <a class="info">voorbereiding start medewerker met grote afstand tot de arbeidsmarkt</a>
+                <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="2" class="info">voorbereiding start medewerker met grote afstand tot de arbeidsmarkt</a>
             </div>
             <div class="onderdeel">
                 <p class="bedrag red">€ <span>-</span></p>
-                <a class="info">extra kosten werkkleding e.a. personeelskosten</a>
+                <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="3" class="info">extra kosten werkkleding e.a. personeelskosten</a>
             </div>
             <div class="onderdeel">
                 <p class="bedrag red">€ <span>-</span></p>
-                <a class="info">extra kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>
+                <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="4" class="info">extra kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>
             </div>
             <div class="onderdeel">
                 <p class="bedrag red">€ <span>-</span></p>
-                <a class="info">extra kosten opleiding</a>
+                <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="5" class="info">extra kosten opleiding</a>
             </div>
             <div class="onderdeel">
                 <p class="bedrag red">€ <span>-</span></p>
-                <a class="info">extra kosten administratie en begeleiding</a>
+                <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="6" class="info">extra kosten administratie en begeleiding</a>
             </div>
             <div class="onderdeel">
                 <p class="bedrag red">€ <span>-</span></p>
-                <a class="info">andere kosten</a>
+                <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="7" class="info">andere kosten</a>
             </div>
             <div class="onderdeel">
                 <p class="bedrag"></p>

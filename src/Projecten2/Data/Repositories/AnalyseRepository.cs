@@ -34,14 +34,21 @@ namespace Projecten2.Data.Repositories
             return _analyses;
         }
 
-        public IEnumerable<Analyse> GetByGebruiker(string Id)
-        {
-            return _analyses.Where(a => a.ApplicationUserId == Id);
-        }
-
         public Analyse GetById(int analyseId)
         {
-            return _analyses.Include(a => a.Baten).FirstOrDefault(a => a.AnalyseId == analyseId);
+            return _analyses
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen3)
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen4)
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen5)
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen9)
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen11)
+                .Include(a => a.Kosten)
+                .FirstOrDefault(a => a.AnalyseId == analyseId);
         }
 
         public void SaveChanges()

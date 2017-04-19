@@ -108,12 +108,14 @@ namespace Projecten2.Controllers
                 case 3: return RedirectToAction("BVraagS2" , "Vragen", new { AnalyseId, VraagId }) ;break;
                 case 4: return RedirectToAction("BVraagS2", "Vragen", new { AnalyseId, VraagId }); break;
                 case 5: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId }); break;
-                case 6: return RedirectToAction("BVraagInt", "Vragen", new { AnalyseId }); break;
+                //case 6: return RedirectToAction("BVraagInt", "Vragen", new { AnalyseId }); break;
+                case 6: return RedirectToAction("BVraag6", "Vragen", new { AnalyseId }); break;
                 case 7: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
                 case 8: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
                 case 9: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId }); break;
-                case 101: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
-                case 102: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
+                //case 101: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
+                //case 102: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
+                case 10: return RedirectToAction("BVraag10", "Vragen", new { AnalyseId, VraagId }); break;
                 case 11: return RedirectToAction("BVraagS3", "Vragen", new { AnalyseId }); break;
                 default: return NotFound();
             }
@@ -125,7 +127,7 @@ namespace Projecten2.Controllers
             switch (VraagId)
             {
                 case 1: return RedirectToAction("KVraagS1", "Vragen", new { AnalyseId }); break;
-                case 11: return RedirectToAction("KVraagS2", "Vragen", new { AnalyseId }); break;
+                //case 11: return RedirectToAction("KVraagS2", "Vragen", new { AnalyseId }); break;
                 case 2: return RedirectToAction("KVraagS4", "Vragen", new {AnalyseId, VraagId}); break;
                 case 3: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
                 case 4: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;

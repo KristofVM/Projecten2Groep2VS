@@ -32,9 +32,13 @@ namespace Projecten2.Controllers
             _analyseRepository = analyseRepository;
         }
 
-        public IActionResult KVraagS1()
+        public IActionResult KVraagS1(int AnalyseId)
         {
-            return View();
+            //    Analyse analyse = _analyseRepository.GetById(id);
+            //    Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
+            //    return View(new BVraagDoubleViewModel(baten, 2));
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            return View(new KVraagS1ViewModel(analyse.Kosten));
         }
         [HttpPost]
         public IActionResult KVraagS1(KVraagS1ViewModel viewModel)
@@ -112,12 +116,22 @@ namespace Projecten2.Controllers
             return View();
         }
 
-        public IActionResult BVraagInt()
+        public IActionResult BVraag6()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult BVraagInt(BVraagIntViewModel viewModel)
+        public IActionResult BVraag6(BVraag6ViewModel viewModel)
+        {
+            return View();
+        }
+
+        public IActionResult BVraag10()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BVraag10(BVraag10ViewModel viewModel)
         {
             return View();
         }

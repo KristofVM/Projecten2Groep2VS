@@ -8,7 +8,6 @@ namespace Projecten2.Models.Domain
     public interface IAnalyseRepository
     {
         Analyse GetById(int analyseId);
-        IEnumerable<Analyse> GetByGebruiker(string Id);
         IEnumerable<Analyse> GetAll();
         void ArchiveerAnalyse(Analyse analyse);
         void DeArchiveerAnalyse(Analyse analyse);
