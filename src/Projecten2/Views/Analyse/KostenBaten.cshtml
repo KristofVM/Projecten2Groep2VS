@@ -14,7 +14,7 @@
             </div>
             <div class="onderdeel">
                 <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="2" class="info">tegemoetkoming in de kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>
-                <p class="bedrag green">€ <span>@Model.GetBVraag2()</span></p>
+                <p class="bedrag green">€ <span>@Model.GetBVraag(2)</span></p>
             </div>
             <div class="onderdeel">
                 <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="3" class="info">besparing reguliere medewerker op hetzelfde niveau</a>
@@ -34,11 +34,11 @@
             </div>
             <div class="onderdeel">
                 <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="7" class="info">productiviteitswinst</a>
-                <p class="bedrag green">€ <span>-</span></p>
+                <p class="bedrag green">€ <span>@Model.GetBVraag(7)</span></p>
             </div>
             <div class="onderdeel">
                 <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="8" class="info">besparing op overuren</a>
-                <p class="bedrag green">€ <span>-</span></p>
+                <p class="bedrag green">€ <span>@Model.GetBVraag(8)</span></p>
             </div>
             <div class="onderdeel">
                 <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="9" class="info">besparing op outsourcing</a>
@@ -54,7 +54,7 @@
             </div>
             <div class="onderdeel">
                 <h3 class="info">Subtotaal Baten</h3>
-                <p class="bedrag green bold">€ <span>-</span></p>
+                <p class="bedrag green bold">€ <span>@Model.subtotaalBaten()</span></p>
             </div>
         </div>
         <div class="kosten">
@@ -110,7 +110,7 @@
         </div>
         <div class="clear"></div>
         <div class="subtotaal">
-            <p class="green bold">€ <span>-</span></p>
+            <p class="green bold">€ <span>@Model.balansFormat()</span></p>
         </div>
     </div>
 </main>

@@ -22,6 +22,21 @@ namespace Projecten2.Models.Domain
         public ICollection<BVraag9> Bvragen9 { get; set; }
         public ICollection<BVraag11> Bvragen11 { get; set; }
 
+        public double subtotaal()
+        {
+            double jaarbedswo = 0;
+            double jaarbedep = 0;
+            double jaarbedo = 0;
+            if (JaarBedSubsWerkOmg > 0)
+                jaarbedswo = JaarBedSubsWerkOmg;
+            if (JaarBedExtraProd > 0)
+                jaarbedep = JaarBedExtraProd;
+            if (JaarBedOveruren > 0)
+                jaarbedo = JaarBedOveruren;
+
+            double totaal = jaarbedo + jaarbedep + jaarbedswo;
+            return totaal;
+        }
         public Baten()
         {
             JaarBedOmzetVerlies = 0;
@@ -31,49 +46,6 @@ namespace Projecten2.Models.Domain
             JaarBedOveruren = 0;
             JaarBedTransportKost = 0;
             JaarBedHandelingsKost = 0;
-        }
-
-        public string GetVraag(int vraag)
-        {
-            switch (vraag)
-            {
-                case 2:
-                    return ""
-                ; break;
-                case 3:
-                    return ""
-                ; break;
-                case 4:
-                    return ""
-                ; break;
-                case 5:
-                    return ""
-                ; break;
-                case 6:
-                    return ""
-                ; break;
-                case 7:
-                    return ""
-                ; break;
-                case 8:
-                    return ""
-                ; break;
-                case 9:
-                    return ""
-                ; break;
-                case 101:
-                    return ""
-                ; break;
-                case 102:
-                    return ""
-                ; break;
-                case 11:
-                    return ""
-                ; break;
-                default:
-                    return ""
-                ; break;
-            }
         }
     }
 }

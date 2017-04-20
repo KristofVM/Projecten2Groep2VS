@@ -22,7 +22,13 @@ namespace Projecten2.Models.Domain
 
         public string balansFormat()
         {
+            Balans = Baten.subtotaal();
             return Balans.ToString("#,##0.##");
+        }
+
+        public string subtotaalBaten()
+        {
+            return Baten.subtotaal().ToString("#,##0.##");
         }
         public string getMonth()
         {
@@ -44,12 +50,71 @@ namespace Projecten2.Models.Domain
             }
         }
 
-        public string GetBVraag2()
+        public string GetBVraag(int vraag)
         {
-            if (Baten.JaarBedSubsWerkOmg > 0)
+            if (vraag == 2)
             {
-                return Baten.JaarBedSubsWerkOmg.ToString();
-            } else {
+                if (Baten.JaarBedSubsWerkOmg > 0)
+                {
+                    return Baten.JaarBedSubsWerkOmg.ToString("#,##0.##");
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 3)
+            {
+                return "-";
+            }
+            else if (vraag == 4)
+            {
+                return "-";
+            }
+            else if (vraag == 5)
+            {
+                return "-";
+            }
+            else if (vraag == 6)
+            {
+                return "-";
+            }
+            else if (vraag == 7)
+            {
+                if (Baten.JaarBedExtraProd > 0)
+                {
+                    return Baten.JaarBedExtraProd.ToString("#,##0.##");
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 8)
+            {
+                if (Baten.JaarBedOveruren > 0)
+                {
+                    return Baten.JaarBedOveruren.ToString("#,##0.##");
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 9)
+            {
+                return "-";
+            }
+            else if (vraag == 10)
+            {
+                return "-";
+            }
+            else if (vraag == 11)
+            {
+                return "-";
+            }
+            else
+            {
                 return "-";
             }
         }
