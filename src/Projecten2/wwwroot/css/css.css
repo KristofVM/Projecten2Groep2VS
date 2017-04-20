@@ -130,7 +130,7 @@ a.analyse p {
     padding-bottom: 3px;
     padding-top: 5px;
     float: left;
-    width: 245px;
+    width: 235px;
     height: 21px;
     overflow: hidden;
 }
@@ -633,4 +633,63 @@ a.info:hover {
     display: table-row-group;
     vertical-align: middle;
     border-color: inherit;
+}
+
+/*  ---TOOLTIPS---  */
+
+.hint { 
+    position: relative; 
+    display: inline-block;
+}
+
+.hint:before, .hint:after {
+    position: absolute;
+    opacity: 0;
+    z-index: 1000000;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    pointer-events: none;
+}
+.hint:hover:before, .hint:hover:after {
+	opacity: 1;
+}
+
+.hint:before {
+	content: '';
+	position: absolute;
+	background: transparent;
+	border: 6px solid transparent;
+	position: absolute;
+}
+		
+.hint:after {
+	content: attr(data-hint);
+	background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 6px 8px;
+    font-size: 12px;
+	white-space: nowrap;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.hint--top:before {
+	bottom: 100%;
+	left: 50%;
+	margin: 0 0 -18px -5px;
+	border-top-color: rgba(0, 0, 0, 0.85);
+}
+		
+.hint--top:after {
+	bottom: 100%;
+	left: 50%;
+	margin: 0 0 -6px -15px;
+}
+
+.hint--top:hover:before {
+	margin-bottom: -10px;
+}
+
+.hint--top:hover:after {
+	margin-bottom: 2px;
 }
