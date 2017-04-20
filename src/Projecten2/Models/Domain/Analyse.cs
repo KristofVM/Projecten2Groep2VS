@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Projecten2.Models.Domain
 {
@@ -112,6 +113,90 @@ namespace Projecten2.Models.Domain
             else if (vraag == 11)
             {
                 return "-";
+            }
+            else
+            {
+                return "-";
+            }
+        }
+        public string GetKVraag(int vraag) //"#,##0.##"
+        {
+            if (vraag == 1)
+            {
+                if (Kosten.Kvragen01.Count == 0)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 2)
+            {
+                if (Kosten.Kvragen2.Count == 0)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 3)
+            {
+                if (Kosten.Kvragen3.Count == 0)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 4)
+            {
+                if (Kosten.Kvragen4.Count == 0)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 5)
+            {
+                if (Kosten.Kvragen5.Count == 0)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 6)
+            {
+                if (Kosten.Kvragen6.Count == 0)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+            else if (vraag == 7)
+            {
+                if (Kosten.Kvragen7.Count == 0)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return "-";
+                }
             }
             else
             {

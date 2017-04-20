@@ -1,0 +1,27 @@
+﻿@model Projecten2.Models.Domain.Analyse
+
+
+<main class="overzicht">
+    <div class="contain">
+        <a asp-controller="Vragen" asp-action="KVraagS4" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="7" class="terug button"><i class="fa fa-plus"></i> Nieuwe type</a>
+        <table style="width:30%">
+            <tr>
+                <th>Type</th>
+                <th>Bedrag</th>
+            </tr>
+            @if (Model.Kosten.Kvragen7.Count == 0)
+            {
+                <tr>
+                    <th colspan="2" class="alert">Er zijn geen functies.</th>
+                </tr>
+            }
+            @foreach (var item in Model.Kosten.Kvragen7)
+            {
+                <tr>
+                    <th>@item.Type</th>
+                    <th>@item.Bedrag</th>
+                </tr>
+            }
+        </table>
+    </div>
+</main>

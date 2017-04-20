@@ -129,12 +129,12 @@ namespace Projecten2.Controllers
                 //case 1: return RedirectToAction("KVraagS1", "Vragen", new { AnalyseId }); break;
                 case 1: return RedirectToAction("KVraagS1Overzicht", "Overzichten", new { AnalyseId }); break;
                 //case 11: return RedirectToAction("KVraagS2", "Vragen", new { AnalyseId }); break;
-                case 2: return RedirectToAction("KVraagS4", "Vragen", new {AnalyseId, VraagId}); break;
-                case 3: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
-                case 4: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
-                case 5: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
-                case 6: return RedirectToAction("KVraagS3", "Vragen", new { AnalyseId }); break;
-                case 7: return RedirectToAction("KVraagS4", "Vragen", new { AnalyseId, VraagId }); break;
+                case 2: return RedirectToAction("KVraagS2Overzicht", "Overzichten", new { AnalyseId }); break;
+                case 3: return RedirectToAction("KVraagS3Overzicht", "Overzichten", new { AnalyseId }); break;
+                case 4: return RedirectToAction("KVraagS4Overzicht", "Overzichten", new { AnalyseId }); break;
+                case 5: return RedirectToAction("KVraagS5Overzicht", "Overzichten", new { AnalyseId }); break;
+                case 6: return RedirectToAction("KVraagS6Overzicht", "Overzichten", new { AnalyseId }); break;
+                case 7: return RedirectToAction("KVraagS7Overzicht", "Overzichten", new { AnalyseId }); break;
                 default: return NotFound();
             }
         }

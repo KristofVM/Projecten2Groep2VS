@@ -3,10 +3,10 @@
 
 <main class="vragen">
     <div class="contain">
-        <h1>@Model.Vraag</h1>
+        <h1>@Model.VraagTekst</h1>
         <a asp-controller="Analyse" asp-action="kostenbaten" asp-route-id="@Model.AnalyseId" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
         <div class="window">
-            <form asp-controller="Analyse" asp-action="BVraag2" method="post">
+            <form asp-controller="Vragen" asp-action="KVraagS3" method="post">
                 <input type="hidden" asp-for="AnalyseId" />
                 <div class="vak">
                     <label asp-for="Vak1"></label>

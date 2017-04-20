@@ -30,10 +30,29 @@ namespace Projecten2.Controllers
         {
             return View(_analyseRepository.GetById(AnalyseId));
         }
-        [HttpPost]
-        public IActionResult KVraagS1Overzicht()
+        public IActionResult KVraagS2Overzicht(int AnalyseId)
         {
-            return View();
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult KVraagS3Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult KVraagS4Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult KVraagS5Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult KVraagS6Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult KVraagS7Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
         }
     }
 }
