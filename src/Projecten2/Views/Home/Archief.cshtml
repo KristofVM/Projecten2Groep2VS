@@ -31,6 +31,7 @@
                         <span class="abedrijf">@item.Bedrijf</span>
                         <span class="aafdeling">@item.Afdeling</span>
                         <span class="adatum">@item.Datum.Day/@item.Datum.Month/@item.Datum.Year</span>
+                        <p hidden>@item.balansFormat()</p>
                         @if (@item.Balans > 0)
                         {
                             <span class="aomzet omzetanalyse"><p class="green bold">€ @item.balansFormat()</p></span>
