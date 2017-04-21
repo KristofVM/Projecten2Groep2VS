@@ -33,9 +33,8 @@ namespace Projecten2.Models.Domain
                 jaarbedep = JaarBedExtraProd;
             if (JaarBedOveruren > 0)
                 jaarbedo = JaarBedOveruren;
-
-            double totaal = jaarbedo + jaarbedep + jaarbedswo;
-            return totaal;
+            
+            return jaarbedo + jaarbedep + jaarbedswo;
         }
         public Baten()
         {

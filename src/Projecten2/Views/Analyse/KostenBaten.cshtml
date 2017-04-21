@@ -3,6 +3,8 @@
     ViewData["Title"] = "KostenBaten";
 }
 
+<p hidden>@Model.getBalansFormat()</p>
+
 <main>
     <div class="contain">
         <h1>@Model.Naam</h1>
@@ -54,7 +56,7 @@
             </div>
             <div class="onderdeel">
                 <h3 class="info">Subtotaal Baten</h3>
-                <p class="bedrag green bold">€ <span>@Model.subtotaalBaten()</span></p>
+                <p class="bedrag green bold">€ <span>@Model.getBatenFormat()</span></p>
             </div>
         </div>
         <div class="kosten">
@@ -64,19 +66,19 @@
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="1" class="info">loonkosten medewerkers met grote afstand tot arbeidsmarkt</a>
             </div>
             <div class="onderdeel">
-                <p class="bedrag red">€ <span>-</span></p>
+                <p class="bedrag red">€ <span>@Model.getKVragenS4Format(2)</span></p>
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="2" class="info">voorbereiding start medewerker met grote afstand tot de arbeidsmarkt</a>
             </div>
             <div class="onderdeel">
-                <p class="bedrag red">€ <span>-</span></p>
+                <p class="bedrag red">€ <span>@Model.getKVragenS4Format(3)</span></p>
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="3" class="info">extra kosten werkkleding e.a. personeelskosten</a>
             </div>
             <div class="onderdeel">
-                <p class="bedrag red">€ <span>-</span></p>
+                <p class="bedrag red">€ <span>@Model.getKVragenS4Format(4)</span></p>
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="4" class="info">extra kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>
             </div>
             <div class="onderdeel">
-                <p class="bedrag red">€ <span>-</span></p>
+                <p class="bedrag red">€ <span>@Model.getKVragenS4Format(5)</span></p>
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="5" class="info">extra kosten opleiding</a>
             </div>
             <div class="onderdeel">
@@ -84,7 +86,7 @@
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="6" class="info">extra kosten administratie en begeleiding</a>
             </div>
             <div class="onderdeel">
-                <p class="bedrag red">€ <span>-</span></p>
+                <p class="bedrag red">€ <span>@Model.getKVragenS4Format(7)</span></p>
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="7" class="info">andere kosten</a>
             </div>
             <div class="onderdeel">
@@ -104,13 +106,24 @@
                 <p class="info"></p>
             </div>
             <div class="onderdeel">
-                <p class="bedrag red bold">€ <span>-</span></p>
+                <p class="bedrag red bold">€ <span>@Model.getKostenFormat()</span></p>
                 <h3 class="info">Subtotaal Kosten</h3>
             </div>
         </div>
         <div class="clear"></div>
         <div class="subtotaal">
-            <p class="green bold">€ <span>@Model.balansFormat()</span></p>
+            @if (@Model.Balans > 0)
+            {
+                <p class="green bold">€ <span>@Model.getBalansFormat()</span></p>
+            }
+            else if (@Model.Balans < 0)
+            {
+                <p class="red bold">€ <span>@Model.getBalansFormat()</span></p>
+            }
+            else
+            {
+                <p class="gray bold">€ <span>@Model.getBalansFormat()</span></p>
+            }
         </div>
     </div>
 </main>

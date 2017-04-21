@@ -24,18 +24,18 @@
                     <p class="bedrijf">Bedrijf: @item.Bedrijf</p>
                     <p class="datum">@item.Datum.Day @item.getMonth() @item.Datum.Year</p>
                     <p class="afdeling">Afdeling: @item.Afdeling</p>
-                    <p hidden>@item.balansFormat()</p>
+                    <p hidden>@item.getBalansFormat()</p>
                     @if (@item.Balans > 0)
                     {
-                        <p class="kostenbaten green bold">€ @item.balansFormat()</p>
+                        <p class="kostenbaten green bold">€ @item.getBalansFormat()</p>
                     }
                     else if (@item.Balans < 0)
                     {
-                        <p class="kostenbaten red bold">€ @item.balansFormat()</p>
+                        <p class="kostenbaten red bold">€ @item.getBalansFormat()</p>
                     }
                     else
                     {
-                        <p class="kostenbaten gray bold">€ @item.balansFormat()</p>
+                        <p class="kostenbaten gray bold">€ @item.getBalansFormat()</p>
                     }
                     <div class="clear"></div>
                 </div>
