@@ -9,7 +9,9 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
 {
     public class BVraagS2ViewModel
     {
-        public int Vraag { get; }
+        public string VraagTekst { get; set; }
+        [Required]
+        public int VraagId { get; set; }
         [Required]
         public int AnalyseId { get; set; }
 
@@ -30,7 +32,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
         public BVraagS2ViewModel(Baten baten, int vraag) : this()
         {
             AnalyseId = baten.Analyse.AnalyseId;
-            Vraag = vraag;
+            VraagId = vraag;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Projecten2.Models.Domain;
+using Projecten2.Models.Domain.BatenVragen;
 using Projecten2.Models.Domain.KostenVragen;
 using Projecten2.Models.ViewModels.BatenViewModels;
 using Projecten2.Models.ViewModels.KostenViewModels;
@@ -56,16 +57,6 @@ namespace Projecten2.Controllers
                 return View(viewModel);
             }
         }
-
-        //public IActionResult KVraagS2()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public IActionResult KVraagS2(KVraagS2ViewModel viewModel)
-        //{
-        //    return View();
-        //}
 
         public IActionResult KVraagS3(int AnalyseId)
         {
@@ -182,34 +173,146 @@ namespace Projecten2.Controllers
             return View(viewModel);
         }
 
-        public IActionResult BVraagS1()
+        public IActionResult BVraagS1(int AnalyseId, int VraagId)
         {
-            return View();
+            // Vraag 5, 9
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            BVraagS1ViewModel viewModel = new BVraagS1ViewModel(analyse.Baten, VraagId);
+            switch (VraagId)
+            {
+                case 5:
+                    viewModel.VraagTekst = "-vul tekst in-";
+                    break;
+                case 9:
+                    viewModel.VraagTekst = "-vul tekst in-";
+                    break;
+            }
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult BVraagS1(BVraagS1ViewModel viewModel)
         {
-            return View();
+            // Vraag 5, 9
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
+                    if (viewModel.VraagId == 5)
+                    {
+                        BVraag5 vraag = new BVraag5(baten);
+                        MapBVraag5(viewModel, vraag);
+                        baten.Bvragen5.Add(vraag);
+                        _analyseRepository.SaveChanges();
+                        return RedirectToAction("BVraagS5Overzicht", "Overzichten", new { viewModel.AnalyseId });
+                    }
+                    else if (viewModel.VraagId == 9)
+                    {
+                        BVraag9 vraag = new BVraag9(baten);
+                        MapBVraag9(viewModel, vraag);
+                        baten.Bvragen9.Add(vraag);
+                        _analyseRepository.SaveChanges();
+                        return RedirectToAction("BVraagS9Overzicht", "Overzichten", new { viewModel.AnalyseId });
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch
+                {
+                    TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
+                }
+            }
+            return View(viewModel);
         }
 
-        public IActionResult BVraagS2()
+        public IActionResult BVraagS2(int AnalyseId, int VraagId)
         {
-            return View();
+            // Vraag 3, 4
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            BVraagS2ViewModel viewModel = new BVraagS2ViewModel(analyse.Baten, VraagId);
+            switch (viewModel.VraagId)
+            {
+                case 3:
+                    viewModel.VraagTekst = "-vul tekst in-";
+                    break;
+                case 4:
+                    viewModel.VraagTekst = "-vul tekst in-";
+                    break;
+            }
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult BVraagS2(BVraagS2ViewModel viewModel)
         {
-            return View();
+            // Vraag 3, 4
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
+                    if (viewModel.VraagId == 3)
+                    {
+                        BVraag3 vraag = new BVraag3(baten);
+                        MapBVraag3(viewModel, vraag);
+                        baten.Bvragen3.Add(vraag);
+                        _analyseRepository.SaveChanges();
+                        return RedirectToAction("BVraagS3Overzicht", "Overzichten", new { viewModel.AnalyseId });
+                    }
+                    else if (viewModel.VraagId == 4)
+                    {
+                        BVraag4 vraag = new BVraag4(baten);
+                        MapBVraag4(viewModel, vraag);
+                        baten.Bvragen4.Add(vraag);
+                        _analyseRepository.SaveChanges();
+                        return RedirectToAction("BVraagS4Overzicht", "Overzichten", new { viewModel.AnalyseId });
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch
+                {
+                    TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
+                }
+            }
+            return View(viewModel);
         }
 
-        public IActionResult BVraagS3()
+        public IActionResult BVraagS3(int AnalyseId)
         {
-            return View();
+            // Vraag 11
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            BVraagS3ViewModel viewModel = new BVraagS3ViewModel(analyse.Baten);
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult BVraagS3(BVraagS3ViewModel viewModel)
         {
-            return View();
+            // Vraag 11
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
+                    BVraag11 vraag = new BVraag11(baten);
+                    vraag.TypeBesparing = viewModel.Vak1;
+                    vraag.JaarBedrag = viewModel.Vak2;
+                    baten.Bvragen11.Add(vraag);
+                    _analyseRepository.SaveChanges();
+                }
+                catch
+                {
+                    TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
+                }
+                return RedirectToAction("BVraagS11Overzicht", "Overzichten", new { viewModel.AnalyseId });
+            }
+            else
+            {
+                return View(viewModel);
+            }
         }
 
         public IActionResult BVraagDouble(int AnalyseId, int VraagId)
@@ -217,7 +320,7 @@ namespace Projecten2.Controllers
             // vragen: 2, 7, 8
             Analyse analyse = _analyseRepository.GetById(AnalyseId);
             BVraagDoubleViewModel viewModel = new BVraagDoubleViewModel(analyse.Baten, VraagId);
-            switch (viewModel.Vraag)
+            switch (viewModel.VraagId)
             {
                 case 2: viewModel.VraagTekst = "Welk bedrag krijgt u aan subsidie voor eventuele aanpassingen aan de werkomgeving?";
                     viewModel.Bedrag = analyse.Baten.JaarBedSubsWerkOmg; break;
@@ -236,15 +339,15 @@ namespace Projecten2.Controllers
                 try
                 {
                     Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
-                    if (viewModel.Vraag == 2)
+                    if (viewModel.VraagId == 2)
                     {
                         baten.JaarBedSubsWerkOmg = viewModel.Bedrag;
                     }
-                    else if (viewModel.Vraag == 7)
+                    else if (viewModel.VraagId == 7)
                     {
                         baten.JaarBedExtraProd = viewModel.Bedrag;
                     }
-                    else if (viewModel.Vraag == 8)
+                    else if (viewModel.VraagId == 8)
                     {
                         baten.JaarBedOveruren = viewModel.Bedrag;
                     }
@@ -266,24 +369,68 @@ namespace Projecten2.Controllers
             }
         }
 
-        public IActionResult BVraag6()
+        public IActionResult BVraag6(int AnalyseId)
         {
-            return View();
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            BVraag6ViewModel viewModel = new BVraag6ViewModel(analyse.Baten);
+            viewModel.Vak1 = analyse.Baten.JaarBedOmzetVerlies;
+            viewModel.Vak2 = analyse.Baten.ProcentBesparing;
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult BVraag6(BVraag6ViewModel viewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
+                    baten.JaarBedOmzetVerlies = viewModel.Vak1;
+                    baten.ProcentBesparing = viewModel.Vak2;
+                    _analyseRepository.SaveChanges();
+                }
+                catch
+                {
+                    TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
+                }
+                return RedirectToAction("KostenBaten", "Analyse", new { id = viewModel.AnalyseId });
+            }
+            else
+            {
+                return View(viewModel);
+            }
         }
 
-        public IActionResult BVraag10()
+        public IActionResult BVraag10(int AnalyseId)
         {
-            return View();
+            Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            BVraag10ViewModel viewModel = new BVraag10ViewModel(analyse.Baten);
+            viewModel.Vak1 = analyse.Baten.JaarBedTransportKost;
+            viewModel.Vak2 = analyse.Baten.JaarBedHandelingsKost;
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult BVraag10(BVraag10ViewModel viewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
+                    baten.JaarBedTransportKost = viewModel.Vak1;
+                    baten.JaarBedHandelingsKost = viewModel.Vak2;
+                    _analyseRepository.SaveChanges();
+                }
+                catch
+                {
+                    TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
+                }
+                return RedirectToAction("KostenBaten", "Analyse", new { id = viewModel.AnalyseId });
+            }
+            else
+            {
+                return View(viewModel);
+            }
         }
 
         private void MapKVraag1_0(KVraagS1ViewModel viewModel, KVraag1_0 vraag)
@@ -326,38 +473,26 @@ namespace Projecten2.Controllers
             vraag.Type = viewModel.Vak1;
             vraag.Bedrag = viewModel.Vak2;
         }
+
+        private void MapBVraag3(BVraagS2ViewModel viewModel, BVraag3 vraag)
+        {
+            vraag.Uren = viewModel.Vak1;
+            vraag.BrutoMaandloonFulltime = viewModel.Vak2;
+        }
+        private void MapBVraag4(BVraagS2ViewModel viewModel, BVraag4 vraag)
+        {
+            vraag.Uren = viewModel.Vak1;
+            vraag.BrutoMaandloonFulltime = viewModel.Vak2;
+        }
+        private void MapBVraag5(BVraagS1ViewModel viewModel, BVraag5 vraag)
+        {
+            vraag.Beschrijving = viewModel.Vak1;
+            vraag.JaarBedrag = viewModel.Vak2;
+        }
+        private void MapBVraag9(BVraagS1ViewModel viewModel, BVraag9 vraag)
+        {
+            vraag.Beschrijving = viewModel.Vak1;
+            vraag.JaarBedrag = viewModel.Vak2;
+        }
     }
 }
-
-// --- Voorbeeld voor een vraag ---
-
-//public IActionResult BVraag2(int id)
-//{
-//    Analyse analyse = _analyseRepository.GetById(id);
-//    Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
-//    return View(new BVraagDoubleViewModel(baten, 2));
-//}
-
-//[HttpPost]
-//public IActionResult BVraag2(BVraagDoubleViewModel viewModel)
-//{
-//    if (ModelState.IsValid)
-//    {
-//        Baten baten = null;
-//        try
-//        {
-//            baten = _batenRepository.GetByAnalyse(viewModel.AnalyseId);
-//            MapJaarBedSubsWerkOmgViewModelToBaten(viewModel, baten);
-//            _analyseRepository.SaveChanges();
-//        }
-//        catch
-//        {
-//            TempData["error"] = "Sorry, something went wrong, the analyse was not edited...";
-//        }
-//        return RedirectToAction("KostenBaten", new { id = viewModel.AnalyseId });
-//    }
-//    else
-//    {
-//        return View(viewModel);
-//    }
-//}

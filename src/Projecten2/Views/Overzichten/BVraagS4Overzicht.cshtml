@@ -3,24 +3,24 @@
 
 <main class="overzicht">
     <div class="contain">
-        <h1>Wat zijn de transportkosten van eventueel uitbesteedde zaken?</h1>
-        <a asp-controller="Vragen" asp-action="KVraagS3" asp-route-AnalyseId="@Model.AnalyseId" class="terug button"><i class="fa fa-plus"></i> Nieuwe begeleider</a>
+        <h1>Welke kosten moet u ter voorbereiding maken om dit te implementeren?</h1>
+        <a asp-controller="Vragen" asp-action="BVraagS2" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="4" class="terug button"><i class="fa fa-plus"></i> Nieuwe type</a>
         <table style="width:30%">
             <tr>
+                <th>Bruto maandloon fulltime</th>
                 <th>Uren</th>
-                <th>Bruto Maandloon Begeleider</th>
             </tr>
-            @if (Model.Kosten.Kvragen6.Count == 0)
+            @if (Model.Baten.Bvragen4.Count == 0)
             {
                 <tr>
                     <th colspan="2" class="alert">Er zijn geen functies.</th>
                 </tr>
             }
-            @foreach (var item in Model.Kosten.Kvragen6)
+            @foreach (var item in Model.Baten.Bvragen4)
             {
                 <tr>
+                    <th>@item.BrutoMaandloonFulltime</th>
                     <th>@item.Uren</th>
-                    <th>@item.BrutoMaandloonBegeleider</th>
                 </tr>
             }
         </table>

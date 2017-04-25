@@ -12,7 +12,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
 {
     public class BVraag6ViewModel
     {
-        public string Vraag { get; } = "Wat zijn de transportkosten van eventueel uitbesteedde zaken?";
+        public string VraagTekst { get; } = "Wat zijn de transportkosten van eventueel uitbesteedde zaken?";
 
         [Required]
         public int AnalyseId { get; set; }
@@ -31,7 +31,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
         {
         }
 
-        public BVraag6ViewModel(Baten baten, int vraag) : this()
+        public BVraag6ViewModel(Baten baten) : this()
         {
             AnalyseId = baten.Analyse.AnalyseId;
         }

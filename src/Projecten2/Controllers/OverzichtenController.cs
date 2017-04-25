@@ -54,5 +54,25 @@ namespace Projecten2.Controllers
         {
             return View(_analyseRepository.GetById(AnalyseId));
         }
+        public IActionResult BVraagS3Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult BVraagS4Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult BVraagS5Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult BVraagS9Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
+        public IActionResult BVraagS11Overzicht(int AnalyseId)
+        {
+            return View(_analyseRepository.GetById(AnalyseId));
+        }
     }
 }

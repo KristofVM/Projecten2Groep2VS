@@ -37,9 +37,13 @@ namespace Projecten2.Models.Domain
             return Kosten.subtotaal().ToString("#,##0.##");
         }
 
-        public string getKVragenS4Format(int vraag)
+        public string getKVragenFormat(int vraag)
         {
-            return Kosten.getTotaalKVragenS4(vraag) == 0 ? "-" : Kosten.getTotaalKVragenS4(vraag).ToString("#,##0.##");
+            return Kosten.getTotaalKVragen(vraag) == 0 ? "-" : Kosten.getTotaalKVragen(vraag).ToString("#,##0.##");
+        }
+        public string getBVragenFormat(int vraag)
+        {
+            return Baten.getTotaalBVragen(vraag) == 0 ? "-" : Baten.getTotaalBVragen(vraag).ToString("#,##0.##");
         }
         public string getMonth()
         {
@@ -58,75 +62,6 @@ namespace Projecten2.Models.Domain
                 case 11: return "nov"; break;
                 case 12: return "dec"; break;
                 default: return "MonthErr";
-            }
-        }
-
-        public string GetBVraag(int vraag)
-        {
-            if (vraag == 2)
-            {
-                if (Baten.JaarBedSubsWerkOmg > 0)
-                {
-                    return Baten.JaarBedSubsWerkOmg.ToString("#,##0.##");
-                }
-                else
-                {
-                    return "-";
-                }
-            }
-            else if (vraag == 3)
-            {
-                return "-";
-            }
-            else if (vraag == 4)
-            {
-                return "-";
-            }
-            else if (vraag == 5)
-            {
-                return "-";
-            }
-            else if (vraag == 6)
-            {
-                return "-";
-            }
-            else if (vraag == 7)
-            {
-                if (Baten.JaarBedExtraProd > 0)
-                {
-                    return Baten.JaarBedExtraProd.ToString("#,##0.##");
-                }
-                else
-                {
-                    return "-";
-                }
-            }
-            else if (vraag == 8)
-            {
-                if (Baten.JaarBedOveruren > 0)
-                {
-                    return Baten.JaarBedOveruren.ToString("#,##0.##");
-                }
-                else
-                {
-                    return "-";
-                }
-            }
-            else if (vraag == 9)
-            {
-                return "-";
-            }
-            else if (vraag == 10)
-            {
-                return "-";
-            }
-            else if (vraag == 11)
-            {
-                return "-";
-            }
-            else
-            {
-                return "-";
             }
         }
 

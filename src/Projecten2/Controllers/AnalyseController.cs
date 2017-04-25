@@ -105,18 +105,18 @@ namespace Projecten2.Controllers
             switch (VraagId)
             {
                 case 2: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
-                case 3: return RedirectToAction("BVraagS2" , "Vragen", new { AnalyseId, VraagId }) ;break;
-                case 4: return RedirectToAction("BVraagS2", "Vragen", new { AnalyseId, VraagId }); break;
-                case 5: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId }); break;
+                case 3: return RedirectToAction("BVraagS3Overzicht", "Overzichten", new { AnalyseId }); break;
+                case 4: return RedirectToAction("BVraagS4Overzicht", "Overzichten", new { AnalyseId }); break;
+                case 5: return RedirectToAction("BVraagS5Overzicht", "Overzichten", new { AnalyseId }); break;
                 //case 6: return RedirectToAction("BVraagInt", "Vragen", new { AnalyseId }); break;
                 case 6: return RedirectToAction("BVraag6", "Vragen", new { AnalyseId }); break;
                 case 7: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
                 case 8: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
-                case 9: return RedirectToAction("BVraagS1", "Vragen", new { AnalyseId, VraagId }); break;
+                case 9: return RedirectToAction("BVraagS9Overzicht", "Overzichten", new { AnalyseId }); break;
                 //case 101: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
                 //case 102: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
                 case 10: return RedirectToAction("BVraag10", "Vragen", new { AnalyseId, VraagId }); break;
-                case 11: return RedirectToAction("BVraagS3", "Vragen", new { AnalyseId }); break;
+                case 11: return RedirectToAction("BVraagS11Overzicht", "Overzichten", new { AnalyseId }); break;
                 default: return NotFound();
             }
         }

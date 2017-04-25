@@ -29,19 +29,19 @@ namespace Projecten2.Models.Domain
                 totaalV7 = 0;
 
             if (Kvragen2.Count > 0)
-                totaalV2 = getTotaalKVragenS4(2);
+                totaalV2 = getTotaalKVragen(2);
             if (Kvragen3.Count > 0)
-                totaalV3 = getTotaalKVragenS4(3);
+                totaalV3 = getTotaalKVragen(3);
             if (Kvragen4.Count > 0)
-                totaalV4 = getTotaalKVragenS4(4);
+                totaalV4 = getTotaalKVragen(4);
             if (Kvragen5.Count > 0)
-                totaalV5 = getTotaalKVragenS4(5);
+                totaalV5 = getTotaalKVragen(5);
             if (Kvragen7.Count > 0)
-                totaalV7 = getTotaalKVragenS4(7);
+                totaalV7 = getTotaalKVragen(7);
 
             return totaalV1 + totaalV2 + totaalV3 + totaalV4 + totaalV5 + totaalV6 + totaalV7;
         }
-        public double getTotaalKVragenS4(int vraag)
+        public double getTotaalKVragen(int vraag)
         {
             if (vraag == 2)
             {

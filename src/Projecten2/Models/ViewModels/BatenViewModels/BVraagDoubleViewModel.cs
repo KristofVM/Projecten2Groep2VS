@@ -9,7 +9,8 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
 {
     public class BVraagDoubleViewModel
     {
-        public int Vraag { get; set; }
+        [Required]
+        public int VraagId { get; set; }
         public string VraagTekst { get; set; }
 
         [Required]
@@ -27,7 +28,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
         public BVraagDoubleViewModel(Baten baten, int vraag) : this()
         {
             AnalyseId = baten.Analyse.AnalyseId;
-            Vraag = vraag;
+            VraagId = vraag;
         }
     }
 }

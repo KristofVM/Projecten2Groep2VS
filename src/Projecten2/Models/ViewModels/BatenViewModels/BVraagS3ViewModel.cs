@@ -9,8 +9,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
 {
     public class BVraagS3ViewModel
     {
-        public int Vraag { get; }
-        [Required]
+        public string VraagTekst { get; set; } = "-vul tekst in-";
         public int AnalyseId { get; set; }
         
         [Required(ErrorMessage = "Type besparing is verplicht")]
@@ -27,10 +26,9 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
         {
         }
 
-        public BVraagS3ViewModel(Baten baten, int vraag) : this()
+        public BVraagS3ViewModel(Baten baten) : this()
         {
             AnalyseId = baten.Analyse.AnalyseId;
-            Vraag = vraag;
         }
     }
 }

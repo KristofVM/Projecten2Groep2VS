@@ -9,7 +9,7 @@ namespace Projecten2.Models.ViewModels.KostenViewModels
 {
     public class KVraagS3ViewModel
     {
-        public string VraagTekst { get; set; } = "--VRAAG--";
+        public string VraagTekst { get; set; }
         [Required]
         public int AnalyseId { get; set; }
 
