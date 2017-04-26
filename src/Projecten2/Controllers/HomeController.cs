@@ -93,11 +93,11 @@ namespace Projecten2.Controllers
                 analyse = _analyseRepository.GetById(id);
                 _analyseRepository.ArchiveerAnalyse(analyse);
                 _analyseRepository.SaveChanges();
-                TempData["message"] = $"You successfully archived analyse {analyse.Naam}.";
+                TempData["message"] = $"You successfully archived analyse {analyse.Bedrijf}.";
             }
             catch
             {
-                TempData["error"] = $"Sorry, something went wrong, analyse {analyse.Naam} was not archived.";
+                TempData["error"] = $"Sorry, something went wrong, analyse {analyse.Bedrijf} was not archived.";
             }
             return RedirectToAction(nameof(Index));
         }
@@ -112,11 +112,11 @@ namespace Projecten2.Controllers
                     analyse = _analyseRepository.GetById(id);
                     _analyseRepository.DeArchiveerAnalyse(analyse);
                     _analyseRepository.SaveChanges();
-                    TempData["message"] = $"You successfully unarchived analyse {analyse.Naam}.";
+                    TempData["message"] = $"You successfully unarchived analyse {analyse.Bedrijf}.";
                 }
                 catch
                 {
-                    TempData["error"] = $"Sorry, something went wrong, analyse {analyse.Naam} was not unarchived.";
+                    TempData["error"] = $"Sorry, something went wrong, analyse {analyse.Bedrijf} was not unarchived.";
                 }
             }
             return RedirectToAction(nameof(Archief));

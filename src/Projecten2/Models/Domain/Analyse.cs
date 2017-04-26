@@ -6,8 +6,7 @@ namespace Projecten2.Models.Domain
     public class Analyse
     {
         public int AnalyseId { get; set; }
-
-        public string Naam { get; set; }
+        
         public string Bedrijf { get; set; }
         public string Afdeling { get; set; }
         public DateTime Datum { get; set; }

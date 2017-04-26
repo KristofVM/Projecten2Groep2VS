@@ -20,29 +20,21 @@ namespace Projecten2.Models.Domain
         public ICollection<KVraag7> Kvragen7 { get; set; }
         public double subtotaal()
         {
-            double totaalV1 = 0,
-                totaalV2 = 0,
-                totaalV3 = 0,
-                totaalV4 = 0,
-                totaalV5 = 0,
-                totaalV6 = 0,
-                totaalV7 = 0;
-
-            if (Kvragen2.Count > 0)
-                totaalV2 = getTotaalKVragen(2);
-            if (Kvragen3.Count > 0)
-                totaalV3 = getTotaalKVragen(3);
-            if (Kvragen4.Count > 0)
-                totaalV4 = getTotaalKVragen(4);
-            if (Kvragen5.Count > 0)
-                totaalV5 = getTotaalKVragen(5);
-            if (Kvragen7.Count > 0)
-                totaalV7 = getTotaalKVragen(7);
-
-            return totaalV1 + totaalV2 + totaalV3 + totaalV4 + totaalV5 + totaalV6 + totaalV7;
+            double totaal = 0;
+            for (int i = 1; i <= 11; i++)
+            {
+                totaal = totaal + getTotaalKVragen(i);
+            }
+            return totaal;
         }
         public double getTotaalKVragen(int vraag)
         {
+            if (vraag == 1)
+            {
+                return 0;
+                if (Kvragen2.Count == 0)
+                    return 0;
+            }
             if (vraag == 2)
             {
                 if (Kvragen2.Count == 0)

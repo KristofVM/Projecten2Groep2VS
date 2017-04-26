@@ -18,11 +18,6 @@
             <form asp-controller="Analyse" asp-action="@action" method="post">
                 <input type="hidden" asp-for="AnalyseId"/>
                 <div>
-                    <label asp-for="Naam"></label>
-                    <input asp-for="Naam" type="text"/>
-                    <span asp-validation-for="Naam" class="alert"></span>
-                </div>
-                <div>
                     <label asp-for="Bedrijf"></label>
                     <input asp-for="Bedrijf" type="text"/>
                     <span asp-validation-for="Bedrijf" class="alert"></span>

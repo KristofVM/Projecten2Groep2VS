@@ -26,35 +26,12 @@ namespace Projecten2.Models.Domain
 
         public double subtotaal()
         {
-            double jaarbedswo = 0;
-            double jaarbedep = 0;
-            double jaarbedo = 0;
-
-            double totaalV3 = 0,
-                totaalV4 = 0,
-                totaalV5 = 0,
-                totaalV9 = 0,
-                totaalV11 = 0;
-
-            if (Bvragen3.Count > 0)
-                totaalV3 = getTotaalBVragen(3);
-            if (Bvragen4.Count > 0)
-                totaalV4 = getTotaalBVragen(4);
-            if (Bvragen5.Count > 0)
-                totaalV5 = getTotaalBVragen(5);
-            if (Bvragen9.Count > 0)
-                totaalV9 = getTotaalBVragen(9);
-            if (Bvragen11.Count > 0)
-                totaalV11 = getTotaalBVragen(11);
-
-            if (JaarBedSubsWerkOmg > 0)
-                jaarbedswo = JaarBedSubsWerkOmg;
-            if (JaarBedExtraProd > 0)
-                jaarbedep = JaarBedExtraProd;
-            if (JaarBedOveruren > 0)
-                jaarbedo = JaarBedOveruren;
-            
-            return jaarbedo + jaarbedep + jaarbedswo + totaalV3 + totaalV4 + totaalV5 + totaalV9 + totaalV11;
+            double totaal = 0;
+            for (int i = 1; i <= 11; i++)
+            {
+                totaal = totaal + getTotaalBVragen(i);
+            }
+            return totaal;
         }
         public double getTotaalBVragen(int vraag)
         {
@@ -110,7 +87,7 @@ namespace Projecten2.Models.Domain
                     return 0;
                 return Bvragen11.ToList().Sum(a => a.JaarBedrag);
             }
-            throw new NotImplementedException();
+            return 0;
         }
         public Baten()
         {

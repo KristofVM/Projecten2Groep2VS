@@ -11,11 +11,6 @@ namespace Projecten2.Models.ViewModels
     {
         public int AnalyseId { get; set; }
 
-        [Required (ErrorMessage = "Dit veld is verplicht.")]
-        [Display(Name = "Naam", Prompt = "Naam")]
-        [StringLength(50, ErrorMessage = "De {0} moet minstens {2} en maximuum {1} karakters lang zijn.", MinimumLength = 3)]
-        public string Naam { get; set; }
-
         [Required(ErrorMessage = "Dit veld is verplicht.")]
         [Display(Name = "Bedrijf", Prompt = "Bedrijf")]
         [StringLength(50, ErrorMessage = "De {0} moet minstens {2} en maximuum {1} karakters lang zijn.", MinimumLength = 3)]
@@ -43,7 +38,6 @@ namespace Projecten2.Models.ViewModels
         public EditViewModel(Analyse analyse) : this()
         {
             AnalyseId = analyse.AnalyseId;
-            Naam = analyse.Naam;
             Bedrijf = analyse.Bedrijf;
             Afdeling = analyse.Afdeling;
             PatronaleBijdrage = analyse.PatronaleBijdrage;

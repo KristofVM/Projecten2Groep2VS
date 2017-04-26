@@ -33,7 +33,6 @@ namespace Projecten2.Data
                 analyse1.Bedrijf = "google";
                 analyse1.Datum = new DateTime(2017, 3, 25);
                 analyse1.Balans = 0;
-                analyse1.Naam = "GoogleAnalyseKuisdienst";
                 analyse1.Archief = false;
                 analysen.Add(analyse1);
 
@@ -42,7 +41,6 @@ namespace Projecten2.Data
                 analyse2.Bedrijf = "tuc";
                 analyse2.Datum = new DateTime(2016, 1, 10);
                 analyse2.Balans = -3500;
-                analyse2.Naam = "TucAdvertising";
                 analyse2.Archief = false;
                 analysen.Add(analyse2);
 
@@ -51,7 +49,6 @@ namespace Projecten2.Data
                 analyse3.Bedrijf = "apple";
                 analyse3.Datum = new DateTime(2014, 9, 13);
                 analyse3.Balans = 50000;
-                analyse3.Naam = "Production_Apple1";
                 analyse3.Archief = false;
                 analysen.Add(analyse3);
 
@@ -60,7 +57,6 @@ namespace Projecten2.Data
                 analyse4.Bedrijf = "action";
                 analyse4.Datum = new DateTime(2014, 9, 13);
                 analyse4.Balans = 1256960;
-                analyse4.Naam = "action1_retail";
                 analyse4.Archief = true;
                 analysen.Add(analyse4);
 
@@ -69,7 +65,6 @@ namespace Projecten2.Data
                 analyse5.Bedrijf = "gabriëls";
                 analyse5.Datum = new DateTime(2012, 1, 20);
                 analyse5.Balans = 2500;
-                analyse5.Naam = "gabriëls production";
                 analyse5.Archief = true;
                 analysen.Add(analyse5);
 
@@ -78,7 +73,6 @@ namespace Projecten2.Data
                 analyse6.Bedrijf = "colruyt";
                 analyse6.Datum = new DateTime(2013, 9, 13);
                 analyse6.Balans = 30064;
-                analyse6.Naam = "store_colruyt";
                 analyse6.Archief = true;
                 analysen.Add(analyse6);
 
@@ -87,7 +81,6 @@ namespace Projecten2.Data
                 analyse7.Bedrijf = "hotel de paris";
                 analyse7.Datum = new DateTime(1997, 10, 27);
                 analyse7.Balans = -14750;
-                analyse7.Naam = "lobby_hotel de paris";
                 analyse7.Archief = true;
                 analysen.Add(analyse7);
 
@@ -96,7 +89,6 @@ namespace Projecten2.Data
                 analyse8.Bedrijf = "belfius";
                 analyse8.Datum = new DateTime(2015, 6, 30);
                 analyse8.Balans = 3560000;
-                analyse8.Naam = "belfius management";
                 analyse8.Archief = true;
                 analysen.Add(analyse8);
 

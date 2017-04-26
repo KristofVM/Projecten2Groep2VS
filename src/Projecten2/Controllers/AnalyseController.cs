@@ -48,11 +48,11 @@ namespace Projecten2.Controllers
                     analyse = _analyseRepository.GetById(editViewModel.AnalyseId);
                     MapEditViewModelToAnalyse(editViewModel, analyse);
                     _analyseRepository.SaveChanges();
-                    TempData["message"] = $"You successfully updated brewer {analyse.Naam}.";
+                    TempData["message"] = $"You successfully updated brewer {analyse.Bedrijf}.";
                 }
                 catch
                 {
-                    TempData["error"] = $"Sorry, something went wrong, brewer {analyse?.Naam} was not updated...";
+                    TempData["error"] = $"Sorry, something went wrong, brewer {analyse?.Bedrijf} was not updated...";
                 }
                 return RedirectToAction(nameof(Index), "Home");
             }
@@ -78,7 +78,7 @@ namespace Projecten2.Controllers
                     MapEditViewModelToAnalyse(editViewModel, analyse);
                     _analyseRepository.Add(analyse);
                     _analyseRepository.SaveChanges();
-                    TempData["message"] = $"You successfully added brewer {analyse.Naam}.";
+                    TempData["message"] = $"You successfully added brewer {analyse.Bedrijf}.";
                 }
                 catch
                 {
@@ -142,15 +142,10 @@ namespace Projecten2.Controllers
         private void MapEditViewModelToAnalyse(EditViewModel editViewModel, Analyse analyse)
         {
             analyse.ApplicationUserId = _userManager.GetUserId(User);
-            analyse.Naam = editViewModel.Naam;
             analyse.Bedrijf = editViewModel.Bedrijf;
             analyse.Afdeling = editViewModel.Afdeling;
             analyse.PatronaleBijdrage = editViewModel.PatronaleBijdrage;
             analyse.UrenVoltijdsWerkweek = editViewModel.UrenVoltijdsWerkweek;
-        }
-        private void MapJaarBedSubsWerkOmgViewModelToBaten(BVraagDoubleViewModel viewModel, Baten baten)
-        {
-            baten.JaarBedSubsWerkOmg = viewModel.Bedrag;
         }
     }
 }

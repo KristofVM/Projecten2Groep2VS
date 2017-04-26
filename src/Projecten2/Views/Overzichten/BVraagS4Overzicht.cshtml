@@ -4,11 +4,13 @@
 <main class="overzicht">
     <div class="contain">
         <h1>Welke kosten moet u ter voorbereiding maken om dit te implementeren?</h1>
-        <a asp-controller="Vragen" asp-action="BVraagS2" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="4" class="terug button"><i class="fa fa-plus"></i> Nieuwe type</a>
+        <a asp-controller="Analyse" asp-action="kostenbaten" asp-route-id="@Model.AnalyseId" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
+        <a asp-controller="Vragen" asp-action="BVraagS2" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="4" class="terug button"><i class="fa fa-plus"></i> Nieuw</a>
         <table style="width:30%">
             <tr>
                 <th>Bruto maandloon fulltime</th>
                 <th>Uren</th>
+                <th></th>
             </tr>
             @if (Model.Baten.Bvragen4.Count == 0)
             {
@@ -21,6 +23,7 @@
                 <tr>
                     <th>@item.BrutoMaandloonFulltime</th>
                     <th>@item.Uren</th>
+                    <th><a asp-controller="Overzichten" asp-action="VerwijderBVraag" asp-route-VraagNr="4" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="@item.Id"><i class="fa fa-trash"></i></a></th>
                 </tr>
             }
         </table>

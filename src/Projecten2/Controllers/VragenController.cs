@@ -52,10 +52,7 @@ namespace Projecten2.Controllers
                 }
                 return RedirectToAction("KVraagS1Overzicht", "Overzichten", new { viewModel.AnalyseId});
             }
-            else
-            {
-                return View(viewModel);
-            }
+            return View(viewModel);
         }
 
         public IActionResult KVraagS3(int AnalyseId)
@@ -82,10 +79,7 @@ namespace Projecten2.Controllers
                 }
                 return RedirectToAction("KVraagS6Overzicht", "Overzichten", new { viewModel.AnalyseId });
             }
-            else
-            {
-                return View(viewModel);
-            }
+            return View(viewModel);
         }
 
         public IActionResult KVraagS4(int AnalyseId, int VraagId)
@@ -104,7 +98,7 @@ namespace Projecten2.Controllers
                     viewModel.VraagTekst = "Welke kosten moet u structureel jaarlijks extra maken voor deze inhuur? (vul hier de gereedschapskosten ed in)";
                     break;
                 case 5:
-                    viewModel.VraagTekst = "Welke opleidingskosten moeten er gemaakt worden om de nieuwe kraachten op het gewenste niveau te krijgen?";
+                    viewModel.VraagTekst = "Welke opleidingskosten moeten er gemaakt worden om de nieuwe krachten op het gewenste niveau te krijgen?";
                     break;
                 case 7:
                     viewModel.VraagTekst = "Aanwelke kosten kan nog meer worden gedacht?";
@@ -128,7 +122,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS2Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else if (viewModel.VraagId == 3)
+                    if (viewModel.VraagId == 3)
                     {
                         KVraag3 vraag = new KVraag3(kosten);
                         MapKVraag3(viewModel, vraag);
@@ -136,7 +130,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS3Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else if (viewModel.VraagId == 4)
+                    if (viewModel.VraagId == 4)
                     {
                         KVraag4 vraag = new KVraag4(kosten);
                         MapKVraag4(viewModel, vraag);
@@ -144,7 +138,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS4Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else if (viewModel.VraagId == 5)
+                    if (viewModel.VraagId == 5)
                     {
                         KVraag5 vraag = new KVraag5(kosten);
                         MapKVraag5(viewModel, vraag);
@@ -152,7 +146,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS5Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else if (viewModel.VraagId == 7)
+                    if (viewModel.VraagId == 7)
                     {
                         KVraag7 vraag = new KVraag7(kosten);
                         MapKVraag7(viewModel, vraag);
@@ -160,10 +154,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS7Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else
-                    {
-                        return NotFound();
-                    }
+                    return NotFound();
                 }
                 catch
                 {
@@ -181,10 +172,10 @@ namespace Projecten2.Controllers
             switch (VraagId)
             {
                 case 5:
-                    viewModel.VraagTekst = "-vul tekst in-";
+                    viewModel.VraagTekst = "Welke besparing denkt u te kunnen maken op uitzendkrachten?";
                     break;
                 case 9:
-                    viewModel.VraagTekst = "-vul tekst in-";
+                    viewModel.VraagTekst = "Welke zaken worden extern ingekocht en kan op worden bespaard? Denk hierbij aan bijvoorbeeld uitbesteedde productie, schoonmaak, hoveniers enz.";
                     break;
             }
             return View(viewModel);
@@ -206,7 +197,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("BVraagS5Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else if (viewModel.VraagId == 9)
+                    if (viewModel.VraagId == 9)
                     {
                         BVraag9 vraag = new BVraag9(baten);
                         MapBVraag9(viewModel, vraag);
@@ -214,10 +205,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("BVraagS9Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else
-                    {
-                        return NotFound();
-                    }
+                    return NotFound();
                 }
                 catch
                 {
@@ -235,10 +223,10 @@ namespace Projecten2.Controllers
             switch (viewModel.VraagId)
             {
                 case 3:
-                    viewModel.VraagTekst = "-vul tekst in-";
+                    viewModel.VraagTekst = "Vul hier de lonen op hetzelfde niveau in die mogelijk vervangen worden, met het geschatte aantal uren dat per week weggehaald wordt.";
                     break;
                 case 4:
-                    viewModel.VraagTekst = "-vul tekst in-";
+                    viewModel.VraagTekst = "Vul hier de lonen op een hoger niveau in die mogelijk vervangen worden, met het geschatte aantal uren dat per week weggehaald wordt.";
                     break;
             }
             return View(viewModel);
@@ -260,7 +248,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("BVraagS3Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else if (viewModel.VraagId == 4)
+                    if (viewModel.VraagId == 4)
                     {
                         BVraag4 vraag = new BVraag4(baten);
                         MapBVraag4(viewModel, vraag);
@@ -268,10 +256,7 @@ namespace Projecten2.Controllers
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("BVraagS4Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
-                    else
-                    {
-                        return NotFound();
-                    }
+                    return NotFound();
                 }
                 catch
                 {
@@ -309,10 +294,7 @@ namespace Projecten2.Controllers
                 }
                 return RedirectToAction("BVraagS11Overzicht", "Overzichten", new { viewModel.AnalyseId });
             }
-            else
-            {
-                return View(viewModel);
-            }
+            return View(viewModel);
         }
 
         public IActionResult BVraagDouble(int AnalyseId, int VraagId)
@@ -363,10 +345,7 @@ namespace Projecten2.Controllers
                 }
                 return RedirectToAction("KostenBaten", "Analyse", new { id = viewModel.AnalyseId });
             }
-            else
-            {
-                return View(viewModel);
-            }
+            return View(viewModel);
         }
 
         public IActionResult BVraag6(int AnalyseId)
@@ -395,10 +374,7 @@ namespace Projecten2.Controllers
                 }
                 return RedirectToAction("KostenBaten", "Analyse", new { id = viewModel.AnalyseId });
             }
-            else
-            {
-                return View(viewModel);
-            }
+            return View(viewModel);
         }
 
         public IActionResult BVraag10(int AnalyseId)
@@ -427,10 +403,7 @@ namespace Projecten2.Controllers
                 }
                 return RedirectToAction("KostenBaten", "Analyse", new { id = viewModel.AnalyseId });
             }
-            else
-            {
-                return View(viewModel);
-            }
+            return View(viewModel);
         }
 
         private void MapKVraag1_0(KVraagS1ViewModel viewModel, KVraag1_0 vraag)

@@ -8,7 +8,7 @@
         <h1>Archief</h1>
         <form asp-controller="Home" asp-action="DeArchiveer">
             <div class="archiefbuttons">
-                <button type="submit" class="undo"><i class="fa fa-mail-reply"></i></button>
+                <button type="submit" class="undo hint hint--top" data-hint="Dearchiveer analyse(s)"><i class="fa fa-archive"></i></button>
                 <button class="zoek"><i class="fa fa-search"></i></button>
                 <input type="text" name="zoekanalyse" class="zoekbalk" placeholder="zoeken...">
             </div>
@@ -16,7 +16,6 @@
             <div class="archieflijst">
                 <div class="archiefbalk">
                     <div class="checktop"></div>
-                    <span class="anaam">Naam</span>
                     <span class="abedrijf">Bedrijf</span>
                     <span class="aafdeling">Afdeling</span>
                     <span class="adatum">Datum D/M/Y</span>
@@ -27,22 +26,21 @@
             {
                     <div class="archiefanalyse">
                         <input type="checkbox" name="selectanalyse" value="@item.AnalyseId" class="check">
-                        <span class="anaam">@item.Naam</span>
                         <span class="abedrijf">@item.Bedrijf</span>
                         <span class="aafdeling">@item.Afdeling</span>
                         <span class="adatum">@item.Datum.Day/@item.Datum.Month/@item.Datum.Year</span>
-                        <p hidden>@item.balansFormat()</p>
+                        <p hidden>@item.getBalansFormat()</p>
                         @if (@item.Balans > 0)
                         {
-                            <span class="aomzet omzetanalyse"><p class="green bold">€ @item.balansFormat()</p></span>
+                            <span class="aomzet omzetanalyse"><p class="green bold">€ @item.getBalansFormat()</p></span>
                         }
                         else if (@item.Balans < 0)
                         {
-                            <span class="aomzet omzetanalyse"><p class="red bold">€ @item.balansFormat()</p></span>
+                            <span class="aomzet omzetanalyse"><p class="red bold">€ @item.getBalansFormat()</p></span>
                         }
                         else
                         {
-                            <span class="aomzet omzetanalyse"><p class="gray bold">€ @item.balansFormat()</p></span>
+                            <span class="aomzet omzetanalyse"><p class="gray bold">€ @item.getBalansFormat()</p></span>
                         }
 
                         <div class="clear"></div>

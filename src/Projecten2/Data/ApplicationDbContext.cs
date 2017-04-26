@@ -58,9 +58,6 @@ namespace Projecten2.Data
             a.HasKey(t => t.AnalyseId);
 
             //Properties
-            a.Property(t => t.Naam)
-                .IsRequired()
-                .HasMaxLength(50);
 
             a.Property(t => t.Bedrijf)
                 .IsRequired();

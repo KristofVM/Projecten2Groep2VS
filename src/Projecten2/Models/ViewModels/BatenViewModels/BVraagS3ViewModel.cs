@@ -9,7 +9,7 @@ namespace Projecten2.Models.ViewModels.BatenViewModels
 {
     public class BVraagS3ViewModel
     {
-        public string VraagTekst { get; set; } = "-vul tekst in-";
+        public string VraagTekst { get; set; } = "Aan welke besparingen kan er nog meer gedacht worden? Vul de bedragen in per jaar.";
         public int AnalyseId { get; set; }
         
         [Required(ErrorMessage = "Type besparing is verplicht")]

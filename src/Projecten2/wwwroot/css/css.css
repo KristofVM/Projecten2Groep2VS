@@ -150,14 +150,17 @@ a.analyse p {
 .analysebottom p {
     font-size: 13px;
 }
-.bedrijf, .afdeling {
-    width: 70%;
+.bedrijf, .afdeling, .datum {
+    width: 60%;
     float: left;
 }
-.datum, .kostenbaten {
+p.kostenbaten {
     text-align: right;
-    width: 30%;
+    width: 40%;
     float: right;
+    font-size: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 /* ARCHIEF */
@@ -175,7 +178,11 @@ a.analyse p {
     background-color: #f5f5f5;
     height: 30px;
     width: 30px;
+    font-size: 17px;
     box-shadow: 2px 2px 2px #e2e2e2;
+}
+.undo i, .zoek i {
+    padding-top: 2px;
 }
 .undo:hover, .zoek:hover {
     background-color: #caddfc;
@@ -234,13 +241,13 @@ input[type=text].zoekbalk {
     width: 15px;
 }
 .anaam {
-    width: 200px;
+    width: 0px;
 }
 .abedrijf {
-    width: 275px;
+    width: 375px;
 }
 .aafdeling {
-    width: 275px;
+    width: 375px;
 }
 .adatum {
     width: 135px;
@@ -544,6 +551,9 @@ a.info:hover {
     padding-top: 0px;
     margin-top: -10px;
 }
+.vragen p.vraag {
+    margin-top: 10px;
+}
 .vragen .button {
     padding-left: 23.5px;
     padding-right: 23.5px;
@@ -556,6 +566,9 @@ a.info:hover {
 }
 .vragen .vraag1 .alert {
     float: none;
+}
+.vragen .spacing-15 {
+    height: 15px;
 }
 .doelgroep select, .ondersteun select {
     height: 24px;
