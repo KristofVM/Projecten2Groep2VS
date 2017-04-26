@@ -11,7 +11,7 @@ namespace Projecten2.Models.AccountViewModels
         [Required]
         [EmailAddress]
         [Display(Name="Email", Prompt="email@something.com")]
-        [RegularExpression(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"+ "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$", ErrorMessage = "Email is not valid.")]
+        [RegularExpression(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"+ "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$", ErrorMessage = "Geef een geldige Email: 'email@something.com'.")]
         public string Email { get; set; }
 
         [Required]
@@ -19,7 +19,7 @@ namespace Projecten2.Models.AccountViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name="Remember me?")]
+        [Display(Name="Onthoud gegevens")]
         public bool RememberMe { get; set; }
     }
 }

@@ -130,7 +130,7 @@ a.analyse p {
     padding-bottom: 3px;
     padding-top: 5px;
     float: left;
-    width: 245px;
+    width: 235px;
     height: 21px;
     overflow: hidden;
 }
@@ -150,14 +150,17 @@ a.analyse p {
 .analysebottom p {
     font-size: 13px;
 }
-.bedrijf, .afdeling {
-    width: 70%;
+.bedrijf, .afdeling, .datum {
+    width: 60%;
     float: left;
 }
-.datum, .kostenbaten {
+p.kostenbaten {
     text-align: right;
-    width: 30%;
+    width: 40%;
     float: right;
+    font-size: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 /* ARCHIEF */
@@ -175,7 +178,11 @@ a.analyse p {
     background-color: #f5f5f5;
     height: 30px;
     width: 30px;
+    font-size: 17px;
     box-shadow: 2px 2px 2px #e2e2e2;
+}
+.undo i, .zoek i {
+    padding-top: 2px;
 }
 .undo:hover, .zoek:hover {
     background-color: #caddfc;
@@ -234,13 +241,13 @@ input[type=text].zoekbalk {
     width: 15px;
 }
 .anaam {
-    width: 200px;
+    width: 0px;
 }
 .abedrijf {
-    width: 275px;
+    width: 375px;
 }
 .aafdeling {
-    width: 275px;
+    width: 375px;
 }
 .adatum {
     width: 135px;
@@ -293,7 +300,7 @@ span p {
 input[type=text], input[type=password] {
     border: 1px solid #c4c4c4;
     height: 22px;
-    width: 258px;
+    width: 308px;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -369,7 +376,7 @@ main.login {
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 270px;
+    width: 320px;
     padding: 15px;
     padding-top: 8px;
     box-shadow: 2px 2px 2px #5f5f5f;
@@ -377,9 +384,10 @@ main.login {
 .login .welkom {
     box-shadow: 2px 2px 2px #5f5f5f;
     background-color: #ffffff;
-    width: 600px;
+    width: 550px;
+    height: 224px;
     top: 50px;
-    left: 400px;
+    left: 450px;
     padding: 15px;
     padding-top: 5px;
     position: absolute;
@@ -390,19 +398,23 @@ main.login {
 }
 .login label {
     margin-top: 7px;
-    width: 270px;
+    width: 320px;
 }
-.login button, .login a.button, .edit button, .edit a.button {
+.login button, .login a.button, .edit button, .edit a.button, .vragen .button, .overzicht .button {
     margin-top: 10px;
     border: 1px solid #c4c4c4;
     background-color: #f5f5f5;
     padding: 3px;
-    width: 130px;
+    width: 150px;
     text-decoration: none;
     color: #000000;
     text-align: center;
 }
-.login button:hover, .login a.button:hover, .edit button:hover, .edit a.button:hover {
+.overzicht .button {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.login button:hover, .login a.button:hover, .edit button:hover, .edit a.button:hover, .vragen .button:hover, .overzicht .button:hover {
     background-color: #caddfc;
     cursor: pointer;
 }
@@ -508,4 +520,189 @@ a.info:hover {
 }
 .subtotaal p {
     font-size: 18px;
+}
+
+/* KOST EN BAAT VRAGEN */
+.vragen label, .vragen input, .vragen select {
+    font-size: 13px;
+}
+.vragen .window {
+    padding-right: 0px;
+}
+.vragen .vak {
+    float: left;
+    width: 220px;
+    margin-right: 8px;
+}
+.vragen .vak input {
+    width: 208px;
+}
+.vragen button {
+    margin-top: 24px;
+    padding-top: 4px;
+    padding-bottom: 3px;
+    font-size: 13px;
+    width: 100px;
+}
+.vragen .vraag1 button {
+    margin-top: 7px;
+}
+.vragen .vraag1 {
+    padding-top: 0px;
+    margin-top: -10px;
+}
+.vragen p.vraag {
+    margin-top: 10px;
+}
+.vragen .button {
+    padding-left: 23.5px;
+    padding-right: 23.5px;
+    font-size: 13px;
+}
+.vragen .alert {
+    width: 220px;
+    margin-right: 8px;
+    float: left;
+}
+.vragen .vraag1 .alert {
+    float: none;
+}
+.vragen .spacing-15 {
+    height: 15px;
+}
+.doelgroep select, .ondersteun select {
+    height: 24px;
+    border: 1px solid #c4c4c4;
+}
+.doelgroep select, .doelgroep.vak {
+    width: 155px;
+}
+.ondersteun select, .ondersteun.vak {
+    width: 155px;
+}
+.functie input[type=text] {
+    width: 118px;
+}
+.functie.vak {
+    width: 130px;
+}
+.uren input[type=text] {
+    width: 98px;
+}
+.uren.vak {
+    width: 110px;
+}
+.maandloon input[type=text] {
+    width: 138px;
+}
+.maandloon.vak {
+    width: 150px;
+}
+.maandenibo input[type=text] {
+    width: 130px;
+}
+.maandenibo.vak {
+    width: 142px;
+}
+.totaleibo input[type=text] {
+    width: 178px;
+}
+.totaleibo.vak {
+    width: 190px;
+    margin-right: 0;
+}
+.vragen .terug {
+    margin-top: 0;
+    width: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.overzicht table {
+    margin-top: 20px;
+    display: table;
+    border: solid 1px #c4c4c4;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: #c4c4c4;
+}
+.overzicht table th{
+    border: solid 1px #c4c4c4;
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: center;
+}
+.overzicht table tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+ .overzicht table th:nth-child(odd) {
+     background-color: #f5f5f5;
+}
+.overzicht table tbody {
+    border: solid 1px #c4c4c4;
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+/*  ---TOOLTIPS---  */
+
+.hint { 
+    position: relative; 
+    display: inline-block;
+}
+
+.hint:before, .hint:after {
+    position: absolute;
+    opacity: 0;
+    z-index: 1000000;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    pointer-events: none;
+}
+.hint:hover:before, .hint:hover:after {
+	opacity: 1;
+}
+
+.hint:before {
+	content: '';
+	position: absolute;
+	background: transparent;
+	border: 6px solid transparent;
+	position: absolute;
+}
+		
+.hint:after {
+	content: attr(data-hint);
+	background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 6px 8px;
+    font-size: 12px;
+	white-space: nowrap;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.hint--top:before {
+	bottom: 100%;
+	left: 50%;
+	margin: 0 0 -18px -5px;
+	border-top-color: rgba(0, 0, 0, 0.85);
+}
+		
+.hint--top:after {
+	bottom: 100%;
+	left: 50%;
+	margin: 0 0 -6px -15px;
+}
+
+.hint--top:hover:before {
+	margin-bottom: -10px;
+}
+
+.hint--top:hover:after {
+	margin-bottom: 2px;
 }

@@ -11,29 +11,24 @@ namespace Projecten2.Models.ViewModels
     {
         public int AnalyseId { get; set; }
 
-        [Required]
-        [Display(Name = "Naam", Prompt = "Naam")]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
-        public string Naam { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = "Dit veld is verplicht.")]
         [Display(Name = "Bedrijf", Prompt = "Bedrijf")]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+        [StringLength(50, ErrorMessage = "De {0} moet minstens {2} en maximuum {1} karakters lang zijn.", MinimumLength = 3)]
         public string Bedrijf { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Dit veld is verplicht.")]
         [Display(Name = "Afdeling", Prompt = "Afdeling")]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+        [StringLength(50, ErrorMessage = "De {0} moet minstens {2} en maximuum {1} karakters lang zijn.", MinimumLength = 3)]
         public string Afdeling { get; set; }
 
-        [Required]
-        [Display(Name = "Patronale Bijdrage")]
-        [Range(0, 100, ErrorMessage = "Please enter a number between 0 and 100.")]
+        [Required(ErrorMessage = "Dit veld is verplicht.")]
+        [Display(Name = "Patronale Bijdrage (%)")]
+        [Range(0, 100, ErrorMessage = "Geef een cijfer tussen 0 en 100.")]
         public int PatronaleBijdrage { get; set; } = 35;
 
-        [Required]
+        [Required(ErrorMessage = "Dit veld is verplicht.")]
         [Display(Name = "Uren voltijdse werkweek")]
-        [Range(1, 48, ErrorMessage = "Please enter a number between 1 and 48.")]
+        [Range(1, 48, ErrorMessage = "Geef een cijfer tussen 1 en 48.")]
         public int UrenVoltijdsWerkweek { get; set; } = 38;
 
         public EditViewModel()
@@ -43,7 +38,6 @@ namespace Projecten2.Models.ViewModels
         public EditViewModel(Analyse analyse) : this()
         {
             AnalyseId = analyse.AnalyseId;
-            Naam = analyse.Naam;
             Bedrijf = analyse.Bedrijf;
             Afdeling = analyse.Afdeling;
             PatronaleBijdrage = analyse.PatronaleBijdrage;

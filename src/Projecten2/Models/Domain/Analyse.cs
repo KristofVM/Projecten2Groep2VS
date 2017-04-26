@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Linq;
 
 namespace Projecten2.Models.Domain
 {
     public class Analyse
     {
         public int AnalyseId { get; set; }
-
-        public string Naam { get; set; }
+        
         public string Bedrijf { get; set; }
         public string Afdeling { get; set; }
         public DateTime Datum { get; set; }
@@ -20,9 +20,29 @@ namespace Projecten2.Models.Domain
         public Kosten Kosten { get; set; }
         public Baten Baten { get; set; }
 
-        public string balansFormat()
+        public string getBalansFormat()
         {
+            Balans = Baten.subtotaal() - Kosten.subtotaal();
             return Balans.ToString("#,##0.##");
+        }
+
+        public string getBatenFormat()
+        {
+            return Baten.subtotaal().ToString("#,##0.##");
+        }
+
+        public string getKostenFormat()
+        {
+            return Kosten.subtotaal().ToString("#,##0.##");
+        }
+
+        public string getKVragenFormat(int vraag)
+        {
+            return Kosten.getTotaalKVragen(vraag) == 0 ? "-" : Kosten.getTotaalKVragen(vraag).ToString("#,##0.##");
+        }
+        public string getBVragenFormat(int vraag)
+        {
+            return Baten.getTotaalBVragen(vraag) == 0 ? "-" : Baten.getTotaalBVragen(vraag).ToString("#,##0.##");
         }
         public string getMonth()
         {

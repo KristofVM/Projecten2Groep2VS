@@ -1,0 +1,31 @@
+﻿@model Projecten2.Models.Domain.Analyse
+
+
+<main class="overzicht">
+    <div class="contain">
+        <h1>Wat zijn de transportkosten van eventueel uitbesteedde zaken?</h1>
+        <a asp-controller="Analyse" asp-action="kostenbaten" asp-route-id="@Model.AnalyseId" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
+        <a asp-controller="Vragen" asp-action="KVraagS3" asp-route-AnalyseId="@Model.AnalyseId" class="terug button"><i class="fa fa-plus"></i> Nieuw</a>
+        <table style="width:30%">
+            <tr>
+                <th>Uren</th>
+                <th>Bruto Maandloon Begeleider</th>
+                <th></th>
+            </tr>
+            @if (Model.Kosten.Kvragen6.Count == 0)
+            {
+                <tr>
+                    <th colspan="2" class="alert">Er zijn geen functies.</th>
+                </tr>
+            }
+            @foreach (var item in Model.Kosten.Kvragen6)
+            {
+                <tr>
+                    <th>@item.Uren</th>
+                    <th>@item.BrutoMaandloonBegeleider</th>
+                    <th><a asp-controller="Overzichten" asp-action="VerwijderKVraag" asp-route-VraagNr="6" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="@item.Id"><i class="fa fa-trash"></i></a></th>
+                </tr>
+            }
+        </table>
+    </div>
+</main>

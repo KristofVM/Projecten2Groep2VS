@@ -1,0 +1,27 @@
+﻿@using System.Threading.Tasks
+@model Projecten2.Models.ViewModels.BatenViewModels.BVraag6ViewModel
+
+<main class="vragen">
+    <div class="contain">
+        <h1>@Model.VraagTekst</h1>
+        <a asp-controller="Analyse" asp-action="kostenbaten" asp-route-id="@Model.AnalyseId" class="terug button"><i class="fa fa-arrow-left"></i> Terug</a>
+        <div class="window">
+            <form asp-controller="Vragen" asp-action="BVraag6" method="post">
+                <input type="hidden" asp-for="AnalyseId" />
+                <div class="vak">
+                    <label asp-for="Vak1"></label>
+                    <input asp-for="Vak1" type="text" />
+                </div>
+                <div class="vak">
+                    <label asp-for="Vak2"></label>
+                    <input asp-for="Vak2" type="text" />
+                </div>
+                <button type="submit">Bevestig</button>
+                <div class="clear"></div>
+                <span asp-validation-for="Vak1" class="alert"></span>
+                <span asp-validation-for="Vak2" class="alert"></span>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+</main>

@@ -12,6 +12,11 @@ namespace Projecten2.Models.Domain.KostenVragen
         public string Beschrijving { get; set; }
         public double JaarBedrag { get; set; }
 
+        public KVraag1_1()
+        {
+            Beschrijving = "";
+            JaarBedrag = 0;
+        }
         public KVraag1_1(Kosten kosten)
         {
             Kosten = kosten;

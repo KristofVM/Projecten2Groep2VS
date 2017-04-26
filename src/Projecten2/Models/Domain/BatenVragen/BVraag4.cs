@@ -12,6 +12,11 @@ namespace Projecten2.Models.Domain.BatenVragen
         public int Uren { get; set; }
         public double BrutoMaandloonFulltime { get; set; }
 
+        public BVraag4()
+        {
+            Uren = 0;
+            BrutoMaandloonFulltime = 0;
+        }
         public BVraag4(Baten baten)
         {
             Baten = baten;

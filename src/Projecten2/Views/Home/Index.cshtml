@@ -14,29 +14,28 @@
         {
             <div class="analyse">
                 <div class="analysetop">
-                    <a asp-controller="Analyse" asp-action="KostenBaten" asp-route-id="@item.AnalyseId" class="naam">@item.Naam</a>
-                    <a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId"><i class="fa fa-file-archive-o"> </i></a> <!-- delete/archive -->
-                    @*<a href="#"><i class="fa fa-envelope"> </i></a>*@ <!-- mail -->
-                    <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
-                    <a asp-controller="Analyse" asp-action="Edit" asp-route-id="@item.AnalyseId"><i class="fa fa-pencil"> </i></a> <!-- Edit -->
+                    <a asp-controller="Analyse" asp-action="KostenBaten" asp-route-id="@item.AnalyseId" class="naam">@item.Bedrijf</a>
+                    <a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId" class="hint hint--top" data-hint="Archiveer analyse"><i class="fa fa-archive"> </i></a> <!-- delete/archive -->
+                    <a href="#" class="hint hint--top" data-hint="Download pdf"><i class="fa fa-file-pdf-o"> </i></a> <!-- download -->
+                    <a asp-controller="Analyse" asp-action="Edit" asp-route-id="@item.AnalyseId" class="hint hint--top" data-hint="Edit analyse"><i class="fa fa-pencil"> </i></a> <!-- Edit -->
                     <div class="clear"></div>
                 </div>
                 <div class="analysebottom">
-                    <p class="bedrijf">Bedrijf: @item.Bedrijf</p>
-                    <p class="datum">@item.Datum.Day @item.getMonth() @item.Datum.Year</p>
                     <p class="afdeling">Afdeling: @item.Afdeling</p>
+                    <p hidden>@item.getBalansFormat()</p>
                     @if (@item.Balans > 0)
                     {
-                        <p class="kostenbaten green bold">€ @item.balansFormat()</p>
+                        <p class="kostenbaten green bold">€ @item.getBalansFormat()</p>
                     }
                     else if (@item.Balans < 0)
                     {
-                        <p class="kostenbaten red bold">€ @item.balansFormat()</p>
+                        <p class="kostenbaten red bold">€ @item.getBalansFormat()</p>
                     }
                     else
                     {
-                        <p class="kostenbaten gray bold">€ @item.balansFormat()</p>
+                        <p class="kostenbaten gray bold">€ @item.getBalansFormat()</p>
                     }
+                    <p class="datum">@item.Datum.Day @item.getMonth() @item.Datum.Year</p>
                     <div class="clear"></div>
                 </div>
             </div>

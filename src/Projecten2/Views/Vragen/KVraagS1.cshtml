@@ -1,0 +1,61 @@
+﻿@using System.Threading.Tasks
+@model Projecten2.Models.ViewModels.KostenViewModels.KVraagS1ViewModel
+
+<main class="vragen">
+    <div class="contain">
+        <h1>@Model.VraagTekst</h1>
+        <div class="window vraag1">
+            <form asp-controller="Vragen" asp-action="KVraagS1" method="post">
+                <input type="hidden" asp-for="AnalyseId" />
+                <div class="functie vak">
+                    <br /><label asp-for="Functie"></label>
+                    <input asp-for="Functie" type="text" />
+                </div>
+                <div class="uren vak">
+                    <br /><label asp-for="AantalUrenPerWeek"></label>
+                    <input asp-for="AantalUrenPerWeek" type="text" />
+                </div>
+                <div class="maandloon vak">
+                    <br /><label asp-for="BrutoMaandloonFulltime"></label>
+                    <input asp-for="BrutoMaandloonFulltime" type="text" />
+                </div>
+                <div class="doelgroep vak">
+                    <br/><label asp-for="Doelgroep"></label>
+                    <select asp-for="Doelgroep">
+                        <option value="1550">&lt; 25 laaggeschoold</option>
+                        <option value="1000">&lt; 25 middengeschoold</option>
+                        <option value="1150">55 - 60 Jaar</option>
+                        <option value="1500">60 Jaar en ouder</option>
+                    </select>
+                </div>
+                <div class="ondersteun vak">
+                    <label asp-for="VlaamseOndPremie"></label>
+                    <select asp-for="VlaamseOndPremie">
+                        <option value="40">40 &#37;</option>
+                        <option value="30">30 &#37;</option>
+                        <option value="20">20 &#37;</option>
+                        <option value="0">0 &#37;</option>
+                    </select>
+                </div>
+                <div class="maandenibo vak">
+                    <br /><label asp-for="AantalMaandenIBO"></label>
+                    <input asp-for="AantalMaandenIBO" type="text" />
+                </div>
+                <div class="totaleibo vak">
+                    <br /><label asp-for="TotaleProductiviteitsPremie"></label>
+                    <input asp-for="TotaleProductiviteitsPremie" type="text" />
+                </div>
+                <div class="clear"></div>
+                <button type="submit">Voeg toe</button>
+                <a asp-controller="Overzichten" asp-action="KVraagS1Overzicht" asp-route-AnalyseId="@Model.AnalyseId" class="button">Annuleer</a>
+                <span asp-validation-for="Functie" class="alert"></span>
+                <span asp-validation-for="AantalUrenPerWeek" class="alert"></span>
+                <span asp-validation-for="BrutoMaandloonFulltime" class="alert"></span>
+                <span asp-validation-for="Doelgroep" class="alert"></span>
+                <span asp-validation-for="VlaamseOndPremie" class="alert"></span>
+                <span asp-validation-for="AantalMaandenIBO" class="alert"></span>
+                <span asp-validation-for="TotaleProductiviteitsPremie" class="alert"></span>
+            </form>
+        </div>
+    </div>
+</main>

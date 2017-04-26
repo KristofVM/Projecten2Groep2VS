@@ -12,6 +12,11 @@ namespace Projecten2.Models.Domain.KostenVragen
         public string Type { get; set; }
         public double Bedrag { get; set; }
 
+        public KVraag2()
+        {
+            Type = "";
+            Bedrag = 0;
+        }
         public KVraag2(Kosten kosten)
         {
             Kosten = kosten;

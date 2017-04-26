@@ -34,14 +34,36 @@ namespace Projecten2.Data.Repositories
             return _analyses;
         }
 
-        public IEnumerable<Analyse> GetByGebruiker(string Id)
-        {
-            return _analyses.Where(a => a.ApplicationUserId == Id);
-        }
-
         public Analyse GetById(int analyseId)
         {
-            return _analyses.FirstOrDefault(a => a.AnalyseId == analyseId);
+            return _analyses
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen3)
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen4)
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen5)
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen9)
+                .Include(a => a.Baten)
+                .ThenInclude(a => a.Bvragen11)
+                .Include(a => a.Kosten)
+                .ThenInclude(a => a.Kvragen01)
+                .Include(a => a.Kosten)
+                .ThenInclude(a => a.Kvragen1)
+                .Include(a => a.Kosten)
+                .ThenInclude(a => a.Kvragen2)
+                .Include(a => a.Kosten)
+                .ThenInclude(a => a.Kvragen3)
+                .Include(a => a.Kosten)
+                .ThenInclude(a => a.Kvragen4)
+                .Include(a => a.Kosten)
+                .ThenInclude(a => a.Kvragen5)
+                .Include(a => a.Kosten)
+                .ThenInclude(a => a.Kvragen6)
+                .Include(a => a.Kosten)
+                .ThenInclude(a => a.Kvragen7)
+                .FirstOrDefault(a => a.AnalyseId == analyseId);
         }
 
         public void SaveChanges()
