@@ -35,29 +35,31 @@ namespace Projecten2.Models.Domain
         }
         public double getTotaalBVragen(int vraag)
         {
+            if (vraag == 1)
+            {
+                double deel1 = Analyse.Kosten.GetTotaalKVragen(1);
+            }
             if (vraag == 2)
             {
                 return JaarBedSubsWerkOmg;
             }
             if (vraag == 3)
             {
-                return 0;
                 if (Bvragen3.Count == 0)
                     return 0;
-                //return Bvragen3.ToList().Sum(a => a.);
+                return Bvragen3.Sum(a => a.Uren / (double)Analyse.PatronaleBijdrage / 100* a.BrutoMaandloonFulltime * (1+ (double)Analyse.PatronaleBijdrage/100)*13.92);
             }
             if (vraag == 4)
             {
-                return 0;
                 if (Bvragen4.Count == 0)
                     return 0;
-                //return Bvragen4.ToList().Sum(a => a.);
+                return Bvragen3.Sum(a => a.Uren / (double)Analyse.PatronaleBijdrage / 100 * a.BrutoMaandloonFulltime * (1 + (double)Analyse.PatronaleBijdrage / 100) * 13.92);
             }
             if (vraag == 5)
             {
                 if (Bvragen5.Count == 0)
                     return 0;
-                return Bvragen5.ToList().Sum(a => a.JaarBedrag);
+                return Bvragen5.Sum(a => a.JaarBedrag);
             }
             if (vraag == 6)
             {
@@ -75,7 +77,7 @@ namespace Projecten2.Models.Domain
             {
                 if (Bvragen9.Count == 0)
                     return 0;
-                return Bvragen9.ToList().Sum(a => a.JaarBedrag);
+                return Bvragen9.Sum(a => a.JaarBedrag);
             }
             if (vraag == 10)
             {
@@ -85,7 +87,7 @@ namespace Projecten2.Models.Domain
             {
                 if (Bvragen11.Count == 0)
                     return 0;
-                return Bvragen11.ToList().Sum(a => a.JaarBedrag);
+                return Bvragen11.Sum(a => a.JaarBedrag);
             }
             return 0;
         }

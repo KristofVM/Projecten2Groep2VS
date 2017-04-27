@@ -22,7 +22,7 @@ namespace Projecten2.Models.Domain
 
         public string getBalansFormat()
         {
-            Balans = Baten.subtotaal() - Kosten.subtotaal();
+            Balans = Baten.subtotaal() - Kosten.Subtotaal();
             return Balans.ToString("#,##0.##");
         }
 
@@ -33,12 +33,12 @@ namespace Projecten2.Models.Domain
 
         public string getKostenFormat()
         {
-            return Kosten.subtotaal().ToString("#,##0.##");
+            return Kosten.Subtotaal().ToString("#,##0.##");
         }
 
         public string getKVragenFormat(int vraag)
         {
-            return Kosten.getTotaalKVragen(vraag) == 0 ? "-" : Kosten.getTotaalKVragen(vraag).ToString("#,##0.##");
+            return Kosten.GetTotaalKVragen(vraag) == 0 ? "-" : Kosten.GetTotaalKVragen(vraag).ToString("#,##0.##");
         }
         public string getBVragenFormat(int vraag)
         {

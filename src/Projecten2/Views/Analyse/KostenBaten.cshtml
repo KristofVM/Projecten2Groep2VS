@@ -62,7 +62,7 @@
         <div class="kosten">
             <h2 class="top">Kosten</h2>
             <div class="onderdeel">
-                <p class="bedrag red">€ <span>-</span></p>
+                <p class="bedrag red">€ <span>@Model.getKVragenFormat(1)</span></p>
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="1" class="info">loonkosten medewerkers met grote afstand tot arbeidsmarkt</a>
             </div>
             <div class="onderdeel">
@@ -82,7 +82,7 @@
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="5" class="info">extra kosten opleiding</a>
             </div>
             <div class="onderdeel">
-                <p class="bedrag red">€ <span>-</span></p>
+                <p class="bedrag red">€ <span>@Model.getKVragenFormat(6)</span></p>
                 <a asp-controller="Analyse" asp-action="KVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="6" class="info">extra kosten administratie en begeleiding</a>
             </div>
             <div class="onderdeel">
