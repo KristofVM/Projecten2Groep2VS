@@ -37,7 +37,8 @@ namespace Projecten2.Models.Domain
         {
             if (vraag == 1)
             {
-                double deel1 = Analyse.Kosten.GetTotaalKVragen(1);
+                return Analyse.Kosten.Kvragen01.Sum(a => a.BrutoMaandloonIncPatBijd(Analyse.UrenVoltijdsWerkweek, Analyse.PatronaleBijdrage))*12 - 
+                    Analyse.Kosten.Kvragen01.Sum(a => a.TotaleLoonkostEersteJaar(Analyse.UrenVoltijdsWerkweek, Analyse.PatronaleBijdrage));
             }
             if (vraag == 2)
             {

@@ -12,7 +12,7 @@
             <h2 class="top">Baten</h2>
             <div class="onderdeel">
                 <a class="info">totale loonkostsubsidies (VOP, IBO en doelgroepvermindering)</a>
-                <p class="bedrag green">€ <span>-</span></p>
+                <p class="bedrag green">€ <span>@Model.getBVragenFormat(1)</span></p>
             </div>
             <div class="onderdeel">
                 <a asp-controller="Analyse" asp-action="BVraag" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="2" class="info">tegemoetkoming in de kosten voor aanpassingen werkomgeving/aangepast gereedschap</a>

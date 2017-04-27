@@ -33,7 +33,7 @@ namespace Projecten2.Models.Domain
             {
                 if (Kvragen01.Count == 0)
                     return 0;
-                return Kvragen01.Sum(a => (double)(a.BrutoMaandloonFulltime)/(double)(a.Kosten.Analyse.UrenVoltijdsWerkweek)*(double)(a.AantalUrenPerWeek)*(1 + (double)(Analyse.PatronaleBijdrage) / 100));
+                return Kvragen01.Sum(a => a.BrutoMaandloonIncPatBijd(Analyse.UrenVoltijdsWerkweek, Analyse.PatronaleBijdrage)) * 12;
             }
             if (vraag == 2)
             {
