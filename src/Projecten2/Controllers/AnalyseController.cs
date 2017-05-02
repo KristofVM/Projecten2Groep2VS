@@ -13,21 +13,15 @@ namespace Projecten2.Controllers
 {
     public class AnalyseController : Controller
     {
-        private readonly IBatenRepository _batenRepository;
-        private readonly IKostenRepository _kostenRepository;
         private readonly IAnalyseRepository _analyseRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public AnalyseController(
-            IBatenRepository batenRepository,
-            IKostenRepository kostenRepository,
             IAnalyseRepository analyseRepository,
             IApplicationUserRepository userRepository,
             UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
-            _batenRepository = batenRepository;
-            _kostenRepository = kostenRepository;
             _analyseRepository = analyseRepository;
         }
 
@@ -100,8 +94,6 @@ namespace Projecten2.Controllers
 
         public IActionResult BVraag(int AnalyseId, int VraagId)
         {
-            Analyse analyse = _analyseRepository.GetById(AnalyseId);
-            Baten baten = _batenRepository.GetById(analyse.Baten.BatenId);
             switch (VraagId)
             {
                 case 2: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId }); break;
@@ -122,8 +114,6 @@ namespace Projecten2.Controllers
         }
         public IActionResult KVraag(int AnalyseId, int VraagId)
         {
-            Analyse analyse = _analyseRepository.GetById(AnalyseId);
-            Kosten kosten = _kostenRepository.GetById(analyse.Kosten.KostenId);
             switch (VraagId)
             {
                 //case 1: return RedirectToAction("KVraagS1", "Vragen", new { AnalyseId }); break;

@@ -12,8 +12,7 @@ namespace Projecten2.Data
     {
         public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Analyse> Analyses { get; set; }
-        public DbSet<Baten> Baten { get; set; }
-        public DbSet<Kosten> Kosten { get; set; }
+        public DbSet<Doelgroep> Doelgroepen { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -27,6 +26,7 @@ namespace Projecten2.Data
 
             //Mapping Kosten
             modelBuilder.Entity<Kosten>(MapKosten);
+            modelBuilder.Entity<Doelgroep>(MapDoelgroep);
             modelBuilder.Entity<KVraag1_0>(MapKVraag1_0);
             modelBuilder.Entity<KVraag1_1>(MapKVraag1_1);
             modelBuilder.Entity<KVraag2>(MapKVraag2);
@@ -209,13 +209,11 @@ namespace Projecten2.Data
             k.Property(t => t.TotaleProductiviteitsPremie)
                 .IsRequired();
 
-            k.Property(t => t.Doelgroep)
-                .IsRequired();
-
             k.Property(t => t.VlaamseOndPremie)
                 .IsRequired();
 
             //Associaties
+            k.HasOne(t => t.Doelgroep);
         }
         private static void MapKVraag1_1(EntityTypeBuilder<KVraag1_1> k)
         {
@@ -518,6 +516,29 @@ namespace Projecten2.Data
             b.Property(t => t.JaarBedrag)
                 .IsRequired();
 
+            //Associaties
+
+        }
+        private static void MapDoelgroep(EntityTypeBuilder<Doelgroep> d)
+        {
+            //Table name
+            d.ToTable("Doelgroep");
+
+            //Primary key
+            d.HasKey(t => t.DoelgroepId);
+
+            d.Property(t => t.DoelgroepId)
+                .ValueGeneratedOnAdd();
+
+            d.Property(t => t.DoelgroepText)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            d.Property(t => t.DoelgroepValue)
+                .IsRequired();
+
+            d.Property(t => t.IsVerwijderd)
+                .IsRequired();
             //Associaties
 
         }

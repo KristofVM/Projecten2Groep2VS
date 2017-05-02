@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,9 @@ namespace Projecten2.Models.Domain.KostenVragen
         public string Functie { get; set; }
         public int AantalUrenPerWeek { get; set; }
         public int BrutoMaandloonFulltime { get; set; }
-        public int Doelgroep { get; set; }
+        [ForeignKey("DoelgroepId")]
+        public Doelgroep Doelgroep { get; set; }
+        public int DoelgroepId { get; set; }
         public int VlaamseOndPremie { get; set; }
         public int AantalMaandenIBO { get; set; }
         public double TotaleProductiviteitsPremie { get; set; }
@@ -22,7 +25,6 @@ namespace Projecten2.Models.Domain.KostenVragen
             Functie = "";
             AantalUrenPerWeek = 0;
             BrutoMaandloonFulltime = 0;
-            Doelgroep = 0;
             VlaamseOndPremie = 0;
             AantalMaandenIBO = 0;
             TotaleProductiviteitsPremie = 0;
@@ -30,11 +32,11 @@ namespace Projecten2.Models.Domain.KostenVragen
 
         public double DoelGroepVermindering()
         {
-            if ((Doelgroep == 1550 && BrutoMaandloonFulltime < 2500) ||
-                (Doelgroep == 1000 && BrutoMaandloonFulltime < 2500) ||
-                (Doelgroep == 1150 && BrutoMaandloonFulltime < 4466.66) ||
-                (Doelgroep == 1500 && BrutoMaandloonFulltime < 4466.66))
-                return (double) Doelgroep / Kosten.Analyse.UrenVoltijdsWerkweek * AantalUrenPerWeek / 4;
+            if ((Doelgroep.DoelgroepValue == 1550 && BrutoMaandloonFulltime < 2500) ||
+                (Doelgroep.DoelgroepValue == 1000 && BrutoMaandloonFulltime < 2500) ||
+                (Doelgroep.DoelgroepValue == 1150 && BrutoMaandloonFulltime < 4466.66) ||
+                (Doelgroep.DoelgroepValue == 1500 && BrutoMaandloonFulltime < 4466.66))
+                return (double) Doelgroep.DoelgroepValue / Kosten.Analyse.UrenVoltijdsWerkweek * AantalUrenPerWeek / 4;
             return 0;
         }
 
@@ -52,13 +54,24 @@ namespace Projecten2.Models.Domain.KostenVragen
         {
             return (BrutoMaandloonIncPatBijd(UrenVoltijdseWerkweek, PatronaleBijdrage) - GemiddeldeVOP(UrenVoltijdseWerkweek, PatronaleBijdrage) - DoelGroepVermindering()) * (13.92 - AantalMaandenIBO) + TotaleProductiviteitsPremie;
         }
+        public KVraag1_0(Kosten kosten, Doelgroep doelgroep)
+        {
+            Kosten = kosten;
+            Functie = "";
+            AantalUrenPerWeek = 0;
+            BrutoMaandloonFulltime = 0;
+            Doelgroep = doelgroep;
+            VlaamseOndPremie = 0;
+            AantalMaandenIBO = 0;
+            TotaleProductiviteitsPremie = 0;
+        }
+
         public KVraag1_0(Kosten kosten)
         {
             Kosten = kosten;
             Functie = "";
             AantalUrenPerWeek = 0;
             BrutoMaandloonFulltime = 0;
-            Doelgroep = 0;
             VlaamseOndPremie = 0;
             AantalMaandenIBO = 0;
             TotaleProductiviteitsPremie = 0;

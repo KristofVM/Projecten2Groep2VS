@@ -27,7 +27,32 @@ namespace Projecten2.Data
                 await InitializeUsers();
 
                 ICollection<Analyse> analysen = new List<Analyse>();
-                
+                ICollection<Doelgroep> doelgroepen = new List<Doelgroep>();
+
+
+                Doelgroep doelgroep = new Doelgroep();
+                doelgroep.DoelgroepText = "Andere";
+                doelgroep.DoelgroepValue = 0;
+                doelgroepen.Add(doelgroep);
+
+                Doelgroep doelgroep1 = new Doelgroep();
+                doelgroepen.Add(doelgroep1);
+
+                Doelgroep doelgroep2 = new Doelgroep();
+                doelgroep2.DoelgroepText = "< 25 middengeschoold";
+                doelgroep2.DoelgroepValue = 1000;
+                doelgroepen.Add(doelgroep2);
+
+                Doelgroep doelgroep3 = new Doelgroep();
+                doelgroep3.DoelgroepText = "55 - 60 jaar";
+                doelgroep3.DoelgroepValue = 1150;
+                doelgroepen.Add(doelgroep3);
+
+                Doelgroep doelgroep4 = new Doelgroep();
+                doelgroep4.DoelgroepText = "> 60 jaar";
+                doelgroep4.DoelgroepValue = 1500;
+                doelgroepen.Add(doelgroep4);
+
                 Analyse analyse1 = new Analyse();
                 analyse1.Afdeling = "kuisdienst";
                 analyse1.Bedrijf = "google";
@@ -104,6 +129,8 @@ namespace Projecten2.Data
                 ApplicationUser user2 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats, Analyses = analysen};
                 
                 await _userManager.CreateAsync(user2, "P@ssword1");
+
+
 
                 _dbContext.SaveChanges();
             }

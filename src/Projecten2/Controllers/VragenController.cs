@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Projecten2.Data.Repositories;
 using Projecten2.Models.Domain;
 using Projecten2.Models.Domain.BatenVragen;
 using Projecten2.Models.Domain.KostenVragen;
@@ -17,15 +18,14 @@ namespace Projecten2.Controllers
     public class VragenController : Controller
     {
         private readonly IAnalyseRepository _analyseRepository;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IDoelgroepRepository _doelgroepRepository;
 
         public VragenController(
             IAnalyseRepository analyseRepository,
-            IApplicationUserRepository userRepository,
-            UserManager<ApplicationUser> userManager)
+            IDoelgroepRepository doelgroepRepository)
         {
-            _userManager = userManager;
             _analyseRepository = analyseRepository;
+            _doelgroepRepository = doelgroepRepository;
         }
 
         public IActionResult KVraagS1(int AnalyseId)
@@ -411,7 +411,7 @@ namespace Projecten2.Controllers
             vraag.AantalMaandenIBO = viewModel.AantalMaandenIBO;
             vraag.AantalUrenPerWeek = viewModel.AantalUrenPerWeek;
             vraag.BrutoMaandloonFulltime = viewModel.BrutoMaandloonFulltime;
-            vraag.Doelgroep = viewModel.Doelgroep;
+            vraag.Doelgroep = _doelgroepRepository.GetById(viewModel.Doelgroep);
             vraag.Functie = viewModel.Functie;
             vraag.TotaleProductiviteitsPremie = viewModel.TotaleProductiviteitsPremie;
             vraag.VlaamseOndPremie = viewModel.VlaamseOndPremie;

@@ -49,6 +49,7 @@ namespace Projecten2.Data.Repositories
                 .ThenInclude(a => a.Bvragen11)
                 .Include(a => a.Kosten)
                 .ThenInclude(a => a.Kvragen01)
+                .ThenInclude(a => a.Doelgroep)
                 .Include(a => a.Kosten)
                 .ThenInclude(a => a.Kvragen1)
                 .Include(a => a.Kosten)

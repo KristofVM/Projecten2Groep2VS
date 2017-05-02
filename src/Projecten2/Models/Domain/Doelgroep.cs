@@ -1,10 +1,19 @@
-﻿namespace Projecten2.Models.Domain
+﻿using System;
+
+namespace Projecten2.Models.Domain
 {
-    public enum Doelgroep
+    public class Doelgroep
     {
-        Jonger25JaarLaaggeschoold = 1550,
-        Jonger25JaarMiddengeschoold = 1000,
-        Tussen55en60Jaar = 1150,
-        Ouder60Jaar = 1500
+        public int DoelgroepId { get; set; }
+        public string DoelgroepText { get; set; }
+        public double DoelgroepValue { get; set; }
+        public Boolean IsVerwijderd { get; set; }
+
+        public Doelgroep()
+        {
+            IsVerwijderd = false;
+            DoelgroepText = "< 25 laaggeschoold";
+            DoelgroepValue = 1550;
+        }
     }
 }
