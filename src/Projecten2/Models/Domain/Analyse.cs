@@ -25,17 +25,14 @@ namespace Projecten2.Models.Domain
             Balans = Baten.subtotaal() - Kosten.Subtotaal();
             return Balans.ToString("#,##0.##");
         }
-
         public string getBatenFormat()
         {
             return Baten.subtotaal().ToString("#,##0.##");
         }
-
         public string getKostenFormat()
         {
             return Kosten.Subtotaal().ToString("#,##0.##");
         }
-
         public string getKVragenFormat(int vraag)
         {
             return Kosten.GetTotaalKVragen(vraag) == 0 ? "-" : Kosten.GetTotaalKVragen(vraag).ToString("#,##0.##");
@@ -43,6 +40,15 @@ namespace Projecten2.Models.Domain
         public string getBVragenFormat(int vraag)
         {
             return Baten.getTotaalBVragen(vraag) == 0 ? "-" : Baten.getTotaalBVragen(vraag).ToString("#,##0.##");
+        }
+
+        public double getWidthGroen()
+        {
+            return Math.Round((Baten.subtotaal() / (Baten.subtotaal() + Kosten.Subtotaal()) * 328));
+        }
+        public double getWidthRood()
+        {
+            return 328 - getWidthGroen() - 6;
         }
         public string getMonth()
         {

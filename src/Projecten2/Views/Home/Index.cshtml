@@ -1,4 +1,6 @@
-﻿@using Projecten2.Models.Domain
+﻿@using System.Runtime.InteropServices.ComTypes
+@using Microsoft.CodeAnalysis.Differencing
+@using Projecten2.Models.Domain
 @model IEnumerable<Projecten2.Models.Domain.Analyse>
 @{
     ViewData["Title"] = "Overzicht";
@@ -13,51 +15,85 @@
         @foreach (var item in Model)
         {
             <div class="analyse">
+                @{
+                    item.getBalansFormat();
+                }
                 <div class="analysetop">
                     <a asp-controller="Analyse" asp-action="KostenBaten" asp-route-id="@item.AnalyseId" class="naam">@item.Bedrijf</a>
                     <a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId" class="hint hint--top" data-hint="Archiveer analyse"><i class="fa fa-archive"> </i></a> <!-- delete/archive -->
                     <a href="#" class="hint hint--top" data-hint="Download pdf"><i class="fa fa-file-pdf-o"> </i></a> <!-- download -->
-                    <a asp-controller="Analyse" asp-action="Edit" asp-route-id="@item.AnalyseId" class="hint hint--top" data-hint="Edit analyse"><i class="fa fa-pencil"> </i></a> <!-- Edit -->
+                    <a asp-controller="Analyse" asp-action="Edit" asp-route-id="@item.AnalyseId" class="hint hint--top" data-hint="Edit analyse"><i class="fa fa-pencil"> </i></a> <!-- Edit<>-->
                     <div class="clear"></div>
                 </div>
                 <div class="analysebottom">
                     <p class="afdeling">Afdeling: @item.Afdeling</p>
-                    <p hidden>@item.getBalansFormat()</p>
                     @if (@item.Balans > 0)
                     {
                         <p class="kostenbaten green bold">€ @item.getBalansFormat()</p>
                     }
-                    else if (@item.Balans < 0)
+                    @if (@item.Balans < 0)
                     {
                         <p class="kostenbaten red bold">€ @item.getBalansFormat()</p>
-                    }
-                    else
+                    } else if (@item.Balans == 0)
                     {
                         <p class="kostenbaten gray bold">€ @item.getBalansFormat()</p>
                     }
                     <p class="datum">@item.Datum.Day @item.getMonth() @item.Datum.Year</p>
                     <div class="clear"></div>
                 </div>
+                <div class="ratiobalk">
+                    @if (@item.Balans == 0)
+                    {
+                        <div class="ratiogrijs"></div>
+                    }
+                    else if (@item.getWidthGroen() >= 322.9)
+                    {
+                        <div class="ratiogroen" style="width: 100%;"></div>
+                    }
+                    else if (@item.getWidthRood() >= 322.9)
+                    {
+                        <div class="ratiogroen" style="width: 100%;"></div>
+                    }
+                    else
+                    {
+                        <div hidden id="groenwidth">@item.getWidthGroen()</div>
+                        <div hidden id="roodwidth">@item.getWidthRood()</div>
+                        <div class="ratiogroen" id="groen" ></div>
+                        <div class="overgang"></div>
+                        <div class="ratiorood" id="rood"></div>
+                    }
+                </div>
             </div>
         }
         <div class="clear"></div>
     </div>
-    <!-- content -->
 </main>
 
-@*<div class="analyse">
-    <div class="analysetop">
-        <a href="#" class="naam">Naam</a>
-        <a href="#"><i class="fa fa-file-archive-o"> </i></a> <!-- delete/archive -->
-        <a href="#"><i class="fa fa-envelope"> </i></a> <!-- mail -->
-        <a href="#"><i class="fa fa-download"> </i></a> <!-- download -->
-        <div class="clear"></div>
-    </div>
-    <div class="analysebottom">
-        <p class="bedrijf">Bedrijf: Google</p>
-        <p class="datum">19 feb 2017</p>
-        <p class="afdeling">Afdeling: Wc-dienst1</p>
-        <p class="kostenbaten">0</p>
-        <div class="clear"></div>
-    </div>
-</div>*@
+@*<script>
+    window.onload = function balkjeWidth() {
+
+        var divs = document.getElementsByTagName("div");
+        var groenwidth = 0;
+        var roodwidth = 0;
+        for (var i = 0; i < divs.length; i++) {
+            if (divs[i].hasAttribute("id", "groenwidth")) {
+                if (divs[i].hasContent) {
+                    groenwidth = divs[i].innerHTML;
+                    groenwidth = groenwidth + "px";
+                }
+            }
+            if (divs[i].hasAttribute("id", "roodwidth")) {
+                if (divs[i].hasContent) {
+                    roodwidth = divs[i].innerHTML;
+                    roodwidth = roodwidth + "px";
+                }
+            }
+            if (divs[i].hasAttribute("id", "groen")) {
+                divs[i].style.width = groenwidth;
+            }
+            if (divs[i].hasAttribute("id", "rood")) {
+                divs[i].style.width = roodwidth;
+            }
+        }
+    }
+</script>*@
