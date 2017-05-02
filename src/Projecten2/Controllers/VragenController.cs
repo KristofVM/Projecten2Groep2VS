@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Projecten2.Data.Repositories;
 using Projecten2.Models.Domain;
 using Projecten2.Models.Domain.BatenVragen;
@@ -31,6 +32,7 @@ namespace Projecten2.Controllers
         public IActionResult KVraagS1(int AnalyseId)
         {
             Analyse analyse = _analyseRepository.GetById(AnalyseId);
+            ViewData["Doelgroepen"] = GetDoelgroepenAsSelectList();
             return View(new KVraagS1ViewModel(analyse.Kosten));
         }
         [HttpPost]
@@ -466,6 +468,14 @@ namespace Projecten2.Controllers
         {
             vraag.Beschrijving = viewModel.Vak1;
             vraag.JaarBedrag = viewModel.Vak2;
+        }
+
+        private SelectList GetDoelgroepenAsSelectList()
+        {
+            return new SelectList(
+                _doelgroepRepository.GetAll().Where(a => !a.IsVerwijderd),
+                nameof(Doelgroep.DoelgroepId),
+                nameof(Doelgroep.DoelgroepText));
         }
     }
 }

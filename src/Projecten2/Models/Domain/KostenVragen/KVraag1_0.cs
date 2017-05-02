@@ -13,9 +13,8 @@ namespace Projecten2.Models.Domain.KostenVragen
         public string Functie { get; set; }
         public int AantalUrenPerWeek { get; set; }
         public int BrutoMaandloonFulltime { get; set; }
-        [ForeignKey("DoelgroepId")]
-        public Doelgroep Doelgroep { get; set; }
         public int DoelgroepId { get; set; }
+        public virtual Doelgroep Doelgroep { get; set; }
         public int VlaamseOndPremie { get; set; }
         public int AantalMaandenIBO { get; set; }
         public double TotaleProductiviteitsPremie { get; set; }
@@ -32,10 +31,10 @@ namespace Projecten2.Models.Domain.KostenVragen
 
         public double DoelGroepVermindering()
         {
-            if ((Doelgroep.DoelgroepValue == 1550 && BrutoMaandloonFulltime < 2500) ||
-                (Doelgroep.DoelgroepValue == 1000 && BrutoMaandloonFulltime < 2500) ||
-                (Doelgroep.DoelgroepValue == 1150 && BrutoMaandloonFulltime < 4466.66) ||
-                (Doelgroep.DoelgroepValue == 1500 && BrutoMaandloonFulltime < 4466.66))
+            if ((Doelgroep.DoelgroepValue == 1550 && BrutoMaandloonFulltime < Doelgroep.DoelgroepMaxLoon) ||
+                (Doelgroep.DoelgroepValue == 1000 && BrutoMaandloonFulltime < Doelgroep.DoelgroepMaxLoon) ||
+                (Doelgroep.DoelgroepValue == 1150 && BrutoMaandloonFulltime < Doelgroep.DoelgroepMaxLoon) ||
+                (Doelgroep.DoelgroepValue == 1500 && BrutoMaandloonFulltime < Doelgroep.DoelgroepMaxLoon))
                 return (double) Doelgroep.DoelgroepValue / Kosten.Analyse.UrenVoltijdsWerkweek * AantalUrenPerWeek / 4;
             return 0;
         }

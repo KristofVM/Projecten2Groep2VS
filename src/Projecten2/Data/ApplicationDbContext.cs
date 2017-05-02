@@ -23,10 +23,10 @@ namespace Projecten2.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Analyse>(MapAnalyse);
             modelBuilder.Entity<ApplicationUser>(MapApplicationUser);
+            modelBuilder.Entity<Doelgroep>(MapDoelgroep);
 
             //Mapping Kosten
             modelBuilder.Entity<Kosten>(MapKosten);
-            modelBuilder.Entity<Doelgroep>(MapDoelgroep);
             modelBuilder.Entity<KVraag1_0>(MapKVraag1_0);
             modelBuilder.Entity<KVraag1_1>(MapKVraag1_1);
             modelBuilder.Entity<KVraag2>(MapKVraag2);
@@ -213,7 +213,6 @@ namespace Projecten2.Data
                 .IsRequired();
 
             //Associaties
-            k.HasOne(t => t.Doelgroep);
         }
         private static void MapKVraag1_1(EntityTypeBuilder<KVraag1_1> k)
         {
@@ -535,6 +534,9 @@ namespace Projecten2.Data
                 .HasMaxLength(100);
 
             d.Property(t => t.DoelgroepValue)
+                .IsRequired();
+
+            d.Property(t => t.DoelgroepMaxLoon)
                 .IsRequired();
 
             d.Property(t => t.IsVerwijderd)

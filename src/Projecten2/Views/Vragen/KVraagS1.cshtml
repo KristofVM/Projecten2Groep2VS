@@ -21,12 +21,8 @@
                 </div>
                 <div class="doelgroep vak">
                     <br/><label asp-for="Doelgroep"></label>
-                    <select asp-for="Doelgroep">
-                        <option value="1">&lt; 25 laaggeschoold</option>
-                        <option value="2">&lt; 25 middengeschoold</option>
-                        <option value="3">55 - 60 Jaar</option>
-                        <option value="4">60 Jaar en ouder</option>
-                        <option value="0">Andere</option>
+                    <select asp-for="Doelgroep" asp-items="@(ViewData["Doelgroepen"] as SelectList)">
+                        <option value="">- Selecteer doelgroep -</option>
                     </select>
                 </div>
                 <div class="ondersteun vak">
