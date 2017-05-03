@@ -31,10 +31,6 @@ namespace Projecten2.Controllers
         public IActionResult Index()
         {
             string userInfo = _userManager.GetUserId(User);
-            //IEnumerable<Analyse> analyses = _analyseRepository.GetAll()
-            //    .Where(a => !a.Archief && a.ApplicationUserId == userInfo)
-            //    .OrderBy(a => a.Datum)
-            //    .ToList();
             ApplicationUser appUser = _userRepository.GetById(userInfo);
             IEnumerable<Analyse> analyses = new List<Analyse>();
             if (appUser != null)
@@ -47,18 +43,26 @@ namespace Projecten2.Controllers
 
         public IActionResult Archief()
         {
-            string userInfo = _userManager.GetUserId(User);
-            //IEnumerable<Analyse> analyses = _analyseRepository.GetAll()
-            //    .Where(a => a.Archief && a.ApplicationUserId == userInfo)
-            //    .OrderBy(a => a.Datum)
-            //    .ToList();
-            ApplicationUser appUser = _userRepository.GetById(userInfo);
             IEnumerable<Analyse> analyses = new List<Analyse>();
+            var userInfo = _userManager.GetUserId(User);
+            var appUser = _userRepository.GetById(userInfo);
             if (appUser != null)
-            {
                 analyses = appUser.Analyses.Where(a => a.Archief);
-                return View(analyses);
+            return View(analyses);
+        }
+
+        [HttpPost]
+        public IActionResult Archief(string zoektekst)
+        {
+            if (zoektekst == null)
+            {
+                return RedirectToAction(nameof(Archief));
             }
+            IEnumerable<Analyse> analyses = new List<Analyse>();
+            var userInfo = _userManager.GetUserId(User);
+            var appUser = _userRepository.GetById(userInfo);
+            if (appUser != null)
+                analyses = appUser.Analyses.Where(a => a.Archief).Where(a => a.Bedrijf.Contains(zoektekst.ToLower()));
             return View(analyses);
         }
 
@@ -84,7 +88,7 @@ namespace Projecten2.Controllers
         {
             return View();
         }
-
+        
         public IActionResult Archiveer(int id)
         {
             Analyse analyse = null;
@@ -102,6 +106,7 @@ namespace Projecten2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
         public IActionResult DeArchiveer(int[] selectanalyse)
         {
             Analyse analyse = null;

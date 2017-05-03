@@ -6,11 +6,11 @@
 <main>
     <div class="contain archief">
         <h1>Archief</h1>
-        <form asp-controller="Home" asp-action="DeArchiveer">
+        <form asp-controller="Home" asp-action="DeArchiveer" method="post" id="archiefform">
             <div class="archiefbuttons">
-                <button type="submit" class="undo hint hint--top" data-hint="Dearchiveer analyse(s)"><i class="fa fa-archive"></i></button>
-                <button class="zoek"><i class="fa fa-search"></i></button>
-                <input type="text" name="zoekanalyse" class="zoekbalk" placeholder="zoeken...">
+                <button onclick="ToDearchief()" type="submit" class="undo hint hint--top" data-hint="Dearchiveer analyse(s)"><i class="fa fa-archive"></i></button>
+                <button onclick="ToZoek()" type="submit" class="zoek"><i class="fa fa-search"></i></button>
+                <input type="text" name="zoektekst" class="zoekbalk" placeholder="zoeken...">
             </div>
 
             <div class="archieflijst">
@@ -50,3 +50,4 @@
         </form>
     </div>
 </main>
+<script src="js/site.js"></script>

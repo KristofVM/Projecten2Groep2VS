@@ -56,11 +56,9 @@
                     }
                     else
                     {
-                        <div hidden id="groenwidth">@item.getWidthGroen()</div>
-                        <div hidden id="roodwidth">@item.getWidthRood()</div>
-                        <div class="ratiogroen" id="groen" ></div>
+                        <div class="ratiogroen" style="width: @(item.getWidthGroen())%;"></div>
                         <div class="overgang"></div>
-                        <div class="ratiorood" id="rood"></div>
+                        <div class="ratiorood" style="width: calc(@(item.getWidthRood())% - 5px);"></div>
                     }
                 </div>
             </div>

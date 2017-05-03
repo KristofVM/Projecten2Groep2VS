@@ -44,11 +44,11 @@ namespace Projecten2.Models.Domain
 
         public double getWidthGroen()
         {
-            return Math.Round((Baten.subtotaal() / (Baten.subtotaal() + Kosten.Subtotaal()) * 328));
+            return Math.Round((Baten.subtotaal() / (Baten.subtotaal() + Kosten.Subtotaal()) * 100));
         }
         public double getWidthRood()
         {
-            return 328 - getWidthGroen() - 6;
+            return 100 - getWidthGroen();
         }
         public string getMonth()
         {
