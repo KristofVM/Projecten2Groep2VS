@@ -46,7 +46,8 @@
       "type": "build"
     },
     "Microsoft.AspNetCore.Session": "1.1.0",
-    "Pomelo.EntityFrameworkCore.MySql": "1.1.0"
+    "Pomelo.EntityFrameworkCore.MySql": "1.1.0",
+    "Sendgrid": "9.1.1"
   },
 
   "tools": {

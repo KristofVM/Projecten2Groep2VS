@@ -165,7 +165,7 @@ namespace Projecten2.Data
             postcode = 9308;
             plaats = "Hofstade";
             ApplicationUser user1 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats };
-            await _userManager.CreateAsync(user1, "P@ssword1");
+            await _userManager.CreateAsync(user1);
         }
     }
 }
