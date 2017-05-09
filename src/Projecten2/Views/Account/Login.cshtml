@@ -26,12 +26,6 @@
                 <input asp-for="Password" />
                 <span asp-validation-for="Password" class="alert"></span>
             </div>
-            <div class="checkbox">
-                <label asp-for="RememberMe">
-                    <input asp-for="RememberMe" input type="checkbox" name="rememberme" value="" class="rememberme">
-                    @Html.DisplayNameFor(m => m.RememberMe)
-                </label>
-            </div>
             <button type="submit">Login</button>
             <a  type="button" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="rightbutton button" >Register</a>
             <p class="forgotpass"><a asp-action="ForgotPassword">Wachtwoord vergeten? </a></p>

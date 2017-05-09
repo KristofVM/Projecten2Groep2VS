@@ -18,8 +18,5 @@ namespace Projecten2.Models.AccountViewModels
         [Display(Name="Password", Prompt="Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        [Display(Name="Onthoud gegevens")]
-        public bool RememberMe { get; set; }
     }
 }
