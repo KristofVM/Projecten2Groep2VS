@@ -49,16 +49,20 @@
                     else if (@item.getWidthGroen() >= 98)
                     {
                         <div class="ratiogroen" style="width: 100%;"></div>
+                        <span class="ratioinfog">€ @item.getBatenFormat()</span>
                     }
                     else if (@item.getWidthRood() >= 98)
                     {
                         <div class="ratiogroen" style="width: 100%;"></div>
+                        <span class="ratioinfor">€ @item.getKostenFormat()</span>
                     }
                     else
                     {
                         <div class="ratiogroen" style="width: @(item.getWidthGroen())%;"></div>
                         <div class="overgang"></div>
                         <div class="ratiorood" style="width: calc(@(item.getWidthRood())% - 5px);"></div>
+                        <span class="ratioinfog">€ @item.getBatenFormat()</span>
+                        <span class="ratioinfor">€ @item.getKostenFormat()</span>
                     }
                 </div>
             </div>
