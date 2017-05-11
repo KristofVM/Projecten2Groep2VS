@@ -1,6 +1,5 @@
 ﻿@model PasswordViewModel
 
-
 <main class="login">
     <div class="window">
         <form asp-controller="Account" asp-action="SetPassword" method="post">
@@ -16,7 +15,7 @@
                 <input asp-for="ConfirmPassword" type="password">
                 <span asp-validation-for="ConfirmPassword" class="alert"></span>
             </div>
-            <button type="submit">Reset</button>
+            <button type="submit">Bevestig</button>
         </form>
     </div>
 </main>

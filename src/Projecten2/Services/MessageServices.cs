@@ -46,8 +46,6 @@ namespace Projecten2.Services
             using (var client = new SmtpClient())
             {
                 client.Connect("smtp.gmail.com", 587);
-
-
                 // Note: since we don't have an OAuth2 token, disable
                 // the XOAUTH2 authentication mechanism.
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
