@@ -1,10 +1,26 @@
-﻿@{
-    ViewData["Title"] = "Confirm Email";
-}
+﻿@model PasswordViewModel
 
-<h2>@ViewData["Title"].</h2>
-<div>
-    <p>
-        Thank you for confirming your email. Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
-    </p>
-</div>
+
+<main class="login">
+    <div class="window">
+        <form asp-controller="Account" asp-action="SetPassword" method="post">
+            <p>Email is gevalideerd.</p>
+            <input type="hidden" asp-for="Email" />
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password">
+                <span asp-validation-for="Password" class="alert"></span>
+            </div>
+            <div>
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" type="password">
+                <span asp-validation-for="ConfirmPassword" class="alert"></span>
+            </div>
+            <button type="submit">Reset</button>
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

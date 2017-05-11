@@ -131,8 +131,16 @@ namespace Projecten2.Controllers
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account",
                         new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                $"Please confirm your account by clicking this link: {callbackUrl}");
+                    string tekst = "Beste " + user.Voornaam + ", \n\n" +
+                                   "Leuk dat je gebruik wil maken van onze tool om werkgevers meer inzicht te geven in de kosten en baten bij het tewerkstellen van personen met een grote afstand tot de arbeidsmarkt.\n\n" +
+                                   "Je kan de registratie voltooien door op de volgende link te klikken: \n" +
+                                   callbackUrl + "\n\n" +
+                                   "Veel succes met het gebruik van onze tool!\n" +
+                                   "Wil je meer weten over wie we zijn en wat we doen, surf naar www.hetmomentvooriedereen.be.\n\n" +
+                                   "Hartelijke groet\n" +
+                                   "Het team van KAIROS";
+
+                    await _emailSender.SendEmailAsync(model.Email, "Welkom bij KAIROS' kosten-baten tool!", tekst);
 
                     // Comment out following line to prevent a new user automatically logged on.
                     // await _signInManager.SignInAsync(user, isPersistent: false);
@@ -261,7 +269,28 @@ namespace Projecten2.Controllers
                 return View("Error");
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            if (result.Succeeded)
+            {
+                return View("ConfirmEmail", new PasswordViewModel() { Email = user.Email });
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> SetPassword(PasswordViewModel viewModel)
+        {
+            var user = await _userManager.FindByEmailAsync(viewModel.Email);
+            if (user != null)
+            {
+                var result = await _userManager.ResetPasswordAsync(user, await _userManager.GeneratePasswordResetTokenAsync(user), viewModel.Password);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: true);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View("Error");
         }
 
         //
