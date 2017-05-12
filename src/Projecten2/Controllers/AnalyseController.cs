@@ -147,7 +147,7 @@ namespace Projecten2.Controllers
         {
             Analyse analyse = _analyseRepository.GetById(id);
             string sWebRootFolder = _hostingEnvironment.WebRootPath;
-            string sFileName = @"analyse" + id + ".xlsx";
+            string sFileName = @"analyse.xlsx";
             FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
             if (file.Exists)
             {
