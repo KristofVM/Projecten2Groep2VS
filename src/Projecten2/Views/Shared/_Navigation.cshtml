@@ -22,8 +22,12 @@
             </li>
         </ul>
         <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
-            <ul class="rightnav">
-                <li><a asp-controller="Home" asp-action="Profiel">@UserManager.GetUserName(User) <i class="fa fa-caret-down"></i></a>
+            <ul class="rightnav">                
+                @{
+                    var Voornaam = UserManager.FindByEmailAsync(User.Identity.Name).Result.Voornaam;
+                    var Naam = UserManager.FindByEmailAsync(User.Identity.Name).Result.Naam;
+                }
+                <li><a asp-controller="Home" asp-action="Profiel">@Voornaam @Naam  <i class="fa fa-caret-down"></i></a>
                 <li>
                     <button type="submit" class="navigationbutton">Log off</button>
                 </li>

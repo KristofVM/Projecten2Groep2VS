@@ -1,10 +1,64 @@
-﻿@{
-    ViewData["Title"] = "FAQ";
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Profiel";
 }
 
-<main>
+<main class="edit">
     <div class="contain">
-        <h2>@ViewData["Title"].</h2>
-        <h3>@ViewData["Message"]</h3>
+        <div class="window">
+            @{
+                if (TempData["Message"] != null)
+                {
+                    <p class="confirmation">@TempData["Message"]</p>
+                }
+            }
+            <form form asp-controller="Home" asp-action="Profiel" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                <h2>@ViewData["Title"]</h2>
+                <input type="hidden" asp-for="Email"/>
+                <div>
+                    <label asp-for="Naam"></label>
+                    <input asp-for="Naam" type="text" name="naam" placeholder="Naam">
+                    <span asp-validation-for="Naam" class="alert"></span>
+                </div>
+                <div>
+                    <label asp-for="Voornaam"></label>
+                    <input asp-for="Voornaam" type="text" name="voornaam" placeholder="Voornaam">
+                    <span asp-validation-for="Voornaam" class="alert"></span>
+                </div>
+                <div>
+                    <label asp-for="Organisatie"></label>
+                    <input asp-for="Organisatie" type="text" name="Organisatie" placeholder="Organisatie">
+                    <span asp-validation-for="Organisatie" class="alert"></span>
+                </div>
+                <h1 class="profiel">Adres Organisatie:</h1>
+                <div>
+                    <label asp-for="Straat"></label>
+                    <input asp-for="Straat" type="text" name="Straat" placeholder="Straat">
+                    <span asp-validation-for="Straat" class="alert"></span>
+                </div>
+                <div class="nr">
+                    <label asp-for="Nr"></label>
+                    <input asp-for="Nr" type="text" name="Nr" placeholder="Nr">
+                    <span asp-validation-for="Nr" class="alert"></span>
+                </div>
+                <div class="bus">
+                    <label asp-for="Bus"></label>
+                    <input asp-for="Bus" type="text" name="Bus" placeholder="Bus">
+                    <span asp-validation-for="Bus" class="alert"></span>
+                </div>
+                <div class="pc">
+                    <label asp-for="Postcode"></label>
+                    <input asp-for="Postcode" type="text" name="Postcode" placeholder="Postcode">
+                    <span asp-validation-for="Postcode" class="alert"></span>
+                </div>
+                <div class="clear"></div>
+                <div>
+                    <label asp-for="Plaats"></label>
+                    <input asp-for="Plaats" type="text" name="Plaats" placeholder="Plaats">
+                    <span asp-validation-for="Plaats" class="alert"></span>
+                </div>
+                <button type="submit">Bewaar</button>
+            </form>
+        </div>
     </div>
 </main>

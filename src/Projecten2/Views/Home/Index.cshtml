@@ -1,5 +1,7 @@
 ﻿@using System.Runtime.InteropServices.ComTypes
 @using Microsoft.CodeAnalysis.Differencing
+@using Newtonsoft.Json
+@using NuGet.Protocol.Core.v3
 @using Projecten2.Models.Domain
 @model IEnumerable<Projecten2.Models.Domain.Analyse>
 @{
@@ -21,7 +23,7 @@
                 <div class="analysetop">
                     <a asp-controller="Analyse" asp-action="KostenBaten" asp-route-id="@item.AnalyseId" class="naam">@item.Bedrijf</a>
                     <a asp-controller="Home" asp-action="Archiveer" asp-route-id="@item.AnalyseId" class="hint hint--top" data-hint="Archiveer analyse"><i class="fa fa-archive"> </i></a> <!-- delete/archive -->
-                    <a href="#" class="hint hint--top" data-hint="Download pdf"><i class="fa fa-file-pdf-o"> </i></a> <!-- download -->
+                    <a asp-controller="Analyse" asp-action="Export" asp-route-id="@item.AnalyseId" class="hint hint--top" data-hint="Download Excel"><i class="fa fa-file-excel-o"> </i></a> <!-- download -->
                     <a asp-controller="Analyse" asp-action="Edit" asp-route-id="@item.AnalyseId" class="hint hint--top" data-hint="Edit analyse"><i class="fa fa-pencil"> </i></a> <!-- Edit<>-->
                     <div class="clear"></div>
                 </div>
@@ -71,31 +73,3 @@
     </div>
 </main>
 
-@*<script>
-    window.onload = function balkjeWidth() {
-
-        var divs = document.getElementsByTagName("div");
-        var groenwidth = 0;
-        var roodwidth = 0;
-        for (var i = 0; i < divs.length; i++) {
-            if (divs[i].hasAttribute("id", "groenwidth")) {
-                if (divs[i].hasContent) {
-                    groenwidth = divs[i].innerHTML;
-                    groenwidth = groenwidth + "px";
-                }
-            }
-            if (divs[i].hasAttribute("id", "roodwidth")) {
-                if (divs[i].hasContent) {
-                    roodwidth = divs[i].innerHTML;
-                    roodwidth = roodwidth + "px";
-                }
-            }
-            if (divs[i].hasAttribute("id", "groen")) {
-                divs[i].style.width = groenwidth;
-            }
-            if (divs[i].hasAttribute("id", "rood")) {
-                divs[i].style.width = roodwidth;
-            }
-        }
-    }
-</script>*@

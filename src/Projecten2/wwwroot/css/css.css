@@ -1,6 +1,14 @@
 .alert {
     color: #d32137;
 }
+.confirmation {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: darkgreen;
+    background-color: lightgreen;
+    border: 1px solid #43b72f;
+    padding: 10px 10px 10px 10px;
+}
 * {
     padding: 0;
     margin: 0;
@@ -399,11 +407,11 @@ h1.profiel {
     font-size: 16px;
     border-bottom: none;
 }
-.nr, .bus, .pc {
+ .nr, .bus, .pc {
     width: 83.33px;
     float: left;
 }
-.nr input, .bus input, .pc input {
+.nr input, .bus input, .pc input,.edit .nr input,.edit .bus input,.edit .pc input  {
     width: 71px;
 }
 .nr, .bus {

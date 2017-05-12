@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Projecten2.Data;
+using Projecten2.Models.AccountViewModels;
 using Projecten2.Models.Domain;
 using Projecten2.Models.ViewModels;
 
@@ -30,12 +31,12 @@ namespace Projecten2.Controllers
 
         public IActionResult Index()
         {
-            string userInfo = _userManager.GetUserId(User);
-            ApplicationUser appUser = _userRepository.GetById(userInfo);
+            string userId = _userManager.GetUserId(User);
+            ApplicationUser user = _userRepository.GetById(userId);
             IEnumerable<Analyse> analyses = new List<Analyse>();
-            if (appUser != null)
+            if (user != null)
             {
-                analyses = appUser.Analyses.Where(a => !a.Archief);
+                analyses = user.Analyses.Where(a => !a.Archief);
                 return View(analyses);
             } 
             return View(analyses);
@@ -80,7 +81,40 @@ namespace Projecten2.Controllers
 
         public IActionResult Profiel()
         {
-            ViewData["Message"] = "Not implemented yet.";
+            string userId = _userManager.GetUserId(User);
+            ApplicationUser user = _userRepository.GetById(userId);
+            return View(new RegisterViewModel()
+            {
+                Bus = user.Bus,
+                Naam = user.Naam,
+                Voornaam = user.Voornaam,
+                Email = user.Email,
+                Plaats = user.Plaats,
+                Organisatie = user.Organisatie,
+                Nr = user.Nr,
+                Straat = user.Straat,
+                Postcode = user.Postcode});
+        }
+
+        [HttpPost]
+        public IActionResult Profiel(RegisterViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                string userId = _userManager.GetUserId(User);
+                ApplicationUser user = _userRepository.GetById(userId);
+                user.Naam = viewModel.Naam;
+                user.Voornaam = viewModel.Voornaam;
+                user.Nr = viewModel.Nr;
+                user.Bus = viewModel.Bus;
+                user.Straat = viewModel.Straat;
+                user.Plaats = viewModel.Plaats;
+                user.Postcode = viewModel.Postcode;
+                user.Organisatie = viewModel.Organisatie;
+                _userRepository.SaveChanges();
+                TempData["Message"] = "Je gegevens zijn aangepast.";
+                return View();
+            }
             return View();
         }
 
