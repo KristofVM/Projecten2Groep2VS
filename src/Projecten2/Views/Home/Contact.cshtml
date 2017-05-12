@@ -1,10 +1,30 @@
-﻿@{
+﻿@using Projecten2.Models.ViewModels
+@model ContactViewModel
+@{
     ViewData["Title"] = "Contact";
 }
 
-<main>
+<main class="contact">
     <div class="contain">
-        <h2>@ViewData["Title"].</h2>
-        <h3>@ViewData["Message"]</h3>
+        <h1>@ViewData["Title"]</h1>
+        @{
+            if (TempData["Message"] != null)
+            {
+                <p class="confirmation">@TempData["Message"]</p>
+            }
+        }
+        <form asp-controller="Home" asp-action="Contact" method="post">
+            <div>
+                <label asp-for="Onderwerp"></label>
+                <input asp-for="Onderwerp" type="text"/>
+                <span asp-validation-for="Onderwerp" class="alert"></span>
+            </div>
+            <div>
+                <label asp-for="Bericht"></label>
+                <textarea asp-for="Bericht"></textarea>
+                <span asp-validation-for="Bericht" class="alert"></span>
+            </div>
+            <button type="submit">Verzend</button>
+        </form>
     </div>
 </main>

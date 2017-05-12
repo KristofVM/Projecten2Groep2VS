@@ -10,6 +10,7 @@ using Projecten2.Data;
 using Projecten2.Models.AccountViewModels;
 using Projecten2.Models.Domain;
 using Projecten2.Models.ViewModels;
+using Projecten2.Services;
 
 namespace Projecten2.Controllers
 {
@@ -17,15 +18,18 @@ namespace Projecten2.Controllers
     {
         private readonly IAnalyseRepository _analyseRepository;
         private readonly IApplicationUserRepository _userRepository;
+        private readonly IEmailSender _emailSender;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public HomeController(
             IAnalyseRepository analyseRepository,
             IApplicationUserRepository userRepository,
+            IEmailSender emailSender,
             UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _analyseRepository = analyseRepository;
+            _emailSender = emailSender;
             _userRepository = userRepository;
         }
 
@@ -75,7 +79,25 @@ namespace Projecten2.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Not implemented yet.";
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Contact(ContactViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                string userId = _userManager.GetUserId(User);
+                ApplicationUser user = _userRepository.GetById(userId);
+                string tekst = user.Voornaam + " " + user.Naam + "\n" +
+                    user.Organisatie + "\n" +
+                    user.Email + "\n" +
+                    user.Straat + " " + user.Nr + " " + user.Bus + "\n" +
+                    user.Postcode + " " + user.Plaats + "\n" 
+                    + viewModel.Bericht;
+                await _emailSender.SendEmailAsync("crypt0c0d3@gmail.com", viewModel.Onderwerp, tekst);
+                TempData["Message"] = "Je email is verzonden.";
+                return RedirectToAction("Contact");
+            }
             return View();
         }
 
