@@ -11,6 +11,14 @@
 <main>
     <div class="contain">
         <h1>Overzicht</h1>
+        @if (TempData["Message"] != null)
+        {
+            <p class="confirmation"><i class="fa fa-check-square"></i> @TempData["Message"]</p>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <p class="confirmationerror"><i class="fa fa-exclamation-triangle"></i> @TempData["Error"]</p>
+        }
         <a asp-controller="Analyse" asp-action="Create" class="analyse">
             <p><i class="fa fa-plus"></i> Nieuwe analyse</p>
         </a>

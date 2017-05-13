@@ -8,21 +8,21 @@
         <a asp-controller="Vragen" asp-action="BVraagS2" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="3" class="terug button"><i class="fa fa-plus"></i> Nieuw</a>
         <table style="width:30%">
             <tr>
-                <th>Bruto maandloon fulltime</th>
                 <th>Uren</th>
+                <th>Bruto maandloon fulltime</th>
                 <th></th>
             </tr>
             @if (Model.Baten.Bvragen3.Count == 0)
             {
                 <tr>
-                    <th colspan="2" class="alert">Er zijn geen functies.</th>
+                    <th colspan="3" class="alert">Er zijn geen functies.</th>
                 </tr>
             }
             @foreach (var item in Model.Baten.Bvragen3)
             {
                 <tr>
-                    <th>@item.BrutoMaandloonFulltime</th>
                     <th>@item.Uren</th>
+                    <th>€ @item.BrutoMaandloonFulltime</th>
                     <th><a asp-controller="Overzichten" asp-action="VerwijderBVraag" asp-route-VraagNr="3" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="@item.Id"><i class="fa fa-trash"></i></a></th>
                 </tr>
             }

@@ -7,11 +7,13 @@
 <main class="contact">
     <div class="contain">
         <h1>@ViewData["Title"]</h1>
-        @{
-            if (TempData["Message"] != null)
-            {
-                <p class="confirmation">@TempData["Message"]</p>
-            }
+        @if (TempData["Message"] != null)
+        {
+            <p class="confirmation"><i class="fa fa-check-square"></i> @TempData["Message"]</p>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <p class="confirmationerror"><i class="fa fa-exclamation-triangle"></i> @TempData["Error"]</p>
         }
         <form asp-controller="Home" asp-action="Contact" method="post">
             <div>

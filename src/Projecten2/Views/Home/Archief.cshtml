@@ -6,7 +6,15 @@
 <main>
     <div class="contain archief">
         <h1>Archief</h1>
-        <form asp-controller="Home" asp-action="DeArchiveer" method="post" id="archiefform">
+        @if (TempData["Message"] != null)
+        {
+            <p class="confirmation"><i class="fa fa-check-square"></i> @TempData["Message"]</p>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <p class="confirmationerror"><i class="fa fa-exclamation-triangle"></i> @TempData["Error"]</p>
+        }
+        <form asp-controller="Home" asp-action="DeArchiveer" asp-route-sorterenop="0" method="post" id="archiefform">
             <div class="archiefbuttons">
                 <button onclick="ToDearchief()" type="submit" class="undo hint hint--top" data-hint="Dearchiveer analyse(s)"><i class="fa fa-archive"></i></button>
                 <button onclick="ToZoek()" type="submit" class="zoek"><i class="fa fa-search"></i></button>
@@ -15,11 +23,13 @@
 
             <div class="archieflijst">
                 <div class="archiefbalk">
-                    <div class="checktop"></div>
-                    <span class="abedrijf">Bedrijf</span>
-                    <span class="aafdeling">Afdeling</span>
-                    <span class="adatum">Datum D/M/Y</span>
-                    <span class="aomzet">Omzet</span>
+                    <div class="checktop">
+                        <input type="checkbox" id="checkcheck" class="check" onclick="Toggle(this)">
+                    </div>
+                    <span class="abedrijf" onclick="ToSorteer(1)">Bedrijf</span>
+                    <span class="aafdeling" onclick="ToSorteer(2)">Afdeling</span>
+                    <span class="adatum" onclick="ToSorteer(3)">Datum D/M/Y</span>
+                    <span class="aomzet" onclick="ToSorteer(4)">Omzet</span>
                     <div class="clear"></div>
                 </div>
                 @foreach (var item in Model)

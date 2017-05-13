@@ -15,14 +15,14 @@
             @if (Model.Kosten.Kvragen7.Count == 0)
             {
                 <tr>
-                    <th colspan="2" class="alert">Er zijn geen functies.</th>
+                    <th colspan="3" class="alert">Er zijn geen functies.</th>
                 </tr>
             }
             @foreach (var item in Model.Kosten.Kvragen7)
             {
                 <tr>
                     <th>@item.Type</th>
-                    <th>@item.Bedrag</th>
+                    <th>€ @item.Bedrag</th>
                     <th><a asp-controller="Overzichten" asp-action="VerwijderKVraag" asp-route-VraagNr="6" asp-route-AnalyseId="@Model.AnalyseId" asp-route-VraagId="@item.Id"><i class="fa fa-trash"></i></a></th>
                 </tr>
             }

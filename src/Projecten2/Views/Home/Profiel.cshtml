@@ -6,11 +6,13 @@
 <main class="edit">
     <div class="contain">
         <div class="window">
-            @{
-                if (TempData["Message"] != null)
-                {
-                    <p class="confirmation">@TempData["Message"]</p>
-                }
+            @if (TempData["Message"] != null)
+            {
+                <p class="confirmation"><i class="fa fa-check-square"></i> @TempData["Message"]</p>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <p class="confirmationerror"><i class="fa fa-exclamation-triangle"></i> @TempData["Error"]</p>
             }
             <form form asp-controller="Home" asp-action="Profiel" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
                 <h2>@ViewData["Title"]</h2>

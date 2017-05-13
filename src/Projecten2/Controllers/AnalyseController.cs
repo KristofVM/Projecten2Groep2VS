@@ -54,11 +54,11 @@ namespace Projecten2.Controllers
                     analyse = _analyseRepository.GetById(editViewModel.AnalyseId);
                     MapEditViewModelToAnalyse(editViewModel, analyse);
                     _analyseRepository.SaveChanges();
-                    TempData["message"] = $"You successfully updated brewer {analyse.Bedrijf}.";
+                    TempData["Message"] = $"De analyse '{analyse.Bedrijf}' is succesvol aangepast.";
                 }
                 catch
                 {
-                    TempData["error"] = $"Sorry, something went wrong, brewer {analyse?.Bedrijf} was not updated...";
+                    TempData["Error"] = "Er is iets foutgelopen.";
                 }
                 return RedirectToAction(nameof(Index), "Home");
             }
@@ -84,11 +84,11 @@ namespace Projecten2.Controllers
                     MapEditViewModelToAnalyse(editViewModel, analyse);
                     _analyseRepository.Add(analyse);
                     _analyseRepository.SaveChanges();
-                    TempData["message"] = $"You successfully added brewer {analyse.Bedrijf}.";
+                    TempData["Message"] = $"De analyse '{analyse.Bedrijf}' is succesvol aangemaakt.";
                 }
                 catch
                 {
-                    TempData["error"] = "Sorry, something went wrong, the analyse was not added...";
+                    TempData["Error"] = "Er is iets foutgelopen.";
                 }
                 return RedirectToAction(nameof(Index), "Home");
             }

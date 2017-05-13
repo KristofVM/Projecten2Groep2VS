@@ -57,17 +57,47 @@ namespace Projecten2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Archief(string zoektekst)
+        public IActionResult Archief(string zoektekst, int sorterenop)
         {
-            if (zoektekst == null)
-            {
-                return RedirectToAction(nameof(Archief));
-            }
             IEnumerable<Analyse> analyses = new List<Analyse>();
             var userInfo = _userManager.GetUserId(User);
             var appUser = _userRepository.GetById(userInfo);
+            if (zoektekst == null && sorterenop == 0)
+                return RedirectToAction(nameof(Archief));
+            if (sorterenop != 0)
+            {
+                if (appUser != null)
+                {
+                    if (sorterenop == 1)
+                        analyses = appUser.Analyses
+                            .Where(a => a.Archief)
+                            .OrderBy(a => a.Bedrijf)
+                            .ThenBy(a => a.Datum);
+                    if (sorterenop == 2)
+                        analyses = appUser.Analyses
+                            .Where(a => a.Archief)
+                            .OrderBy(a => a.Afdeling)
+                            .ThenBy(a => a.Datum);
+                    if (sorterenop == 3)
+                        analyses = appUser.Analyses
+                            .Where(a => a.Archief)
+                            .OrderBy(a => a.Datum)
+                            .ThenBy(a => a.Bedrijf);
+                    if (sorterenop == 4)
+                        analyses = appUser.Analyses
+                            .Where(a => a.Archief)
+                            .OrderBy(a => a.Balans)
+                            .ThenBy(a => a.Datum);
+                }
+                return View(analyses);
+            }
             if (appUser != null)
-                analyses = appUser.Analyses.Where(a => a.Archief).Where(a => a.Bedrijf.Contains(zoektekst.ToLower()));
+                analyses = appUser.Analyses
+                    .Where(a => a.Archief)
+                    .Where(a => a.Bedrijf.Contains(zoektekst.ToLower()) || a.Afdeling.Contains(zoektekst.ToLower()))
+                    .OrderBy(a => a.Bedrijf)
+                    .ThenBy(a => a.Afdeling)
+                    .ThenBy(a => a.Datum);
             return View(analyses);
         }
 
@@ -90,9 +120,9 @@ namespace Projecten2.Controllers
                 ApplicationUser user = _userRepository.GetById(userId);
                 string tekst = user.Voornaam + " " + user.Naam + "\n" +
                     user.Organisatie + "\n" +
-                    user.Email + "\n" +
+                    user.Email + "\n\n" +
                     user.Straat + " " + user.Nr + " " + user.Bus + "\n" +
-                    user.Postcode + " " + user.Plaats + "\n" 
+                    user.Postcode + " " + user.Plaats + "\n\n" 
                     + viewModel.Bericht;
                 await _emailSender.SendEmailAsync("crypt0c0d3@gmail.com", viewModel.Onderwerp, tekst);
                 TempData["Message"] = "Je email is verzonden.";
@@ -153,11 +183,11 @@ namespace Projecten2.Controllers
                 analyse = _analyseRepository.GetById(id);
                 _analyseRepository.ArchiveerAnalyse(analyse);
                 _analyseRepository.SaveChanges();
-                TempData["message"] = $"You successfully archived analyse {analyse.Bedrijf}.";
+                TempData["Message"] = $"De analyse '{analyse.Bedrijf}' is succesvol gearchiveerd.";
             }
             catch
             {
-                TempData["error"] = $"Sorry, something went wrong, analyse {analyse.Bedrijf} was not archived.";
+                TempData["Error"] = "Er is iets foutgelopen.";
             }
             return RedirectToAction(nameof(Index));
         }
@@ -166,6 +196,10 @@ namespace Projecten2.Controllers
         public IActionResult DeArchiveer(int[] selectanalyse)
         {
             Analyse analyse = null;
+            if (selectanalyse.Length == 1)
+                TempData["Message"] += "De analyse ";
+            else if(selectanalyse.Length > 1)
+                TempData["Message"] += "De analysen ";
             foreach (int id in selectanalyse)
             {
                 try
@@ -173,13 +207,17 @@ namespace Projecten2.Controllers
                     analyse = _analyseRepository.GetById(id);
                     _analyseRepository.DeArchiveerAnalyse(analyse);
                     _analyseRepository.SaveChanges();
-                    TempData["message"] = $"You successfully unarchived analyse {analyse.Bedrijf}.";
+                    TempData["Message"] += $"'{analyse.Bedrijf}', ";
                 }
                 catch
                 {
-                    TempData["error"] = $"Sorry, something went wrong, analyse {analyse.Bedrijf} was not unarchived.";
+                    TempData["Error"] = "Er is iets foutgelopen.";
                 }
             }
+            if (selectanalyse.Length == 1)
+                TempData["Message"] += "is succesvol gedearchiveerd.";
+            else if (selectanalyse.Length > 1)
+                TempData["Message"] += "zijn succesvol gedearchiveerd.";
             return RedirectToAction(nameof(Archief));
         }
     }
