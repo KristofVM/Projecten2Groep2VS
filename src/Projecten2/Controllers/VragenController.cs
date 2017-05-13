@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Projecten2.Data.Repositories;
 using Projecten2.Models.Domain;
 using Projecten2.Models.Domain.BatenVragen;
 using Projecten2.Models.Domain.KostenVragen;
@@ -46,6 +41,7 @@ namespace Projecten2.Controllers
                     KVraag1_0 vraag = new KVraag1_0(kosten);
                     MapKVraag1_0(viewModel, vraag);
                     kosten.Kvragen01.Add(vraag);
+                    kosten.Analyse.updateBalans();
                     _analyseRepository.SaveChanges();
                 }
                 catch
@@ -73,6 +69,7 @@ namespace Projecten2.Controllers
                     KVraag6 vraag = new KVraag6(kosten);
                     MapKVraag6(viewModel, vraag);
                     kosten.Kvragen6.Add(vraag);
+                    kosten.Analyse.updateBalans();
                     _analyseRepository.SaveChanges();
                 }
                 catch
@@ -121,6 +118,7 @@ namespace Projecten2.Controllers
                         KVraag2 vraag = new KVraag2(kosten);
                         MapKVraag2(viewModel, vraag);
                         kosten.Kvragen2.Add(vraag);
+                        kosten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS2Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -129,6 +127,7 @@ namespace Projecten2.Controllers
                         KVraag3 vraag = new KVraag3(kosten);
                         MapKVraag3(viewModel, vraag);
                         kosten.Kvragen3.Add(vraag);
+                        kosten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS3Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -137,6 +136,7 @@ namespace Projecten2.Controllers
                         KVraag4 vraag = new KVraag4(kosten);
                         MapKVraag4(viewModel, vraag);
                         kosten.Kvragen4.Add(vraag);
+                        kosten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS4Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -145,6 +145,7 @@ namespace Projecten2.Controllers
                         KVraag5 vraag = new KVraag5(kosten);
                         MapKVraag5(viewModel, vraag);
                         kosten.Kvragen5.Add(vraag);
+                        kosten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS5Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -153,6 +154,7 @@ namespace Projecten2.Controllers
                         KVraag7 vraag = new KVraag7(kosten);
                         MapKVraag7(viewModel, vraag);
                         kosten.Kvragen7.Add(vraag);
+                        kosten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("KVraagS7Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -196,6 +198,7 @@ namespace Projecten2.Controllers
                         BVraag5 vraag = new BVraag5(baten);
                         MapBVraag5(viewModel, vraag);
                         baten.Bvragen5.Add(vraag);
+                        baten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("BVraagS5Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -204,6 +207,7 @@ namespace Projecten2.Controllers
                         BVraag9 vraag = new BVraag9(baten);
                         MapBVraag9(viewModel, vraag);
                         baten.Bvragen9.Add(vraag);
+                        baten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("BVraagS9Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -247,6 +251,7 @@ namespace Projecten2.Controllers
                         BVraag3 vraag = new BVraag3(baten);
                         MapBVraag3(viewModel, vraag);
                         baten.Bvragen3.Add(vraag);
+                        baten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("BVraagS3Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -255,6 +260,7 @@ namespace Projecten2.Controllers
                         BVraag4 vraag = new BVraag4(baten);
                         MapBVraag4(viewModel, vraag);
                         baten.Bvragen4.Add(vraag);
+                        baten.Analyse.updateBalans();
                         _analyseRepository.SaveChanges();
                         return RedirectToAction("BVraagS4Overzicht", "Overzichten", new { viewModel.AnalyseId });
                     }
@@ -288,6 +294,7 @@ namespace Projecten2.Controllers
                     vraag.TypeBesparing = viewModel.Vak1;
                     vraag.JaarBedrag = viewModel.Vak2;
                     baten.Bvragen11.Add(vraag);
+                    baten.Analyse.updateBalans();
                     _analyseRepository.SaveChanges();
                 }
                 catch
@@ -339,6 +346,7 @@ namespace Projecten2.Controllers
                     {
                         return NotFound();
                     }
+                    baten.Analyse.updateBalans();
                     _analyseRepository.SaveChanges();
                 }
                 catch
@@ -368,6 +376,7 @@ namespace Projecten2.Controllers
                     Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
                     baten.JaarBedOmzetVerlies = viewModel.Vak1;
                     baten.ProcentBesparing = viewModel.Vak2;
+                    baten.Analyse.updateBalans();
                     _analyseRepository.SaveChanges();
                 }
                 catch
@@ -397,6 +406,7 @@ namespace Projecten2.Controllers
                     Baten baten = _analyseRepository.GetById(viewModel.AnalyseId).Baten;
                     baten.JaarBedTransportKost = viewModel.Vak1;
                     baten.JaarBedHandelingsKost = viewModel.Vak2;
+                    baten.Analyse.updateBalans();
                     _analyseRepository.SaveChanges();
                 }
                 catch

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Projecten2.Models.Domain;
-using Projecten2.Models.Domain.BatenVragen;
-using Projecten2.Models.Domain.KostenVragen;
-using Projecten2.Models.ViewModels.KostenViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

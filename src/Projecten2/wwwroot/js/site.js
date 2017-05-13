@@ -14,5 +14,5 @@ function Toggle(source) {
         box.checked = source.checked;
     });
 }
-$(".confirmation").delay(3000).fadeOut(500);
-$(".confirmationerror").delay(3000).fadeOut(500);
+$(".confirmation").delay(5000).fadeOut(500);
+$(".confirmationerror").delay(5000).fadeOut(500);

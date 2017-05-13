@@ -81,6 +81,12 @@ namespace Projecten2.Data
             a.Property(t => t.PatronaleBijdrage)
                 .IsRequired();
 
+            a.Property(t => t.KostenTotaal)
+                .IsRequired();
+
+            a.Property(t => t.BatenTotaal)
+                .IsRequired();
+
             //Associations
             a.HasOne(t => t.Kosten)
                 .WithOne()

@@ -10,7 +10,8 @@ namespace Projecten2.Models.Domain
         public string Bedrijf { get; set; }
         public string Afdeling { get; set; }
         public DateTime Datum { get; set; }
-        public double Balans { get; set; }
+        public double KostenTotaal { get; set; }
+        public double BatenTotaal { get; set; }
         public int PatronaleBijdrage { get; set; } //standaard 35%
         public int UrenVoltijdsWerkweek { get; set; } //Vraag 1
         public Boolean Archief { get; set; }
@@ -20,10 +21,14 @@ namespace Projecten2.Models.Domain
         public Kosten Kosten { get; set; }
         public Baten Baten { get; set; }
 
+        public void updateBalans()
+        {
+            BatenTotaal = Baten.subtotaal();
+            KostenTotaal = Kosten.Subtotaal();
+        }
         public string getBalansFormat()
         {
-            Balans = Baten.subtotaal() - Kosten.Subtotaal();
-            return Balans.ToString("#,##0.##");
+            return (Baten.subtotaal() - Kosten.Subtotaal()).ToString("#,##0.##");
         }
         public string getBatenFormat()
         {
@@ -78,7 +83,8 @@ namespace Projecten2.Models.Domain
             Kosten.Analyse = this;
 
             Datum = DateTime.Now;
-            Balans = 0;
+            KostenTotaal = 0;
+            BatenTotaal = 0;
             Archief = false;
             PatronaleBijdrage = 35;
             UrenVoltijdsWerkweek = 38;

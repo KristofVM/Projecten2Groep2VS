@@ -1,23 +1,14 @@
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Internal;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Net.Http.Headers;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using Org.BouncyCastle.Crypto.Parameters;
 using Projecten2.Models.Domain;
 using Projecten2.Models.ViewModels;
-using Projecten2.Models.ViewModels.BatenViewModels;
 
 namespace Projecten2.Controllers
 {
@@ -53,6 +44,7 @@ namespace Projecten2.Controllers
                 {
                     analyse = _analyseRepository.GetById(editViewModel.AnalyseId);
                     MapEditViewModelToAnalyse(editViewModel, analyse);
+                    analyse.updateBalans();
                     _analyseRepository.SaveChanges();
                     TempData["Message"] = $"De analyse '{analyse.Bedrijf}' is succesvol aangepast.";
                 }
