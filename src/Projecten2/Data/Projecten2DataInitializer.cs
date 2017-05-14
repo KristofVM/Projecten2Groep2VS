@@ -108,14 +108,23 @@ namespace Projecten2.Data
             ICollection<Analyse> analysen = new List<Analyse>();
             List<string> bedrijven = this.getBedrijven();
             List<string> afdelingen = this.getAfdelingen();
-
+            DateTime start = new DateTime(2017, 1, 1);
+            int range = (DateTime.Today - start).Days;
             for (int i = 0; i < 15; i++)
             {
                 Analyse a = new Analyse();
-
                 a.Bedrijf = bedrijven[rnd.Next(0, bedrijven.Count)];
                 a.Afdeling = afdelingen[rnd.Next(0, afdelingen.Count)];
-
+                a.Datum = start.AddDays(rnd.Next(range));
+                analysen.Add(a);
+            }
+            for (int i = 0; i < 15; i++)
+            {
+                Analyse a = new Analyse();
+                a.Bedrijf = bedrijven[rnd.Next(0, bedrijven.Count)];
+                a.Afdeling = afdelingen[rnd.Next(0, afdelingen.Count)];
+                a.Datum = start.AddDays(rnd.Next(range));
+                a.Archief = true;
                 analysen.Add(a);
             }
 
