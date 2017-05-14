@@ -244,11 +244,11 @@ namespace Projecten2.Controllers
                 ws.Cells["C11"].Value = "€ " + analyse.getKVragenFormat(7);
 
                 //subtotaal
-                ws.Cells["D16"].Value = "Subtotaal baten";
-                ws.Cells["C16"].Value = "€ " + analyse.getBatenFormat();
+                ws.Cells["D16"].Value = "Subtotaal Kosten";
+                ws.Cells["C16"].Value = "€ " + analyse.getKostenFormat();
 
                 //SUBTOTAAL
-                ws.Cells["B17:C17"].Value = "---SUBTOTAAL---" + "\n" + "€ " + analyse.getBalansFormat();
+                ws.Cells["B17:C17"].Value = "€ " + analyse.getBalansFormat();
                 ws.Cells["B17:C17"].Merge = true;
                 ws.Cells["B17:C17"].Style.Font.Bold = true;
                 ws.Cells["B17:C17"].Style.Fill.PatternType = ExcelFillStyle.Solid;

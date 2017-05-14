@@ -27,13 +27,12 @@ namespace Projecten2.Data
                 await InitializeUsers();
                 InitializeDoelgroepen();
 
-                ICollection<Analyse> analysen = new List<Analyse>();
 
+                ICollection<Analyse> analysen = new List<Analyse>();
                 Analyse analyse1 = new Analyse();
-                analyse1.Afdeling = "kuisdienst";
-                analyse1.Bedrijf = "google";
+                analyse1.Afdeling = "Receptie";
+                analyse1.Bedrijf = "Google";
                 analyse1.Datum = new DateTime(2017, 3, 25);
-                analyse1.Archief = false;
                 analysen.Add(analyse1);
 
                 string eMailAddress = "chirohofstadeaalst@gmail.com";
@@ -65,51 +64,63 @@ namespace Projecten2.Data
             List<string> tekens = this.getTeken();
             List<string> email = this.getEmail();
 
+            int x = 0;
+            int y = 0;
 
             for (int i = 0; i <= 1200; i++)
             {
-                string voornaam = voornamen[rnd.Next(0, voornamen.Count)];
-                string naam = namen[rnd.Next(0, namen.Count)];
+                string voornaam = voornamen[x];
+                string naam = namen[y];
                 string organisatie = organisaties[rnd.Next(0, organisaties.Count)];
                 string straat = straten[rnd.Next(0, straten.Count)];
                 int randomplaats = rnd.Next(0, plaatsen.Count);
-                string plaats = namen[randomplaats];
+                string plaats = plaatsen[randomplaats];
                 int postcode = postcodes[randomplaats];
                 int nr = rnd.Next(0, 300);
 
-                string eMailAddress = voornaam + tekens[rnd.Next(0, tekens.Count)] + naam + "@" + email[rnd.Next(0, email.Count)];
+                string eMailAddress = voornaam + tekens[rnd.Next(0, tekens.Count)] + naam.Replace(" ", String.Empty) + "@" + email[rnd.Next(0, email.Count)];
 
-                ApplicationUser user0 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = "", Postcode = postcode, Plaats = plaats };
+                ApplicationUser user0 = new ApplicationUser { UserName = eMailAddress,
+                    Email = eMailAddress,
+                    Naam = naam,
+                    Voornaam = voornaam,
+                    Organisatie = organisatie,
+                    Straat = straat,
+                    Nr = nr,
+                    Bus = "",
+                    Postcode = postcode,
+                    Plaats = plaats,
+                    Analyses = InitializeAnalyses(rnd)};
                 await _userManager.CreateAsync(user0, "P@ssword1");
+                _dbContext.SaveChanges();
+
+                x++;
+                y++;
+                if (x == 101)
+                    x = 0;
+                if (y == 45)
+                    y = 0;
             }
         }
-        public async Task InitializeUsersmlkj()
+
+        public ICollection<Analyse> InitializeAnalyses(Random rnd)
         {
-            string eMailAddress = "kristofvanmoorter@hotmail.com";
-            string naam = "van Moorter";
-            string voornaam = "Kristof";
-            string organisatie = "HoGent";
-            string straat = "Langehaagstraat";
-            int nr = 65;
-            string bus = "12";
-            int postcode = 9308;
-            string plaats = "Gijzegem";
-            ApplicationUser user0 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress,  Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats};
-            await _userManager.CreateAsync(user0, "P@ssword1");
+            ICollection<Analyse> analysen = new List<Analyse>();
+            List<string> bedrijven = this.getBedrijven();
+            List<string> afdelingen = this.getAfdelingen();
 
-            eMailAddress = "jef_braem@hotmail.com";
-            naam = "Braem";
-            voornaam = "Jef";
-            organisatie = "Chiro Hofstade";
-            straat = "Hofstade-dorp";
-            nr = 10;
-            bus = "";
-            postcode = 9308;
-            plaats = "Hofstade";
-            ApplicationUser user1 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats };
-            await _userManager.CreateAsync(user1, "P@ssword1");
+            for (int i = 0; i < 15; i++)
+            {
+                Analyse a = new Analyse();
+
+                a.Bedrijf = bedrijven[rnd.Next(0, bedrijven.Count)];
+                a.Afdeling = afdelingen[rnd.Next(0, afdelingen.Count)];
+
+                analysen.Add(a);
+            }
+
+            return analysen;
         }
-
         public void InitializeDoelgroepen()
         {
             Doelgroep doelgroep = new Doelgroep();
@@ -179,6 +190,7 @@ namespace Projecten2.Data
             s.Add("Sportlaan");
             s.Add("Ijsbroekstraat");
             s.Add("Konijnenberg");
+            s.Add("Leedshouwken");
             s.Add("Dorpweg");
             s.Add("Asserendries");
             s.Add("Binnenstraat");
@@ -206,6 +218,7 @@ namespace Projecten2.Data
             s.Add("Aaigem");
             s.Add("Dendermonde");
             s.Add("Herdersem");
+            s.Add("Lede");
             return s;
         }
         public List<int> getPostcodes()
@@ -222,6 +235,7 @@ namespace Projecten2.Data
             s.Add(9420);
             s.Add(9200);
             s.Add(9310);
+            s.Add(9340);
             return s;
         }
         public List<string> getOrganisaties()
@@ -414,6 +428,83 @@ namespace Projecten2.Data
             s.Add("Willems");
             s.Add("Thijs");
             s.Add("Claessens");
+            s.Add("Waumans");
+            return s;
+        }
+        public List<string> getBedrijven()
+        {
+            List<string> s = new List<string>();
+            s.Add("Argenta");
+            s.Add("Belfius");
+            s.Add("Citibank");
+            s.Add("Fortis");
+            s.Add("ING");
+            s.Add("KBC");
+            s.Add("AXA");
+            s.Add("Bank Degroof");
+            s.Add("Bank Delen");
+            s.Add("BinckBank");
+            s.Add("Centea");
+            s.Add("DHB");
+            s.Add("LandbouwKrediet");
+            s.Add("NBB");
+            s.Add("Rabobank");
+            s.Add("VDK");
+            s.Add("Patronale");
+            s.Add("OBK");
+            s.Add("BKCP");
+            s.Add("C & C");
+            s.Add("Exell");
+            s.Add("IBM");
+            s.Add("Microsoft");
+            s.Add("Packard Bell");
+            s.Add("Q com");
+            s.Add("Ho.Re.Ca");
+            s.Add("Lunch Garden");
+            s.Add("McDonald's");
+            s.Add("Pizza Hut");
+            s.Add("Quick");
+            s.Add("Resto.be");
+            s.Add("Diamanten Orsini");
+            s.Add("Caro's Concept");
+            s.Add("Draagtassen papier");
+            s.Add("Stella Artois");
+            s.Add("AMOS");
+            s.Add("Barco");
+            s.Add("BioBest");
+            s.Add("ThromboGenics");
+            s.Add("I Movix");
+            s.Add("Saluc");
+            s.Add("Emulco");
+            s.Add("Nanocyl");
+            s.Add("IBA");
+            s.Add("Soudal");
+            s.Add("Cmosis");
+            s.Add("Van De Wiele");
+            s.Add("Univeg");
+            s.Add("Jan De Nul");
+            s.Add("Cosucra");
+            return s;
+        }
+        public List<string> getAfdelingen()
+        {
+            List<string> s = new List<string>();
+            s.Add("Receptie");
+            s.Add("Aankoop");
+            s.Add("Verkoop");
+            s.Add("Voorraadbeheer");
+            s.Add("Facturatie");
+            s.Add("Boekhouding");
+            s.Add("Directie");
+            s.Add("Productie");
+            s.Add("Magazijn");
+            s.Add("Administratie");
+            s.Add("Personeelszaken");
+            s.Add("ICT");
+            s.Add("Marketting");
+            s.Add("Communicatie");
+            s.Add("Sales");
+            s.Add("Strategie en beleid");
             return s;
         }
     }

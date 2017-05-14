@@ -26,7 +26,7 @@
         {
             <div class="analyse">
                 @{
-                    item.getBalansFormat();
+                    item.updateBalans();
                 }
                 <div class="analysetop">
                     <a asp-controller="Analyse" asp-action="KostenBaten" asp-route-id="@item.AnalyseId" class="naam">@item.Bedrijf</a>
@@ -37,14 +37,14 @@
                 </div>
                 <div class="analysebottom">
                     <p class="afdeling">Afdeling: @item.Afdeling</p>
-                    @if (@item.Balans > 0)
+                    @if (@item.BatenTotaal - item.KostenTotaal > 0)
                     {
                         <p class="kostenbaten green bold">€ @item.getBalansFormat()</p>
                     }
-                    @if (@item.Balans < 0)
+                    @if (@item.BatenTotaal - item.KostenTotaal < 0)
                     {
                         <p class="kostenbaten red bold">€ @item.getBalansFormat()</p>
-                    } else if (@item.Balans == 0)
+                    } else if (@item.BatenTotaal - item.KostenTotaal == 0)
                     {
                         <p class="kostenbaten gray bold">€ @item.getBalansFormat()</p>
                     }
@@ -52,7 +52,7 @@
                     <div class="clear"></div>
                 </div>
                 <div class="ratiobalk">
-                    @if (@item.Balans == 0)
+                    @if (@item.BatenTotaal - item.KostenTotaal == 0)
                     {
                         <div class="ratiogrijs"></div>
                     }

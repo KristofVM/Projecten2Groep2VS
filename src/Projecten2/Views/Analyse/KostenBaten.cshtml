@@ -112,11 +112,11 @@
         </div>
         <div class="clear"></div>
         <div class="subtotaal">
-            @if (@Model.Balans > 0)
+            @if (@Model.BatenTotaal - Model.KostenTotaal > 0)
             {
                 <p class="green bold">€ <span>@Model.getBalansFormat()</span></p>
             }
-            else if (@Model.Balans < 0)
+            else if (@Model.BatenTotaal - Model.KostenTotaal < 0)
             {
                 <p class="red bold">€ <span>@Model.getBalansFormat()</span></p>
             }

@@ -82,7 +82,7 @@ namespace Projecten2.Controllers
                     if (sorterenop == 4)
                         analyses = appUser.Analyses
                             .Where(a => a.Archief)
-                            .OrderBy(a => a.Balans)
+                            .OrderBy(a => a.BatenTotaal - a.KostenTotaal)
                             .ThenBy(a => a.Datum);
                 }
                 return View(analyses);
