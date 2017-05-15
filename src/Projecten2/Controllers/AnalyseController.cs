@@ -105,7 +105,7 @@ namespace Projecten2.Controllers
                 case 4: return RedirectToAction("BVraagS4Overzicht", "Overzichten", new { AnalyseId });
                 case 5: return RedirectToAction("BVraagS5Overzicht", "Overzichten", new { AnalyseId });
                 //case 6: return RedirectToAction("BVraagInt", "Vragen", new { AnalyseId }); break;
-                case 6: return RedirectToAction("BVraag6", "Vragen", new { AnalyseId }); break;
+                case 6: return RedirectToAction("BVraag6", "Vragen", new { AnalyseId });
                 case 7: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId });
                 case 8: return RedirectToAction("BVraagDouble", "Vragen", new { AnalyseId, VraagId });
                 case 9: return RedirectToAction("BVraagS9Overzicht", "Overzichten", new { AnalyseId });

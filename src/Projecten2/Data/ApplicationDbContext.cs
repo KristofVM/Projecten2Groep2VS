@@ -10,7 +10,7 @@ namespace Projecten2.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<ApplicationUser> Users { get; set; }
+        public new DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Analyse> Analyses { get; set; }
         public DbSet<Doelgroep> Doelgroepen { get; set; }
 
