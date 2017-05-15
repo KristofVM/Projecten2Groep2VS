@@ -5,6 +5,7 @@
 
 <main class="edit">
     <div class="contain">
+        <h1>@ViewData["Title"]</h1>
         <div class="window">
             @if (TempData["Message"] != null)
             {
@@ -15,7 +16,6 @@
                 <p class="confirmationerror"><i class="fa fa-exclamation-triangle"></i> @TempData["Error"]</p>
             }
             <form form asp-controller="Home" asp-action="Profiel" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                <h2>@ViewData["Title"]</h2>
                 <input type="hidden" asp-for="Email"/>
                 <div>
                     <label asp-for="Naam"></label>

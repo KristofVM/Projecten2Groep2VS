@@ -24,17 +24,9 @@ namespace Projecten2.Data
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
-                await InitializeUsers();
+                Random rnd = new Random();
                 InitializeDoelgroepen();
-
-
-                ICollection<Analyse> analysen = new List<Analyse>();
-                Analyse analyse1 = new Analyse();
-                analyse1.Afdeling = "Receptie";
-                analyse1.Bedrijf = "Google";
-                analyse1.Datum = new DateTime(2017, 3, 25);
-                analysen.Add(analyse1);
-
+                
                 string eMailAddress = "chirohofstadeaalst@gmail.com";
                 string naam = "Braem";
                 string voornaam = "Jef";
@@ -44,17 +36,27 @@ namespace Projecten2.Data
                 string bus = "";
                 int postcode = 9308;
                 string plaats = "Hofstade";
-                ApplicationUser user2 = new ApplicationUser { UserName = eMailAddress, Email = eMailAddress, Naam = naam, Voornaam = voornaam, Organisatie = organisatie, Straat = straat, Nr = nr, Bus = bus, Postcode = postcode, Plaats = plaats, Analyses = analysen};
-                
-                await _userManager.CreateAsync(user2, "P@ssword1");
-                
+                ApplicationUser user = new ApplicationUser { UserName = eMailAddress,
+                    Email = eMailAddress,
+                    Naam = naam,
+                    Voornaam = voornaam,
+                    Organisatie = organisatie,
+                    Straat = straat,
+                    Nr = nr,
+                    Bus = bus,
+                    Postcode = postcode,
+                    Plaats = plaats,
+                    Analyses = InitializeAnalyses(rnd) };
+                await _userManager.CreateAsync(user, "P@ssword1");
+
+                await InitializeUsers(rnd);
+
                 _dbContext.SaveChanges();
             }
         }
 
-        public async Task InitializeUsers()
+        public async Task InitializeUsers(Random rnd)
         {
-            Random rnd = new Random();
             List<string> voornamen = this.getVoornamen();
             List<string> namen = this.getNamen();
             List<string> organisaties= this.getOrganisaties();
@@ -67,7 +69,7 @@ namespace Projecten2.Data
             int x = 0;
             int y = 0;
 
-            for (int i = 0; i <= 1200; i++)
+            for (int i = 0; i <= 1700; i++)
             {
                 string voornaam = voornamen[x];
                 string naam = namen[y];
@@ -78,7 +80,7 @@ namespace Projecten2.Data
                 int postcode = postcodes[randomplaats];
                 int nr = rnd.Next(0, 300);
 
-                string eMailAddress = voornaam + tekens[rnd.Next(0, tekens.Count)] + naam.Replace(" ", String.Empty) + "@" + email[rnd.Next(0, email.Count)];
+                string eMailAddress = voornaam.ToLower() + tekens[rnd.Next(0, tekens.Count)] + naam.Replace(" ", String.Empty).ToLower() + "@" + email[rnd.Next(0, email.Count)];
 
                 ApplicationUser user0 = new ApplicationUser { UserName = eMailAddress,
                     Email = eMailAddress,
@@ -96,9 +98,9 @@ namespace Projecten2.Data
 
                 x++;
                 y++;
-                if (x == 101)
+                if (x == 100)
                     x = 0;
-                if (y == 45)
+                if (y == 44)
                     y = 0;
             }
         }
@@ -173,6 +175,12 @@ namespace Projecten2.Data
             s.Add("hotmail.be");
             s.Add("skynet.be");
             s.Add("telenet.be");
+            s.Add("ymail.be");
+            s.Add("ymail.com");
+            s.Add("live.be");
+            s.Add("live.com");
+            s.Add("outlook.com");
+            s.Add("outlook.be");
             return s;
         }
         public List<string> getTeken()
@@ -181,7 +189,7 @@ namespace Projecten2.Data
             s.Add(".");
             s.Add("-");
             s.Add("_");
-            s.Add("");
+            s.Add(String.Empty);
             return s;
         }
         public List<string> getStraten()

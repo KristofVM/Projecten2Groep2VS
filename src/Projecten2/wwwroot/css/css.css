@@ -266,9 +266,10 @@ input[type=text].zoekbalk {
 }
 .archieflijst {
     width: 100%;
-    max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 120px);
     box-shadow: 2px 2px 2px #e2e2e2;
     overflow-y: scroll;
+    margin-bottom: 20px;
 }
 .archiefbalk {
     font-weight: bold;
