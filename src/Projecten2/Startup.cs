@@ -91,7 +91,7 @@ namespace Projecten2 {
                     template: "{controller=Account}/{action=Login}/{id?}");
             });
 
-             projecten2DataInitializer.InitializeData().Wait();
+            projecten2DataInitializer.InitializeData().Wait();
         }
     }
 }
