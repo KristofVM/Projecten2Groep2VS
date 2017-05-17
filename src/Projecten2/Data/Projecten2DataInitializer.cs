@@ -5,6 +5,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Projecten2.Models.Domain;
+using Projecten2.Models.Domain.BatenVragen;
+using Projecten2.Models.Domain.KostenVragen;
 
 namespace Projecten2.Data
 {
@@ -118,6 +120,8 @@ namespace Projecten2.Data
                 a.Bedrijf = bedrijven[rnd.Next(0, bedrijven.Count)];
                 a.Afdeling = afdelingen[rnd.Next(0, afdelingen.Count)];
                 a.Datum = start.AddDays(rnd.Next(range));
+                a.Baten = InitializeBaten(rnd, a.Baten);
+                a.Kosten = InitializeKosten(rnd, a.Kosten);
                 analysen.Add(a);
             }
             for (int i = 0; i < 15; i++)
@@ -131,6 +135,162 @@ namespace Projecten2.Data
             }
 
             return analysen;
+        }
+
+        public Baten InitializeBaten(Random rnd, Baten baten)
+        {
+            Baten b = new Baten();
+
+            b.JaarBedExtraProd = rnd.Next(1000, 5000);
+            b.JaarBedHandelingsKost = rnd.Next(800, 3000);
+            b.JaarBedTransportKost = rnd.Next(800, 3000);
+            b.JaarBedSubsWerkOmg = rnd.Next(2000, 4000);
+            b.JaarBedOveruren = rnd.Next(1000, 2000);
+            b.JaarBedOmzetVerlies = rnd.Next(500,10000);
+            b.ProcentBesparing = rnd.Next(5, 35);
+
+            ICollection<BVraag3> v3 = new List<BVraag3>();
+            ICollection<BVraag4> v4 = new List<BVraag4>();
+            ICollection<BVraag5> v5 = new List<BVraag5>();
+            ICollection<BVraag9> v9 = new List<BVraag9>();
+            ICollection<BVraag11> v11 = new List<BVraag11>();
+
+            int index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                BVraag3 vraag = new BVraag3(baten);
+                int uren = rnd.Next(20, 40);
+                vraag.Uren = uren;
+                vraag.BrutoMaandloonFulltime = uren * rnd.Next(8,30);
+                v3.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                BVraag4 vraag = new BVraag4(baten);
+                int uren = rnd.Next(20, 40);
+                vraag.Uren = uren;
+                vraag.BrutoMaandloonFulltime = uren * rnd.Next(8, 30);
+                v4.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                BVraag5 vraag = new BVraag5(baten);
+                vraag.Beschrijving = "Beschrijving" + i;
+                vraag.JaarBedrag = rnd.Next(500, 10000);
+                v5.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                BVraag9 vraag = new BVraag9(baten);
+                vraag.Beschrijving = "Beschrijving" + i;
+                vraag.JaarBedrag = rnd.Next(500, 10000);
+                v9.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                BVraag11 vraag = new BVraag11(baten);
+                vraag.TypeBesparing = "Type" + i;
+                vraag.JaarBedrag = rnd.Next(500, 10000);
+                v11.Add(vraag);
+            }
+
+            b.Bvragen3 = v3;
+            b.Bvragen4 = v4;
+            b.Bvragen5 = v5;
+            b.Bvragen9 = v9;
+            b.Bvragen11 = v11;
+
+            return b;
+        }
+        public Kosten InitializeKosten(Random rnd, Kosten kosten)
+        {
+            Kosten k = new Kosten();
+
+            ICollection<KVraag1_0> v1 = new List<KVraag1_0>();
+            ICollection<KVraag2> v2 = new List<KVraag2>();
+            ICollection<KVraag3> v3 = new List<KVraag3>();
+            ICollection<KVraag4> v4 = new List<KVraag4>();
+            ICollection<KVraag5> v5 = new List<KVraag5>();
+            ICollection<KVraag6> v6 = new List<KVraag6>();
+            ICollection<KVraag7> v7 = new List<KVraag7>();
+
+            int index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                KVraag1_0 vraag = new KVraag1_0();
+                int uren = rnd.Next(20, 40);
+                vraag.AantalUrenPerWeek = uren;
+                vraag.BrutoMaandloonFulltime = uren * rnd.Next(8, 30);
+                vraag.AantalMaandenIBO = rnd.Next(2, 6);
+                vraag.Functie = "Functie" + i;
+                vraag.TotaleProductiviteitsPremie = rnd.Next(300, 600);
+                vraag.VlaamseOndPremie = 20;
+                vraag.Doelgroep = _dbContext.Doelgroepen.Find(rnd.Next(1,5));
+                v1.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                KVraag2 vraag = new KVraag2();
+                vraag.Type = "Type" + i;
+                vraag.Bedrag = rnd.Next(500, 10000);
+                v2.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                KVraag3 vraag = new KVraag3();
+                vraag.Type = "Type" + i;
+                vraag.Bedrag = rnd.Next(500, 10000);
+                v3.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                KVraag4 vraag = new KVraag4();
+                vraag.Type = "Type" + i;
+                vraag.Bedrag = rnd.Next(500, 10000);
+                v4.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                KVraag5 vraag = new KVraag5();
+                vraag.Type = "Type" + i;
+                vraag.Bedrag = rnd.Next(500, 10000);
+                v5.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                KVraag6 vraag = new KVraag6();
+                int uren = rnd.Next(20, 40);
+                vraag.Uren = uren;
+                vraag.BrutoMaandloonBegeleider = uren * rnd.Next(8, 30);
+                v6.Add(vraag);
+            }
+            index = rnd.Next(1, 5);
+            for (int i = 0; i <= index; i++)
+            {
+                KVraag7 vraag = new KVraag7();
+                vraag.Type = "Type" + i;
+                vraag.Bedrag = rnd.Next(500, 10000);
+                v7.Add(vraag);
+            }
+
+            k.Kvragen01 = v1;
+            k.Kvragen2 = v2;
+            k.Kvragen3 = v3;
+            k.Kvragen4 = v4;
+            k.Kvragen5 = v5;
+            k.Kvragen6 = v6;
+            k.Kvragen7 = v7;
+
+            return k;
         }
         public void InitializeDoelgroepen()
         {
