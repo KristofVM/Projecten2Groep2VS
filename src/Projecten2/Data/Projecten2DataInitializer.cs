@@ -51,7 +51,7 @@ namespace Projecten2.Data
                     Analyses = InitializeAnalyses(rnd) };
                 await _userManager.CreateAsync(user, "P@ssword1");
 
-                await InitializeUsers(rnd);
+                //await InitializeUsers(rnd);
 
                 _dbContext.SaveChanges();
             }

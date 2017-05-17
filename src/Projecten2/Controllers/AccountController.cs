@@ -141,7 +141,7 @@ namespace Projecten2.Controllers
                     // Comment out following line to prevent a new user automatically logged on.
                     // await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToAction(nameof(Login));
+                    return RedirectToAction(nameof(RegisterConfirmation));
                 }
                 AddErrors(result);
             }
@@ -249,6 +249,15 @@ namespace Projecten2.Controllers
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+
+        //
+        // GET: /Account/ForgotPasswordConfirmation
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult RegisterConfirmation()
         {
             return View();
         }
